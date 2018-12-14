@@ -5,14 +5,18 @@ Imports System.Data
 Imports System.Drawing
 Imports System.IO
 Imports System.Linq
+Imports System.Net
 Imports System.Text
 Imports System.Threading
 Imports System.Windows.Forms
 Imports System.Xml
+Imports Newtonsoft.Json
+Imports Newtonsoft.Json.Linq
 
- 
 Partial Public Class Frm主面
     Inherits Form
+    Dim aToken As String
+    Dim leftTime As String
     Public Sub New()
         InitializeComponent()
     End Sub
@@ -45,6 +49,22 @@ Partial Public Class Frm主面
     ''' <param name="sender"></param>
     ''' <param name="e"></param>
     Private Sub Frm主面_Load(ByVal sender As Object, ByVal e As EventArgs) Handles MyBase.Load
+        Try
+            Dim pr As JObject = CType(
+            JsonConvert.DeserializeObject(
+            getAtoken(
+            "https://api.weixin.qq.com/cgi-bin/token?grant_type=client_credential&
+            appid=wx15b66cc1bad015f1&secret=049f41d1732e0e900c733eaa053528bf")), Object)
+            aToken = pr("access_token").ToString()
+            leftTime = CInt(pr("expires_in").ToString())
+        Catch
+            MessageBox.Show("Network is busy, try again")
+        Finally
+            MessageBox.Show(aToken)
+        End Try
+
+        Timer2.Interval = leftTime * 1000
+        Timer2.Start()
         Me.tool_UserName.Text = LoginRoler.U_Name
         '用户名
         If LoginRoler.U_ROlesType = 1 Then
@@ -68,7 +88,37 @@ Partial Public Class Frm主面
             toolStripLabel11.Visible = False
             toolStripSeparator3.Visible = False
         End If
+
+
     End Sub
+
+    Public Function getAtoken(ByVal url As String) As String
+        Dim tmp As String
+        tmp = PostData(url, "")
+        Return tmp
+    End Function
+    Public Shared Function PostData(ByVal url As String, ByVal data As String) As String
+
+        ServicePointManager.Expect100Continue = False
+        Dim request As HttpWebRequest = WebRequest.Create(url)
+        '//Post请求方式
+        request.Method = "POST"
+
+        '内容类型
+        request.ContentType = "application/x-www-form-urlencoded"
+        '将URL编码后的字符串转化为字节
+        Dim encoding As New UTF8Encoding()
+        Dim bys As Byte() = encoding.GetBytes(data)
+        '设置请求的 ContentLength 
+        request.ContentLength = bys.Length
+        '获得请 求流
+        Dim newStream As Stream = request.GetRequestStream()
+        newStream.Write(bys, 0, bys.Length)
+        newStream.Close()
+        '获得响应流
+        Dim sr As StreamReader = New StreamReader(request.GetResponse().GetResponseStream)
+        Return sr.ReadToEnd
+    End Function
     '个人信息
     Private Sub toolStripMenuItem1_Click(ByVal sender As Object, ByVal e As EventArgs) Handles toolStripMenuItem1.Click
         Dim frm As New Frm个人信息()
@@ -186,5 +236,19 @@ Partial Public Class Frm主面
     Private Sub BookManage_ToolStripMenuItem_Click(ByVal sender As Object, ByVal e As EventArgs) Handles BookManage_ToolStripMenuItem.Click
         Dim frmQueryBook As New FrmQueryBook()
         frmQueryBook.ShowDialog()
+    End Sub
+
+    Private Sub Timer2_Tick(sender As Object, e As EventArgs) Handles Timer2.Tick
+        Try
+            Dim pr As JObject = CType(
+            JsonConvert.DeserializeObject(
+            getAtoken(
+            "https://api.weixin.qq.com/cgi-bin/token?grant_type=client_credential&
+            appid=wx15b66cc1bad015f1&secret=049f41d1732e0e900c733eaa053528bf")), Object)
+            aToken = pr("access_token").ToString()
+            leftTime = CInt(pr("expires_in").ToString())
+        Catch
+            MessageBox.Show("Network is busy, try again")
+        End Try
     End Sub
 End Class

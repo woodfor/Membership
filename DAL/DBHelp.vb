@@ -17,7 +17,7 @@ Public Class DBHelp
     ''' </summary>
     Public Shared ReadOnly Property GetConnection() As SqlConnection
         Get
-            Dim connectionStr As String ' = System.Configuration.ConfigurationManager.AppSettings("strCon") '"server=.\SQLEXPRESS;database=BookSystemDB;user=sa;pwd=morrowsoft"
+            Dim connectionStr As String = "Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=E:\Membership system\Membership\数据库\BookSystemDB.mdf;Integrated Security=True;Connect Timeout=30"
             'Dim connectionStr As String = "server=.\SQLEXPRESS;database=BookSystemDB;user=sa;pwd=morrowsoft"
             Dim config As System.Configuration.Configuration = ConfigurationManager.OpenExeConfiguration(ConfigurationUserLevel.None)
             Dim appSettings As System.Configuration.AppSettingsSection = CType(config.GetSection("appSettings"), System.Configuration.AppSettingsSection)
