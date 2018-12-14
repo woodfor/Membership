@@ -1,0 +1,50 @@
+
+ 
+create table U_UserInfo 
+(
+    U_Id	int			identity(1,1) PRIMARY KEY		not null,--用户编号
+    U_Name				varchar(50)			null,--用户名,
+    U_RelName			varchar(50)			null,--用户真实姓名,
+    U_Sex				bit					null,--用户性别,
+    U_PassWord			varchar(50)			null,--用户密码,
+    U_Birthday			datetime			null,--出生日期
+    U_PsdType			int					null,--密保类型(管理员维护)
+    U_PsdAnswer			varchar(50)			null, --密保回答问题
+    U_IdCard			varchar(20)			null, --身份证号
+    U_NativePlace		varchar(20)			null, --籍贯
+    U_Address			varchar(50)			null, --家庭住址
+    U_Telephone			varchar(50)			null, --电话号码
+    U_Email				varchar(50)			null, --邮箱号码
+    U_PostalId			varchar(20)			null, --邮编号码
+    U_QQ				varchar(20)			null, --QQ
+    U_Position			varchar(20)			null, --职位
+    U_Reamrk			varchar(50)			null, --备注
+    U_LoginTime         datetime            null, --注册时间
+    U_RoleType			int					null,--用户权限类型(XML记录)
+    U_Image				image				null,--用户生活照
+) 
+
+--密保类型表(暂无维护) 
+create table P_PasswordType 
+(
+    P_Id	int			identity(1,1) PRIMARY KEY		not null,--密保类型编号
+    U_Name				varchar(50)						null,--密保类型名称,
+)	
+ 
+
+
+insert into U_UserInfo(U_Name,U_Sex, U_PassWord,U_Birthday,U_LoginTime,U_RoleType)
+values('admin','true','21232F297A57A5A743894A0E4A801FC3',GETDATE(),GETDATE(),2)
+ 
+
+ 
+--密保数据(默认)
+delete from P_PasswordType 
+insert into P_PasswordType values('我最喜欢的动物')
+insert into P_PasswordType values('我的小学班主任')
+insert into P_PasswordType values('我的中学班主任')
+insert into P_PasswordType values('我最爱吃什么')
+insert into P_PasswordType values('我最爱吃什么')
+insert into P_PasswordType values('我母亲叫什么')
+insert into P_PasswordType values('我父亲叫什么')
+ 

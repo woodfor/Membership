@@ -1,0 +1,388 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">x86</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{0D7BA220-24C5-4FF7-9AFA-1FEA7B10C60F}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <StartupObject>双鱼林vb.net图书管理系统.My.MyApplication</StartupObject>
+    <RootNamespace>双鱼林vb.net图书管理系统</RootNamespace>
+    <AssemblyName>双鱼林vb.net图书管理系统</AssemblyName>
+    <FileAlignment>512</FileAlignment>
+    <MyType>WindowsForms</MyType>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <TargetFrameworkProfile>Client</TargetFrameworkProfile>
+    <PublishUrl>publish\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
+    <PlatformTarget>x86</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <DefineDebug>true</DefineDebug>
+    <DefineTrace>true</DefineTrace>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DocumentationFile>双鱼林vb.net图书管理系统.xml</DocumentationFile>
+    <NoWarn>42016,41999,42017,42018,42019,42032,42036,42020,42021,42022</NoWarn>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|x86' ">
+    <PlatformTarget>x86</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <DefineDebug>false</DefineDebug>
+    <DefineTrace>true</DefineTrace>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DocumentationFile>双鱼林vb.net图书管理系统.xml</DocumentationFile>
+    <NoWarn>42016,41999,42017,42018,42019,42032,42036,42020,42021,42022</NoWarn>
+  </PropertyGroup>
+  <PropertyGroup>
+    <OptionExplicit>On</OptionExplicit>
+  </PropertyGroup>
+  <PropertyGroup>
+    <OptionCompare>Binary</OptionCompare>
+  </PropertyGroup>
+  <PropertyGroup>
+    <OptionStrict>Off</OptionStrict>
+  </PropertyGroup>
+  <PropertyGroup>
+    <OptionInfer>On</OptionInfer>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationManifest>My Project\app.manifest</ApplicationManifest>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="IrisSkin4">
+      <HintPath>bin\Debug\IrisSkin4.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Web.Extensions, Version=1.0.61025.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+  </ItemGroup>
+  <ItemGroup>
+    <Import Include="Microsoft.VisualBasic" />
+    <Import Include="System" />
+    <Import Include="System.Collections" />
+    <Import Include="System.Collections.Generic" />
+    <Import Include="System.Data" />
+    <Import Include="System.Drawing" />
+    <Import Include="System.Diagnostics" />
+    <Import Include="System.Windows.Forms" />
+    <Import Include="System.Linq" />
+    <Import Include="System.Xml.Linq" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Common.vb" />
+    <Compile Include="FrmAddBook.Designer.vb">
+      <DependentUpon>FrmAddBook.vb</DependentUpon>
+    </Compile>
+    <Compile Include="FrmAddBook.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmAddBookType.Designer.vb">
+      <DependentUpon>FrmAddBookType.vb</DependentUpon>
+    </Compile>
+    <Compile Include="FrmAddBookType.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmEditBook.Designer.vb">
+      <DependentUpon>FrmEditBook.vb</DependentUpon>
+    </Compile>
+    <Compile Include="FrmEditBook.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmQueryBook.Designer.vb">
+      <DependentUpon>FrmQueryBook.vb</DependentUpon>
+    </Compile>
+    <Compile Include="FrmQueryBook.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Frm个人信息.Designer.vb">
+      <DependentUpon>Frm个人信息.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Frm个人信息.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Frm主面.Designer.vb">
+      <DependentUpon>Frm主面.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Frm主面.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Frm人员管理.Designer.vb">
+      <DependentUpon>Frm人员管理.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Frm人员管理.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Frm关于.Designer.vb">
+      <DependentUpon>Frm关于.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Frm关于.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Frm密码修改.Designer.vb">
+      <DependentUpon>Frm密码修改.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Frm密码修改.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Frm找回密码.Designer.vb">
+      <DependentUpon>Frm找回密码.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Frm找回密码.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Frm登陆成功显示进度.Designer.vb">
+      <DependentUpon>Frm登陆成功显示进度.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Frm登陆成功显示进度.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Frm离开挂起.Designer.vb">
+      <DependentUpon>Frm离开挂起.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Frm离开挂起.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Frm管理员管理.Designer.vb">
+      <DependentUpon>Frm管理员管理.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Frm管理员管理.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Landing.Designer.vb">
+      <DependentUpon>Landing.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Landing.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="login.Designer.vb">
+      <DependentUpon>login.vb</DependentUpon>
+    </Compile>
+    <Compile Include="login.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="LoginRoler.vb" />
+    <Compile Include="My Project\AssemblyInfo.vb" />
+    <Compile Include="My Project\Application.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Application.myapp</DependentUpon>
+    </Compile>
+    <Compile Include="My Project\Resources.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="My Project\Settings.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <Compile Include="Program.vb" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="FrmAddBook.resx">
+      <DependentUpon>FrmAddBook.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmAddBookType.resx">
+      <DependentUpon>FrmAddBookType.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmEditBook.resx">
+      <DependentUpon>FrmEditBook.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmQueryBook.resx">
+      <DependentUpon>FrmQueryBook.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Frm个人信息.resx">
+      <DependentUpon>Frm个人信息.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Frm主面.resx">
+      <DependentUpon>Frm主面.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Frm人员管理.resx">
+      <DependentUpon>Frm人员管理.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Frm关于.resx">
+      <DependentUpon>Frm关于.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Frm密码修改.resx">
+      <DependentUpon>Frm密码修改.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Frm找回密码.resx">
+      <DependentUpon>Frm找回密码.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Frm登陆成功显示进度.resx">
+      <DependentUpon>Frm登陆成功显示进度.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Frm离开挂起.resx">
+      <DependentUpon>Frm离开挂起.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Frm管理员管理.resx">
+      <DependentUpon>Frm管理员管理.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Landing.resx">
+      <DependentUpon>Landing.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="login.resx">
+      <DependentUpon>login.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="My Project\Resources.resx">
+      <Generator>VbMyResourcesResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.vb</LastGenOutput>
+      <CustomToolNamespace>My.Resources</CustomToolNamespace>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="app.config">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="app.config 的副本">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="My Project\app.manifest" />
+    <None Include="My Project\Application.myapp">
+      <Generator>MyApplicationCodeGenerator</Generator>
+      <LastGenOutput>Application.Designer.vb</LastGenOutput>
+    </None>
+    <None Include="My Project\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <CustomToolNamespace>My</CustomToolNamespace>
+      <LastGenOutput>Settings.Designer.vb</LastGenOutput>
+    </None>
+    <None Include="Skins\Calmness.ssk" />
+    <None Include="Skins\CalmnessColor1.ssk" />
+    <None Include="Skins\CalmnessColor2.ssk" />
+    <None Include="Skins\DeepCyan.ssk" />
+    <None Include="Skins\DeepGreen.ssk" />
+    <None Include="Skins\DeepOrange.ssk" />
+    <None Include="Skins\Emerald.ssk" />
+    <None Include="Skins\EmeraldColor1.ssk" />
+    <None Include="Skins\EmeraldColor2.ssk" />
+    <None Include="Skins\EmeraldColor3.ssk" />
+    <None Include="Skins\MSN.ssk" />
+    <None Include="Skins\office2007.ssk" />
+    <None Include="Skins\Page.ssk" />
+    <None Include="Skins\PageColor1.ssk" />
+    <None Include="Skins\PageColor2.ssk" />
+    <None Include="Skins\RealOne.ssk" />
+    <None Include="Skins\Silver.ssk" />
+    <None Include="Skins\SilverColor1.ssk" />
+    <None Include="Skins\SilverColor2.ssk" />
+    <None Include="Skins\vista1.ssk" />
+    <None Include="Skins\vista1_green.ssk" />
+    <None Include="Skins\Vista2_color1.ssk" />
+    <None Include="Skins\Vista2_color2.ssk" />
+    <None Include="Skins\Vista2_color3.ssk" />
+    <None Include="Skins\Vista2_color4.ssk" />
+    <None Include="Skins\Vista2_color5.ssk" />
+    <None Include="Skins\Vista2_color6.ssk" />
+    <None Include="Skins\Vista2_color7.ssk" />
+    <None Include="Skins\Warm.ssk" />
+    <None Include="Skins\WarmColor1.ssk" />
+    <None Include="Skins\WarmColor2.ssk" />
+    <None Include="Skins\WarmColor3.ssk" />
+    <None Include="Skins\Wave.ssk" />
+    <None Include="Skins\WaveColor1.ssk" />
+    <None Include="Skins\WaveColor2.ssk" />
+    <None Include="Skins\XPBlue.ssk" />
+    <None Include="Skins\XPGreen.ssk" />
+    <None Include="Skins\XPOrange.ssk" />
+    <None Include="Skins\XPSilver.ssk" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\BLL\BLL.vbproj">
+      <Project>{7F142EC3-0722-4D7D-9C21-7C5BA5FDADA2}</Project>
+      <Name>BLL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\DAL\DAL.vbproj">
+      <Project>{8485D8D7-FE92-4B03-BD1B-37E6607708A5}</Project>
+      <Name>DAL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Model\Model.vbproj">
+      <Project>{68FC1086-9472-420C-908F-5F4EA4FCC24B}</Project>
+      <Name>Model</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include=".NETFramework,Version=v4.0,Profile=Client">
+      <Visible>False</Visible>
+      <ProductName>Microsoft .NET Framework 4 Client Profile %28x86 和 x64%29</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Client.3.5">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1 Client Profile</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Windows.Installer.3.1">
+      <Visible>False</Visible>
+      <ProductName>Windows Installer 3.1</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup />
+  <ItemGroup>
+    <Content Include="icon\favicon.ico" />
+    <Content Include="pic\001.png" />
+    <Content Include="pic\01.jpg" />
+    <Content Include="pic\background.jpg" />
+    <Content Include="pic\NoImage.jpg" />
+    <Content Include="pic\png-0048.png" />
+    <Content Include="pic\png-0067.png" />
+    <Content Include="pic\png-0090.png" />
+    <Content Include="pic\png-0098.png" />
+    <Content Include="pic\png-0673.png" />
+    <Content Include="pic\png-1659.png" />
+    <Content Include="pic\png-1712.png" />
+    <Content Include="pic\png-1718.png" />
+    <Content Include="pic\png-1719.png" />
+    <Content Include="pic\png-1732.png" />
+    <Content Include="pic\png-1767.png" />
+    <Content Include="pic\png-1855.png" />
+    <Content Include="pic\png-1944.png" />
+    <Content Include="pic\png-1954.png" />
+    <Content Include="pic\png-1981.png" />
+    <Content Include="pic\Train.jpg" />
+    <Content Include="pic\界面背景.png" />
+    <Content Include="pic\登录按钮.png" />
+    <Content Include="pic\登录框.png" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
