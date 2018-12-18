@@ -12,6 +12,7 @@ Imports System.Windows.Forms
 Imports System.Xml
 Imports Newtonsoft.Json
 Imports Newtonsoft.Json.Linq
+Imports System.Net.Sockets
 
 Partial Public Class Frm主面
     Inherits Form
@@ -49,22 +50,22 @@ Partial Public Class Frm主面
     ''' <param name="sender"></param>
     ''' <param name="e"></param>
     Private Sub Frm主面_Load(ByVal sender As Object, ByVal e As EventArgs) Handles MyBase.Load
-        Try
-            Dim pr As JObject = CType(
-            JsonConvert.DeserializeObject(
-            getAtoken(
-            "https://api.weixin.qq.com/cgi-bin/token?grant_type=client_credential&
-            appid=wx15b66cc1bad015f1&secret=049f41d1732e0e900c733eaa053528bf")), Object)
-            aToken = pr("access_token").ToString()
-            leftTime = CInt(pr("expires_in").ToString())
-        Catch
-            MessageBox.Show("Network is busy, try again")
-        Finally
-            MessageBox.Show(aToken)
-        End Try
+        'Try
+        '    Dim pr As JObject = CType(
+        '    JsonConvert.DeserializeObject(
+        '    getAtoken(
+        '    "https://api.weixin.qq.com/cgi-bin/token?grant_type=client_credential&
+        '    appid=wx15b66cc1bad015f1&secret=049f41d1732e0e900c733eaa053528bf")), Object)
+        '    aToken = pr("access_token").ToString()
+        '    leftTime = CInt(pr("expires_in").ToString())
+        '    Timer2.Interval = leftTime * 1000
+        '    Timer2.Start()
+        'Catch
+        '    MessageBox.Show("Network is busy, try again")
+        'Finally
+        '    MessageBox.Show(aToken)
+        'End Try
 
-        Timer2.Interval = leftTime * 1000
-        Timer2.Start()
         Me.tool_UserName.Text = LoginRoler.U_Name
         '用户名
         If LoginRoler.U_ROlesType = 1 Then

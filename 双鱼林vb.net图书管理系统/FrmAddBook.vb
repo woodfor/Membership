@@ -6,9 +6,10 @@ Imports System.Linq
 Imports System.Text
 Imports System.Windows.Forms
 Imports System.IO
-
+Imports Newtonsoft.Json
+Imports Newtonsoft.Json.Linq
 Imports Model
-
+Imports System.Net
 
 Partial Public Class FrmAddBook
     Inherits Form
@@ -42,56 +43,93 @@ Partial Public Class FrmAddBook
             Me.txt_barcode.Focus()
             Return
         End If
-        book.barcode = Me.txt_barcode.Text
-        '图书条形码
-        If Me.txt_bookName.Text = "" Then
-            MessageBox.Show("图书名称输入不能为空!")
-            Me.txt_bookName.Focus()
-            Return
-        End If
-        book.bookName = Me.txt_bookName.Text
-        '图书名称
 
-        book.bookType = Int32.Parse(Me.cb_bookType.SelectedValue.ToString())
-        '图书类别
-        Try
-            '图书价格
-            book.price = Convert.ToSingle(Me.txt_price.Text)
-        Catch
-            MessageBox.Show("图书价格请输入正确的格式!")
-            Me.txt_price.SelectAll()
-            Me.txt_price.Focus()
-            Return
-        End Try
-
-        Try
-            '图书库存
-            book.count = Convert.ToInt32(Me.txt_count.Text)
-        Catch
-            MessageBox.Show("图书库存请输入正确的格式!")
-            Me.txt_count.SelectAll()
-            Me.txt_count.Focus()
-            Return
-        End Try
-
-        book.publish = Me.txt_publish.Text
-        '出版社
-        book.publishDate = Me.dtp_publishDate.Value
-
-
-
-        If BLL.bllBook.AddBook(book) Then
-            MessageBox.Show("图书添加成功!")
-        Else
-            MessageBox.Show("图书添加失败!")
+        Dim token As String
+        token = PostData("http://212.64.35.242/static/token1", "")
+        Dim dic As Dictionary(Of String, String) = New Dictionary(Of String, String) From {
+            {"code", txt_barcode.Text}
+        }
+        Dim jsonStr As String = Newtonsoft.Json.JsonConvert.SerializeObject(dic)
+        Dim tmp As String = "https://api.weixin.qq.com/card/code/get?access_token=" + token.Trim()
+        Dim response As String = PostData(tmp, jsonStr)
+        txt_publish.Text = response
+        Dim pr As JObject = CType(JsonConvert.DeserializeObject(response), Object)
+        response = pr("errmsg").ToString()
+        If String.Compare(response, "ok") = 0 Then
+            MsgBox("successful")
         End If
 
-        Me.Close()
+        'book.barcode = Me.txt_barcode.Text
+        ''图书条形码
+        'If Me.txt_bookName.Text = "" Then
+        '    MessageBox.Show("图书名称输入不能为空!")
+        '    Me.txt_bookName.Focus()
+        '    Return
+        'End If
+        'book.bookName = Me.txt_bookName.Text
+        ''图书名称
+
+        'book.bookType = Int32.Parse(Me.cb_bookType.SelectedValue.ToString())
+        ''图书类别
+        'Try
+        '    '图书价格
+        '    book.price = Convert.ToSingle(Me.txt_price.Text)
+        'Catch
+        '    MessageBox.Show("图书价格请输入正确的格式!")
+        '    Me.txt_price.SelectAll()
+        '    Me.txt_price.Focus()
+        '    Return
+        'End Try
+
+        'Try
+        '    '图书库存
+        '    book.count = Convert.ToInt32(Me.txt_count.Text)
+        'Catch
+        '    MessageBox.Show("图书库存请输入正确的格式!")
+        '    Me.txt_count.SelectAll()
+        '    Me.txt_count.Focus()
+        '    Return
+        'End Try
+
+        'book.publish = Me.txt_publish.Text
+        ''出版社
+        'book.publishDate = Me.dtp_publishDate.Value
+
+
+
+        'If BLL.bllBook.AddBook(book) Then
+        '    MessageBox.Show("图书添加成功!")
+        'Else
+        '    MessageBox.Show("图书添加失败!")
+        'End If
+
+        'Me.Close()
 
 
     End Sub
 
+    Public Shared Function PostData(ByVal url As String, ByVal data As String) As String
 
+        ServicePointManager.Expect100Continue = False
+        Dim request As HttpWebRequest = WebRequest.Create(url)
+        '//Post请求方式
+        request.Method = "POST"
+
+        '内容类型
+        request.ContentType = "application/x-www-form-urlencoded"
+        '将URL编码后的字符串转化为字节
+        Dim encoding As New UTF8Encoding()
+        Dim bys As Byte() = encoding.GetBytes(data)
+        '设置请求的 ContentLength 
+        request.ContentLength = bys.Length
+        '获得请 求流
+        Dim newStream As Stream = request.GetRequestStream()
+        newStream.Write(bys, 0, bys.Length)
+        newStream.Close()
+        '获得响应流
+        Dim sr As StreamReader = New StreamReader(request.GetResponse().GetResponseStream)
+        Return sr.ReadToEnd
+    End Function
 
     Private Sub FrmAddBook_Load(ByVal sender As Object, ByVal e As EventArgs) Handles MyBase.Load
 
