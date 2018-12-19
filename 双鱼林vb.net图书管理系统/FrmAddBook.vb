@@ -45,7 +45,7 @@ Partial Public Class FrmAddBook
         End If
 
         Dim token As String
-        token = PostData("http://212.64.35.242/static/token1", "")
+        token = PostData("http://212.64.35.242/appname/static/token1", "")
         Dim dic As Dictionary(Of String, String) = New Dictionary(Of String, String) From {
             {"code", txt_barcode.Text}
         }
