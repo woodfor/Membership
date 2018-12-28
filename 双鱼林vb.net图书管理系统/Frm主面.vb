@@ -10,20 +10,20 @@ Imports System.Text
 Imports System.Threading
 Imports System.Windows.Forms
 Imports System.Xml
-Imports Newtonsoft.Json
-Imports Newtonsoft.Json.Linq
 Imports System.Net.Sockets
+Imports System.Threading.Thread
 
 Partial Public Class Frm主面
     Inherits Form
-    Dim aToken As String
     Dim leftTime As String
+    Dim setTime As String
     Public Sub New()
         InitializeComponent()
     End Sub
     '现在时间
     Private Sub timer1_Tick(ByVal sender As Object, ByVal e As EventArgs) Handles timer1.Tick
         tool_NowTime.Text = DateTime.Now.ToString()
+
     End Sub
 
     '退出系统
@@ -50,22 +50,11 @@ Partial Public Class Frm主面
     ''' <param name="sender"></param>
     ''' <param name="e"></param>
     Private Sub Frm主面_Load(ByVal sender As Object, ByVal e As EventArgs) Handles MyBase.Load
-        'Try
-        '    Dim pr As JObject = CType(
-        '    JsonConvert.DeserializeObject(
-        '    getAtoken(
-        '    "https://api.weixin.qq.com/cgi-bin/token?grant_type=client_credential&
-        '    appid=wx15b66cc1bad015f1&secret=049f41d1732e0e900c733eaa053528bf")), Object)
-        '    aToken = pr("access_token").ToString()
-        '    leftTime = CInt(pr("expires_in").ToString())
-        '    Timer2.Interval = leftTime * 1000
-        '    Timer2.Start()
-        'Catch
-        '    MessageBox.Show("Network is busy, try again")
-        'Finally
-        '    MessageBox.Show(aToken)
-        'End Try
 
+        timer1.Enabled = True
+        Timer3.Interval = 1000
+        Timer3.Start()
+        Timer2.Enabled = False
         Me.tool_UserName.Text = LoginRoler.U_Name
         '用户名
         If LoginRoler.U_ROlesType = 1 Then
@@ -93,33 +82,7 @@ Partial Public Class Frm主面
 
     End Sub
 
-    Public Function getAtoken(ByVal url As String) As String
-        Dim tmp As String
-        tmp = PostData(url, "")
-        Return tmp
-    End Function
-    Public Shared Function PostData(ByVal url As String, ByVal data As String) As String
 
-        ServicePointManager.Expect100Continue = False
-        Dim request As HttpWebRequest = WebRequest.Create(url)
-        '//Post请求方式
-        request.Method = "POST"
-
-        '内容类型
-        request.ContentType = "application/x-www-form-urlencoded"
-        '将URL编码后的字符串转化为字节
-        Dim encoding As New UTF8Encoding()
-        Dim bys As Byte() = encoding.GetBytes(data)
-        '设置请求的 ContentLength 
-        request.ContentLength = bys.Length
-        '获得请 求流
-        Dim newStream As Stream = request.GetRequestStream()
-        newStream.Write(bys, 0, bys.Length)
-        newStream.Close()
-        '获得响应流
-        Dim sr As StreamReader = New StreamReader(request.GetResponse().GetResponseStream)
-        Return sr.ReadToEnd
-    End Function
     '个人信息
     Private Sub toolStripMenuItem1_Click(ByVal sender As Object, ByVal e As EventArgs) Handles toolStripMenuItem1.Click
         Dim frm As New Frm个人信息()
@@ -240,16 +203,25 @@ Partial Public Class Frm主面
     End Sub
 
     Private Sub Timer2_Tick(sender As Object, e As EventArgs) Handles Timer2.Tick
-        Try
-            Dim pr As JObject = CType(
-            JsonConvert.DeserializeObject(
-            getAtoken(
-            "https://api.weixin.qq.com/cgi-bin/token?grant_type=client_credential&
-            appid=wx15b66cc1bad015f1&secret=049f41d1732e0e900c733eaa053528bf")), Object)
-            aToken = pr("access_token").ToString()
-            leftTime = CInt(pr("expires_in").ToString())
-        Catch
-            MessageBox.Show("Network is busy, try again")
-        End Try
+        Dim flag As Boolean = False
+        For i As Integer = 0 To 2
+            If BLL.GetToken.GetToken() = True Then
+                flag = True
+                Exit For
+            Else
+                Sleep(1000)
+            End If
+        Next
+        If flag = True Then
+            MessageBox.Show("连接服务器发生错误，请检查网络。如网络未发生异常，请联系客服。")
+        End If
+    End Sub
+
+    Private Sub Timer3_Tick(sender As Object, e As EventArgs) Handles Timer3.Tick
+        If TimeOfDay.Minute = 59 Then
+            Timer2.Interval = 5400 * 1000
+            Timer2.Start()
+            Timer3.Enabled = False
+        End If
     End Sub
 End Class

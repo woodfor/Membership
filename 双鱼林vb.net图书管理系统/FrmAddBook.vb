@@ -10,6 +10,8 @@ Imports Newtonsoft.Json
 Imports Newtonsoft.Json.Linq
 Imports Model
 Imports System.Net
+Imports BLL
+Imports System.Runtime.Serialization.Formatters.Binary
 
 Partial Public Class FrmAddBook
     Inherits Form
@@ -18,6 +20,8 @@ Partial Public Class FrmAddBook
     End Sub
 
     Private book As New Book()
+    Private card As New Card()
+    Private token As New Token()
 
     Private Sub btn_bookPhoto_Click(ByVal sender As Object, ByVal e As EventArgs) Handles btn_bookPhoto.Click
         Dim openFileDialog1 As New OpenFileDialog()
@@ -44,20 +48,6 @@ Partial Public Class FrmAddBook
             Return
         End If
 
-        Dim token As String
-        token = PostData("http://212.64.35.242/appname/static/token1", "")
-        Dim dic As Dictionary(Of String, String) = New Dictionary(Of String, String) From {
-            {"code", txt_barcode.Text}
-        }
-        Dim jsonStr As String = Newtonsoft.Json.JsonConvert.SerializeObject(dic)
-        Dim tmp As String = "https://api.weixin.qq.com/card/code/get?access_token=" + token.Trim()
-        Dim response As String = PostData(tmp, jsonStr)
-        txt_publish.Text = response
-        Dim pr As JObject = CType(JsonConvert.DeserializeObject(response), Object)
-        response = pr("errmsg").ToString()
-        If String.Compare(response, "ok") = 0 Then
-            MsgBox("successful")
-        End If
 
         'book.barcode = Me.txt_barcode.Text
         ''图书条形码
@@ -172,7 +162,103 @@ Partial Public Class FrmAddBook
         book.bookPhoto = bw.ReadBytes(CInt(fs.Length))
 
 
+
     End Sub
 
+    Private Sub txt_barcode_TextChanged(sender As Object, e As EventArgs) Handles txt_barcode.TextChanged
+        If txt_barcode.Text.Length = 12 Then
+            Dim response As String
+            Dim userName As String
+            Dim userResponse As String
+            Try
+                Dim fs As FileStream = New FileStream("./support.dat", FileMode.Open)
+                Dim bf As BinaryFormatter = New BinaryFormatter()
+                token.ID = bf.Deserialize(fs).ToString.Trim()
 
+                Dim dic As Dictionary(Of String, Object) = New Dictionary(Of String, Object) From {
+                {"code", txt_barcode.Text}}
+                Dim cardNumber As String = Newtonsoft.Json.JsonConvert.SerializeObject(dic)
+
+                Try
+                    Dim idPr As JObject = CType(JsonConvert.DeserializeObject(PostData("https://api.weixin.qq.com/card/code/get?access_token=" + token.ID, cardNumber)), Object)
+                    If String.Compare(idPr("errcode").ToString(), "0") = 0 Then
+
+                        Dim mPr As JObject = CType(JsonConvert.DeserializeObject(idPr("card").ToString), Object)
+                        card.ID = mPr("card_id").ToString()
+
+
+                        Dim tokenAPI As String = "https://api.weixin.qq.com/card/membercard/userinfo/get?access_token=" + token.ID
+                        Try
+                            response = PostData(tokenAPI, cardNumber)
+                            txt_publish.Text = response
+                            Dim pr As JObject = CType(JsonConvert.DeserializeObject(response), Object)
+                            response = pr("errcode").ToString()
+                            If String.Compare(response, "0") = 0 Then
+                                MessageBox.Show("获取卡的信息成功")
+                                txt_bonus.Text = pr("bonus").ToString
+                                txt_card_status.Text = pr("user_card_status").ToString
+
+                                Try
+                                    Dim tempUrl As String = "https://api.weixin.qq.com/cgi-bin/user/info?access_token=" + token.ID + "&openid=" + pr("openid").ToString() + "&lang=zh_CN"
+                                    userResponse = PostData(tempUrl, "")
+                                    Dim uPr As JObject = CType(JsonConvert.DeserializeObject(userResponse), Object)
+                                    userName = uPr("nickname").ToString()
+                                    txt_userName.Text = userName
+                                    '基本信息读取完毕
+                                    card.cardNumber = txt_barcode.Text
+                                    card.bonus = txt_bonus.Text
+                                    card.status = txt_card_status.Text
+                                    Dim customPr As JObject = CType(JsonConvert.DeserializeObject(pr("user_info").ToString()), Object)
+                                    If String.Compare(customPr("custom_field_list").ToString(), "[]") = 0 Then
+                                        txt_level.Text = "暂未设置会员等级"
+                                        Button_addLevel.Enabled = True
+                                    Else
+                                        Dim levelPr As JObject = CType(JsonConvert.DeserializeObject(customPr("custom_field_list").ToString()), Object)
+                                        card.memberLevel = levelPr("level").ToString
+                                    End If
+                                Catch
+                                    MessageBox.Show("获取用户信息时发生网络错误")
+                                    Return
+                                End Try
+                            Else
+                                MessageBox.Show(pr("errmsg").ToString)
+                                Return
+                            End If
+                        Catch
+                            MessageBox.Show("网络未连接，请更新WIFI后重试")
+                            Return
+                        End Try
+
+
+                    Else
+                        MessageBox.Show("卡片信息不正确，请重新扫描")
+                        Return
+                    End If
+
+                Catch ex As Exception
+                    MessageBox.Show("网络未连接，请更新WIFI后重试")
+                    Return
+                End Try
+
+            Catch
+                MessageBox.Show("local file error")
+            Return
+            End Try
+
+
+        End If
+
+    End Sub
+
+    Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button_addLevel.Click
+
+
+        Dim post_dic As Dictionary(Of String, Object) = New Dictionary(Of String, Object) From {
+               {"card_id", card.ID},
+               {"member_card", New memberCard("C")}
+            }
+        Dim postStr As String = Newtonsoft.Json.JsonConvert.SerializeObject(post_dic)
+        testbox.Text = postStr
+        Text_temp.Text = PostData("https://api.weixin.qq.com/card/update?access_token=" + token.ID, postStr)
+    End Sub
 End Class

@@ -83,6 +83,7 @@ Partial Class Frm主面
         Me.toolStripSeparator11 = New System.Windows.Forms.ToolStripSeparator()
         Me.toolStripMenuItem17 = New System.Windows.Forms.ToolStripMenuItem()
         Me.Timer2 = New System.Windows.Forms.Timer(Me.components)
+        Me.Timer3 = New System.Windows.Forms.Timer(Me.components)
         CType(Me.pictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.statusStrip1.SuspendLayout()
         Me.toolStrip1.SuspendLayout()
@@ -495,6 +496,9 @@ Partial Class Frm主面
         'Timer2
         '
         '
+        'Timer3
+        '
+        '
         'Frm主面
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 15.0!)
@@ -580,4 +584,5 @@ Partial Class Frm主面
     Private WithEvents toolStripSeparator11 As System.Windows.Forms.ToolStripSeparator
     Private WithEvents toolStripMenuItem17 As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents Timer2 As Timer
+    Friend WithEvents Timer3 As Timer
 End Class

@@ -66,6 +66,10 @@
   <ItemGroup>
     <Compile Include="Book.vb" />
     <Compile Include="BookType.vb" />
+    <Compile Include="Card.vb" />
+    <Compile Include="customerField1.vb" />
+    <Compile Include="level.vb" />
+    <Compile Include="memberCard.vb" />
     <Compile Include="MP_PasswordType.vb" />
     <Compile Include="MU_UserInfo.vb" />
     <Compile Include="My Project\AssemblyInfo.vb" />
@@ -83,6 +87,7 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <Compile Include="Token.vb" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="My Project\Resources.resx">
