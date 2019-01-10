@@ -10,19 +10,19 @@
         End Set
     End Property
 
-    Private _setBalance As Boolean
-    Public Property supply_balance() As Boolean
-        Get
-            Return _setBalance
-        End Get
-        Set(ByVal value As Boolean)
+    'Private _setBalance As Boolean
+    'Public Property supply_balance() As Boolean
+    '    Get
+    '        Return _setBalance
+    '    End Get
+    '    Set(ByVal value As Boolean)
 
-            _setBalance = value
-        End Set
-    End Property
+    '        _setBalance = value
+    '    End Set
+    'End Property
 
-    Sub New(ByVal value As String)
-        Me._field1 = New customerField1(value)
-        Me._setBalance = True
+    Sub New(ByVal name As String， ByVal level As String)
+        Me._field1 = New customerField1(name, level)
+        'Me._setBalance = True
     End Sub
 End Class

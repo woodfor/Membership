@@ -6,7 +6,7 @@ Imports System.Text
 Public Class GetToken
     Public Shared Function GetToken() As Boolean
         Try
-            Dim aToken As String = PostData("http://212.64.35.242/appname/static/token1", "")
+            Dim aToken As String = PostData("https://www.miditech.cn/appname/static/token/token1", "")
             Dim ht As Hashtable = New Hashtable()
             ht.Add("Token", aToken)
             Dim fs As FileStream = New FileStream("./support.dat", FileMode.Create)
