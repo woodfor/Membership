@@ -20,7 +20,7 @@ Partial Public Class FrmAddBook
     End Sub
 
     Private book As New Book()
-    Private card As New Card()
+    Private card As New CardInfo()
     Private token As New Token()
 
     Private Sub btn_bookPhoto_Click(ByVal sender As Object, ByVal e As EventArgs) Handles btn_bookPhoto.Click

@@ -4,34 +4,24 @@ Imports System.ComponentModel.DataAnnotations
 Imports System.ComponentModel.DataAnnotations.Schema
 Imports System.Data.Entity.Spatial
 
-<Table("Card")>
-Partial Public Class Card
+<Table("Worker")>
+Partial Public Class Worker
     Public Sub New()
         Trans = New HashSet(Of Trans)()
     End Sub
 
     <Key>
-    <StringLength(50)>
-    Public Property card_id As String
+    Public Property worker_id As Integer
 
     <Required>
     <StringLength(20)>
-    Public Property user_name As String
+    Public Property name As String
 
     <Required>
-    <StringLength(50)>
-    Public Property open_id As String
-
-    Public Property balance As Decimal
+    <StringLength(20)>
+    Public Property phone As String
 
     Public Property store_id As Integer
-
-    <Required>
-    <StringLength(20)>
-    Public Property customer_phone As String
-
-    <Column(TypeName:="date")>
-    Public Property customer_datbirth As Date
 
     Public Overridable Property Store As Store
 
