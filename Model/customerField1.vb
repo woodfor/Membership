@@ -9,7 +9,7 @@
         End Set
     End Property
 
-    Private _level As String
+    'Private _level As String
     'Public Property values() As String
     '    Get
     '        Return _level

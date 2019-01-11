@@ -98,28 +98,6 @@ Partial Public Class FrmAddBook
 
     End Sub
 
-    Public Shared Function PostData(ByVal url As String, ByVal data As String) As String
-
-        ServicePointManager.Expect100Continue = False
-        Dim request As HttpWebRequest = WebRequest.Create(url)
-        '//Post请求方式
-        request.Method = "POST"
-
-        '内容类型
-        request.ContentType = "application/x-www-form-urlencoded"
-        '将URL编码后的字符串转化为字节
-        Dim encoding As New UTF8Encoding()
-        Dim bys As Byte() = encoding.GetBytes(data)
-        '设置请求的 ContentLength 
-        request.ContentLength = bys.Length
-        '获得请 求流
-        Dim newStream As Stream = request.GetRequestStream()
-        newStream.Write(bys, 0, bys.Length)
-        newStream.Close()
-        '获得响应流
-        Dim sr As StreamReader = New StreamReader(request.GetResponse().GetResponseStream)
-        Return sr.ReadToEnd
-    End Function
 
     Private Sub FrmAddBook_Load(ByVal sender As Object, ByVal e As EventArgs) Handles MyBase.Load
 
@@ -171,16 +149,15 @@ Partial Public Class FrmAddBook
             Dim userName As String
             Dim userResponse As String
             Try
-                Dim fs As FileStream = New FileStream("./support.dat", FileMode.Open)
-                Dim bf As BinaryFormatter = New BinaryFormatter()
-                token.ID = bf.Deserialize(fs).ToString.Trim()
+
+                token.ID = getDataFromLocal.getToken()
 
                 Dim dic As Dictionary(Of String, Object) = New Dictionary(Of String, Object) From {
                 {"code", txt_barcode.Text}}
                 Dim cardNumber As String = Newtonsoft.Json.JsonConvert.SerializeObject(dic)
 
                 Try
-                    Dim idPr As JObject = CType(JsonConvert.DeserializeObject(PostData("https://api.weixin.qq.com/card/code/get?access_token=" + token.ID, cardNumber)), Object)
+                    Dim idPr As JObject = CType(JsonConvert.DeserializeObject(httpCon.PostData("https://api.weixin.qq.com/card/code/get?access_token=" + token.ID, cardNumber)), Object)
                     If String.Compare(idPr("errcode").ToString(), "0") = 0 Then
 
                         Dim mPr As JObject = CType(JsonConvert.DeserializeObject(idPr("card").ToString), Object)
@@ -189,7 +166,7 @@ Partial Public Class FrmAddBook
 
                         Dim tokenAPI As String = "https://api.weixin.qq.com/card/membercard/userinfo/get?access_token=" + token.ID
                         Try
-                            response = PostData(tokenAPI, cardNumber)
+                            response = httpCon.PostData(tokenAPI, cardNumber)
                             txt_publish.Text = response
                             Dim pr As JObject = CType(JsonConvert.DeserializeObject(response), Object)
                             response = pr("errcode").ToString()
@@ -200,7 +177,7 @@ Partial Public Class FrmAddBook
 
                                 Try
                                     Dim tempUrl As String = "https://api.weixin.qq.com/cgi-bin/user/info?access_token=" + token.ID + "&openid=" + pr("openid").ToString() + "&lang=zh_CN"
-                                    userResponse = PostData(tempUrl, "")
+                                    userResponse = httpCon.PostData(tempUrl, "")
                                     Dim uPr As JObject = CType(JsonConvert.DeserializeObject(userResponse), Object)
                                     userName = uPr("nickname").ToString()
                                     txt_userName.Text = userName
@@ -236,13 +213,26 @@ Partial Public Class FrmAddBook
                     End If
 
                 Catch ex As Exception
-                    MessageBox.Show("网络未连接，请更新WIFI后重试")
+                    If GetToken.GetToken() = True Then
+                        txt_barcode_TextChanged(Nothing, Nothing)
+                    Else
+                        If MessageBox.Show("连接服务器发生错误，请检查网络。如网络未发生异常，请联系客服。点击OK重试，点击Cancel取消操作。 ",
+                            "服务器错误",
+                            MessageBoxButtons.OKCancel,
+                            MessageBoxIcon.Information,
+                            MessageBoxDefaultButton.Button1) = Windows.Forms.DialogResult.OK Then
+                            txt_barcode_TextChanged(Nothing, Nothing)
+                        Else
+
+                        End If
+                    End If
+
                     Return
                 End Try
 
             Catch
                 MessageBox.Show("local file error")
-            Return
+                Return
             End Try
 
 
@@ -259,6 +249,6 @@ Partial Public Class FrmAddBook
             }
         Dim postStr As String = Newtonsoft.Json.JsonConvert.SerializeObject(post_dic)
         testbox.Text = postStr
-        Text_temp.Text = PostData("https://api.weixin.qq.com/card/update?access_token=" + token.ID, postStr)
+        Text_temp.Text = httpCon.PostData("https://api.weixin.qq.com/card/update?access_token=" + token.ID, postStr)
     End Sub
 End Class

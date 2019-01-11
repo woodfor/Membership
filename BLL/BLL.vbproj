@@ -70,7 +70,7 @@
     <Compile Include="bllBookType.vb" />
     <Compile Include="BU_UserInfo.vb" />
     <Compile Include="getToken.vb" />
-    <Compile Include="getTokenFromStorage.vb" />
+    <Compile Include="getDataFromLocal.vb" />
     <Compile Include="My Project\AssemblyInfo.vb" />
     <Compile Include="My Project\Application.Designer.vb">
       <AutoGen>True</AutoGen>
@@ -86,7 +86,7 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
-    <Compile Include="postData.vb" />
+    <Compile Include="httpCon.vb" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="My Project\Resources.resx">

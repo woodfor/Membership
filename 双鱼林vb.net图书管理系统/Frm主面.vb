@@ -52,9 +52,8 @@ Partial Public Class Frm主面
     Private Sub Frm主面_Load(ByVal sender As Object, ByVal e As EventArgs) Handles MyBase.Load
 
         timer1.Enabled = True
-        Timer3.Interval = 1000
-        Timer3.Start()
-        Timer2.Enabled = False
+        Timer2.Interval = 5400 * 1000
+        Timer2.Enabled = True
         Me.tool_UserName.Text = LoginRoler.U_Name
         '用户名
         If LoginRoler.U_ROlesType = 1 Then
@@ -209,6 +208,7 @@ Partial Public Class Frm主面
                 flag = True
                 Exit For
             Else
+                flag = False
                 Sleep(1000)
             End If
         Next
@@ -217,11 +217,5 @@ Partial Public Class Frm主面
         End If
     End Sub
 
-    Private Sub Timer3_Tick(sender As Object, e As EventArgs) Handles Timer3.Tick
-        If TimeOfDay.Minute = 59 Then
-            Timer2.Interval = 5400 * 1000
-            Timer2.Start()
-            Timer3.Enabled = False
-        End If
-    End Sub
+
 End Class

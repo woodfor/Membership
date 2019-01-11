@@ -22,7 +22,7 @@ Public Class DBHelp
             Dim config As System.Configuration.Configuration = ConfigurationManager.OpenExeConfiguration(ConfigurationUserLevel.None)
             Dim appSettings As System.Configuration.AppSettingsSection = CType(config.GetSection("appSettings"), System.Configuration.AppSettingsSection)
 
-            connectionStr = appSettings.Settings("strCon").Value
+            'connectionStr = appSettings.Settings("strCon").Value
             If connection Is Nothing Then
                 connection = New SqlConnection(connectionStr)
                 connection.Open()

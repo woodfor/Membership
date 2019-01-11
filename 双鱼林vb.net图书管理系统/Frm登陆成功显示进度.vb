@@ -35,7 +35,7 @@ Public Class Frm登陆成功显示进度
                             MessageBoxIcon.Information,
                             MessageBoxDefaultButton.Button1) = Windows.Forms.DialogResult.OK Then
 
-                init()
+                Frm登陆成功显示进度_Load(Nothing, Nothing)
             Else
                 Application.Exit()
             End If
