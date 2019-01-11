@@ -98,7 +98,28 @@ Partial Public Class FrmAddBook
 
     End Sub
 
+    Public Shared Function PostData(ByVal url As String, ByVal data As String) As String
 
+        ServicePointManager.Expect100Continue = False
+        Dim request As HttpWebRequest = WebRequest.Create(url)
+        '//Post请求方式
+        request.Method = "POST"
+
+        '内容类型
+        request.ContentType = "application/x-www-form-urlencoded"
+        '将URL编码后的字符串转化为字节
+        Dim encoding As New UTF8Encoding()
+        Dim bys As Byte() = encoding.GetBytes(data)
+        '设置请求的 ContentLength 
+        request.ContentLength = bys.Length
+        '获得请 求流
+        Dim newStream As Stream = request.GetRequestStream()
+        newStream.Write(bys, 0, bys.Length)
+        newStream.Close()
+        '获得响应流
+        Dim sr As StreamReader = New StreamReader(request.GetResponse().GetResponseStream)
+        Return sr.ReadToEnd
+    End Function
 
     Private Sub FrmAddBook_Load(ByVal sender As Object, ByVal e As EventArgs) Handles MyBase.Load
 
@@ -159,7 +180,7 @@ Partial Public Class FrmAddBook
                 Dim cardNumber As String = Newtonsoft.Json.JsonConvert.SerializeObject(dic)
 
                 Try
-                    Dim idPr As JObject = CType(JsonConvert.DeserializeObject(postData.PostData("https://api.weixin.qq.com/card/code/get?access_token=" + token.ID, cardNumber)), Object)
+                    Dim idPr As JObject = CType(JsonConvert.DeserializeObject(PostData("https://api.weixin.qq.com/card/code/get?access_token=" + token.ID, cardNumber)), Object)
                     If String.Compare(idPr("errcode").ToString(), "0") = 0 Then
 
                         Dim mPr As JObject = CType(JsonConvert.DeserializeObject(idPr("card").ToString), Object)
@@ -168,7 +189,7 @@ Partial Public Class FrmAddBook
 
                         Dim tokenAPI As String = "https://api.weixin.qq.com/card/membercard/userinfo/get?access_token=" + token.ID
                         Try
-                            response = postData.PostData(tokenAPI, cardNumber)
+                            response = PostData(tokenAPI, cardNumber)
                             txt_publish.Text = response
                             Dim pr As JObject = CType(JsonConvert.DeserializeObject(response), Object)
                             response = pr("errcode").ToString()
@@ -179,12 +200,11 @@ Partial Public Class FrmAddBook
 
                                 Try
                                     Dim tempUrl As String = "https://api.weixin.qq.com/cgi-bin/user/info?access_token=" + token.ID + "&openid=" + pr("openid").ToString() + "&lang=zh_CN"
-                                    userResponse = postData.PostData(tempUrl, "")
+                                    userResponse = PostData(tempUrl, "")
                                     Dim uPr As JObject = CType(JsonConvert.DeserializeObject(userResponse), Object)
                                     userName = uPr("nickname").ToString()
                                     txt_userName.Text = userName
                                     '基本信息读取完毕
-                                    '将信息传入Model
                                     card.cardNumber = txt_barcode.Text
                                     card.bonus = txt_bonus.Text
                                     card.status = txt_card_status.Text
@@ -235,12 +255,10 @@ Partial Public Class FrmAddBook
 
         Dim post_dic As Dictionary(Of String, Object) = New Dictionary(Of String, Object) From {
                {"card_id", card.ID},
-               {"member_card", New memberCard("等级", "CDEF")}
+               {"member_card", New memberCard("C")}
             }
         Dim postStr As String = Newtonsoft.Json.JsonConvert.SerializeObject(post_dic)
         testbox.Text = postStr
-        Text_temp.Text = postData.PostData("https://api.weixin.qq.com/card/update?access_token=" + token.ID, postStr)
+        Text_temp.Text = PostData("https://api.weixin.qq.com/card/update?access_token=" + token.ID, postStr)
     End Sub
-
-
 End Class

@@ -1,6 +1,6 @@
 ﻿Public Class customerField1
     Private _name As String
-    Public Property name_type() As String
+    Public Property name() As String
         Get
             Return _name
         End Get
@@ -10,16 +10,16 @@
     End Property
 
     Private _level As String
-    Public Property url() As String
-        Get
-            Return _level
-        End Get
-        Set(ByVal value As String)
-            _level = value
-        End Set
-    End Property
-    Sub New(ByVal name As String, ByVal level As String)
-        _name = "FIELD_NAME_TYPE_LEVEL"
-        _level = level
+    'Public Property values() As String
+    '    Get
+    '        Return _level
+    '    End Get
+    '    Set(ByVal value As String)
+    '        _level = value
+    '    End Set
+    'End Property
+    Sub New(ByVal level As String)
+        Me._name = level
+        'Me._level = level
     End Sub
 End Class

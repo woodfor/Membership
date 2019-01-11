@@ -29,20 +29,16 @@ Public Class Frm登陆成功显示进度
             frm.Show()
             Me.Close()
         Else
-
             If MessageBox.Show("连接服务器发生错误，请检查网络。如网络未发生异常，请联系客服。点击OK重试，点击Cancel退出程序 ",
                             "服务器错误",
                             MessageBoxButtons.OKCancel,
                             MessageBoxIcon.Information,
                             MessageBoxDefaultButton.Button1) = Windows.Forms.DialogResult.OK Then
 
-                Frm登陆成功显示进度_Load(Nothing, Nothing)
+                init()
             Else
                 Application.Exit()
-
             End If
-
-
         End If
     End Sub
 
