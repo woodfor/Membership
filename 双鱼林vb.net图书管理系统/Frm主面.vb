@@ -68,7 +68,7 @@ Partial Public Class Frm主面
         Else
             '管理员
 
-            toolStripMenuItem2.Visible = False
+            'toolStripMenuItem2.Visible = False
             toolStripMenuItem11.Visible = False
             toolStripButton1.Visible = False
             toolStripButton2.Visible = False
@@ -161,11 +161,12 @@ Partial Public Class Frm主面
         toolStripLabel11_Click(sender, e)
     End Sub
     '订票记录
-    Private Sub toolStripButton2_Click(ByVal sender As Object, ByVal e As EventArgs) Handles toolStripButton2.Click
-    End Sub
+    'Private Sub toolStripButton2_Click(ByVal sender As Object, ByVal e As EventArgs) Handles toolStripButton2.Click
+    'End Sub
     '订票记录
     Private Sub 订票记录ToolStripMenuItem_Click(ByVal sender As Object, ByVal e As EventArgs) Handles 订票记录ToolStripMenuItem.Click
-        toolStripButton2_Click(sender, e)
+        'toolStripButton2_Click(sender, e)
+        FrmAllStore.Show()
     End Sub
 
     Private Sub toolStripButton1_Click(ByVal sender As Object, ByVal e As EventArgs) Handles toolStripButton1.Click

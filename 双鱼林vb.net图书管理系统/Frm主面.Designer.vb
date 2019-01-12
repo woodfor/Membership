@@ -427,21 +427,21 @@ Partial Class Frm主面
         '
         Me.toolStripMenuItem2.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.订票记录ToolStripMenuItem, Me.退票记录ToolStripMenuItem})
         Me.toolStripMenuItem2.Name = "toolStripMenuItem2"
-        Me.toolStripMenuItem2.Size = New System.Drawing.Size(106, 24)
-        Me.toolStripMenuItem2.Text = "我的车票(&M)"
+        Me.toolStripMenuItem2.Size = New System.Drawing.Size(81, 24)
+        Me.toolStripMenuItem2.Text = "我的店面"
         '
         '订票记录ToolStripMenuItem
         '
         Me.订票记录ToolStripMenuItem.Image = CType(resources.GetObject("订票记录ToolStripMenuItem.Image"), System.Drawing.Image)
         Me.订票记录ToolStripMenuItem.Name = "订票记录ToolStripMenuItem"
-        Me.订票记录ToolStripMenuItem.Size = New System.Drawing.Size(144, 26)
-        Me.订票记录ToolStripMenuItem.Text = "订票记录"
+        Me.订票记录ToolStripMenuItem.Size = New System.Drawing.Size(216, 26)
+        Me.订票记录ToolStripMenuItem.Text = "店面信息"
         '
         '退票记录ToolStripMenuItem
         '
         Me.退票记录ToolStripMenuItem.Image = CType(resources.GetObject("退票记录ToolStripMenuItem.Image"), System.Drawing.Image)
         Me.退票记录ToolStripMenuItem.Name = "退票记录ToolStripMenuItem"
-        Me.退票记录ToolStripMenuItem.Size = New System.Drawing.Size(144, 26)
+        Me.退票记录ToolStripMenuItem.Size = New System.Drawing.Size(216, 26)
         Me.退票记录ToolStripMenuItem.Text = "退票记录"
         '
         'toolStripMenuItem11

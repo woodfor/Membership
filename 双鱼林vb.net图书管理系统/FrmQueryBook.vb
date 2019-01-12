@@ -171,5 +171,4 @@ Partial Public Class FrmQueryBook
     End Sub
 
 
-
 End Class

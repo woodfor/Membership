@@ -99,6 +99,18 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Common.vb" />
+    <Compile Include="FrmAllStore.Designer.vb">
+      <DependentUpon>FrmAllStore.vb</DependentUpon>
+    </Compile>
+    <Compile Include="FrmAllStore.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmStore.Designer.vb">
+      <DependentUpon>FrmStore.vb</DependentUpon>
+    </Compile>
+    <Compile Include="FrmStore.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="membership.Designer.vb">
       <DependentUpon>membership.vb</DependentUpon>
     </Compile>
@@ -214,6 +226,12 @@
     <Compile Include="Program.vb" />
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="FrmAllStore.resx">
+      <DependentUpon>FrmAllStore.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmStore.resx">
+      <DependentUpon>FrmStore.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="membership.resx">
       <DependentUpon>membership.vb</DependentUpon>
     </EmbeddedResource>

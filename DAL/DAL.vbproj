@@ -68,7 +68,7 @@
   <ItemGroup>
     <Compile Include="dalBook.vb" />
     <Compile Include="dalBookType.vb" />
-    <Compile Include="dalCard.vb" />
+    <Compile Include="dalStore.vb" />
     <Compile Include="DBHelp.vb" />
     <Compile Include="DU_UserInfo.vb" />
     <Compile Include="My Project\AssemblyInfo.vb" />

@@ -53,9 +53,10 @@ Partial Class FrmQueryBook
         '
         'Btn_Query
         '
-        Me.Btn_Query.Location = New System.Drawing.Point(634, 36)
+        Me.Btn_Query.Location = New System.Drawing.Point(845, 45)
+        Me.Btn_Query.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.Btn_Query.Name = "Btn_Query"
-        Me.Btn_Query.Size = New System.Drawing.Size(89, 22)
+        Me.Btn_Query.Size = New System.Drawing.Size(119, 28)
         Me.Btn_Query.TabIndex = 9
         Me.Btn_Query.Text = "查询"
         Me.Btn_Query.UseVisualStyleBackColor = True
@@ -64,65 +65,73 @@ Partial Class FrmQueryBook
         '
         Me.dataGridView_Book.AllowUserToAddRows = False
         Me.dataGridView_Book.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.dataGridView_Book.Location = New System.Drawing.Point(3, 99)
+        Me.dataGridView_Book.Location = New System.Drawing.Point(4, 124)
+        Me.dataGridView_Book.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.dataGridView_Book.Name = "dataGridView_Book"
         Me.dataGridView_Book.RowTemplate.Height = 23
-        Me.dataGridView_Book.Size = New System.Drawing.Size(744, 346)
+        Me.dataGridView_Book.Size = New System.Drawing.Size(992, 432)
         Me.dataGridView_Book.TabIndex = 15
         '
         'HPageSize
         '
-        Me.HPageSize.Location = New System.Drawing.Point(192, 451)
+        Me.HPageSize.Location = New System.Drawing.Point(256, 564)
+        Me.HPageSize.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.HPageSize.Name = "HPageSize"
-        Me.HPageSize.Size = New System.Drawing.Size(56, 21)
+        Me.HPageSize.Size = New System.Drawing.Size(73, 25)
         Me.HPageSize.TabIndex = 24
         Me.HPageSize.Text = "5"
         Me.HPageSize.Visible = False
         '
         'dtp_publishDate
         '
-        Me.dtp_publishDate.Location = New System.Drawing.Point(584, 57)
+        Me.dtp_publishDate.Location = New System.Drawing.Point(779, 71)
+        Me.dtp_publishDate.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.dtp_publishDate.Name = "dtp_publishDate"
-        Me.dtp_publishDate.Size = New System.Drawing.Size(16, 21)
+        Me.dtp_publishDate.Size = New System.Drawing.Size(20, 25)
         Me.dtp_publishDate.TabIndex = 8
         '
         'HNowPage
         '
-        Me.HNowPage.Location = New System.Drawing.Point(148, 451)
+        Me.HNowPage.Location = New System.Drawing.Point(197, 564)
+        Me.HNowPage.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.HNowPage.Name = "HNowPage"
-        Me.HNowPage.Size = New System.Drawing.Size(56, 21)
+        Me.HNowPage.Size = New System.Drawing.Size(73, 25)
         Me.HNowPage.TabIndex = 23
         Me.HNowPage.Text = "1"
         Me.HNowPage.Visible = False
         '
         'txt_publishDate
         '
-        Me.txt_publishDate.Location = New System.Drawing.Point(452, 57)
+        Me.txt_publishDate.Location = New System.Drawing.Point(603, 71)
+        Me.txt_publishDate.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.txt_publishDate.Name = "txt_publishDate"
-        Me.txt_publishDate.Size = New System.Drawing.Size(130, 21)
+        Me.txt_publishDate.Size = New System.Drawing.Size(172, 25)
         Me.txt_publishDate.TabIndex = 7
         '
         'HWhere
         '
-        Me.HWhere.Location = New System.Drawing.Point(107, 451)
+        Me.HWhere.Location = New System.Drawing.Point(143, 564)
+        Me.HWhere.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.HWhere.Name = "HWhere"
-        Me.HWhere.Size = New System.Drawing.Size(56, 21)
+        Me.HWhere.Size = New System.Drawing.Size(73, 25)
         Me.HWhere.TabIndex = 22
         Me.HWhere.Visible = False
         '
         'cb_bookType
         '
         Me.cb_bookType.FormattingEnabled = True
-        Me.cb_bookType.Location = New System.Drawing.Point(77, 53)
+        Me.cb_bookType.Location = New System.Drawing.Point(103, 66)
+        Me.cb_bookType.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.cb_bookType.Name = "cb_bookType"
-        Me.cb_bookType.Size = New System.Drawing.Size(145, 20)
+        Me.cb_bookType.Size = New System.Drawing.Size(192, 23)
         Me.cb_bookType.TabIndex = 5
         '
         'HAllPage
         '
-        Me.HAllPage.Location = New System.Drawing.Point(227, 453)
+        Me.HAllPage.Location = New System.Drawing.Point(303, 566)
+        Me.HAllPage.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.HAllPage.Name = "HAllPage"
-        Me.HAllPage.Size = New System.Drawing.Size(56, 21)
+        Me.HAllPage.Size = New System.Drawing.Size(73, 25)
         Me.HAllPage.TabIndex = 25
         Me.HAllPage.Text = "0"
         Me.HAllPage.Visible = False
@@ -130,68 +139,76 @@ Partial Class FrmQueryBook
         'label4
         '
         Me.label4.AutoSize = True
-        Me.label4.Location = New System.Drawing.Point(384, 61)
+        Me.label4.Location = New System.Drawing.Point(512, 76)
+        Me.label4.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.label4.Name = "label4"
-        Me.label4.Size = New System.Drawing.Size(65, 12)
+        Me.label4.Size = New System.Drawing.Size(82, 15)
         Me.label4.TabIndex = 6
         Me.label4.Text = "出版日期："
         '
         'label3
         '
         Me.label3.AutoSize = True
-        Me.label3.Location = New System.Drawing.Point(6, 60)
+        Me.label3.Location = New System.Drawing.Point(8, 75)
+        Me.label3.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.label3.Name = "label3"
-        Me.label3.Size = New System.Drawing.Size(65, 12)
+        Me.label3.Size = New System.Drawing.Size(82, 15)
         Me.label3.TabIndex = 4
         Me.label3.Text = "图书类别："
         '
         'Btn_Update
         '
         Me.Btn_Update.Enabled = False
-        Me.Btn_Update.Location = New System.Drawing.Point(279, 453)
+        Me.Btn_Update.Location = New System.Drawing.Point(372, 566)
+        Me.Btn_Update.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.Btn_Update.Name = "Btn_Update"
-        Me.Btn_Update.Size = New System.Drawing.Size(76, 21)
+        Me.Btn_Update.Size = New System.Drawing.Size(101, 26)
         Me.Btn_Update.TabIndex = 26
         Me.Btn_Update.Text = "查看/编辑"
         Me.Btn_Update.UseVisualStyleBackColor = True
         '
         'txt_bookName
         '
-        Me.txt_bookName.Location = New System.Drawing.Point(452, 18)
+        Me.txt_bookName.Location = New System.Drawing.Point(603, 22)
+        Me.txt_bookName.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.txt_bookName.Name = "txt_bookName"
-        Me.txt_bookName.Size = New System.Drawing.Size(148, 21)
+        Me.txt_bookName.Size = New System.Drawing.Size(196, 25)
         Me.txt_bookName.TabIndex = 3
         '
         'label2
         '
         Me.label2.AutoSize = True
-        Me.label2.Location = New System.Drawing.Point(381, 23)
+        Me.label2.Location = New System.Drawing.Point(508, 29)
+        Me.label2.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.label2.Name = "label2"
-        Me.label2.Size = New System.Drawing.Size(65, 12)
+        Me.label2.Size = New System.Drawing.Size(82, 15)
         Me.label2.TabIndex = 2
         Me.label2.Text = "图书名称："
         '
         'HSelectID
         '
-        Me.HSelectID.Location = New System.Drawing.Point(45, 451)
+        Me.HSelectID.Location = New System.Drawing.Point(60, 564)
+        Me.HSelectID.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.HSelectID.Name = "HSelectID"
-        Me.HSelectID.Size = New System.Drawing.Size(56, 21)
+        Me.HSelectID.Size = New System.Drawing.Size(73, 25)
         Me.HSelectID.TabIndex = 21
         Me.HSelectID.Visible = False
         '
         'txt_barcode
         '
-        Me.txt_barcode.Location = New System.Drawing.Point(79, 20)
+        Me.txt_barcode.Location = New System.Drawing.Point(105, 25)
+        Me.txt_barcode.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.txt_barcode.Name = "txt_barcode"
-        Me.txt_barcode.Size = New System.Drawing.Size(143, 21)
+        Me.txt_barcode.Size = New System.Drawing.Size(189, 25)
         Me.txt_barcode.TabIndex = 1
         '
         'LBEnd
         '
         Me.LBEnd.Enabled = False
-        Me.LBEnd.Location = New System.Drawing.Point(682, 450)
+        Me.LBEnd.Location = New System.Drawing.Point(909, 562)
+        Me.LBEnd.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.LBEnd.Name = "LBEnd"
-        Me.LBEnd.Size = New System.Drawing.Size(64, 26)
+        Me.LBEnd.Size = New System.Drawing.Size(85, 32)
         Me.LBEnd.TabIndex = 20
         Me.LBEnd.Text = "尾页"
         Me.LBEnd.UseVisualStyleBackColor = True
@@ -199,9 +216,10 @@ Partial Class FrmQueryBook
         'Btn_Del
         '
         Me.Btn_Del.Enabled = False
-        Me.Btn_Del.Location = New System.Drawing.Point(361, 451)
+        Me.Btn_Del.Location = New System.Drawing.Point(481, 564)
+        Me.Btn_Del.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.Btn_Del.Name = "Btn_Del"
-        Me.Btn_Del.Size = New System.Drawing.Size(71, 24)
+        Me.Btn_Del.Size = New System.Drawing.Size(95, 30)
         Me.Btn_Del.TabIndex = 27
         Me.Btn_Del.Text = "删除记录"
         Me.Btn_Del.UseVisualStyleBackColor = True
@@ -209,18 +227,20 @@ Partial Class FrmQueryBook
         'label1
         '
         Me.label1.AutoSize = True
-        Me.label1.Location = New System.Drawing.Point(6, 27)
+        Me.label1.Location = New System.Drawing.Point(8, 34)
+        Me.label1.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.label1.Name = "label1"
-        Me.label1.Size = New System.Drawing.Size(77, 12)
+        Me.label1.Size = New System.Drawing.Size(97, 15)
         Me.label1.TabIndex = 0
         Me.label1.Text = "图书条形码："
         '
         'LBNext
         '
         Me.LBNext.Enabled = False
-        Me.LBNext.Location = New System.Drawing.Point(612, 449)
+        Me.LBNext.Location = New System.Drawing.Point(816, 561)
+        Me.LBNext.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.LBNext.Name = "LBNext"
-        Me.LBNext.Size = New System.Drawing.Size(64, 26)
+        Me.LBNext.Size = New System.Drawing.Size(85, 32)
         Me.LBNext.TabIndex = 19
         Me.LBNext.Text = "下一页"
         Me.LBNext.UseVisualStyleBackColor = True
@@ -228,9 +248,10 @@ Partial Class FrmQueryBook
         'LBUp
         '
         Me.LBUp.Enabled = False
-        Me.LBUp.Location = New System.Drawing.Point(538, 449)
+        Me.LBUp.Location = New System.Drawing.Point(717, 561)
+        Me.LBUp.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.LBUp.Name = "LBUp"
-        Me.LBUp.Size = New System.Drawing.Size(64, 26)
+        Me.LBUp.Size = New System.Drawing.Size(85, 32)
         Me.LBUp.TabIndex = 18
         Me.LBUp.Text = "上一页"
         Me.LBUp.UseVisualStyleBackColor = True
@@ -238,9 +259,10 @@ Partial Class FrmQueryBook
         'LBHome
         '
         Me.LBHome.Enabled = False
-        Me.LBHome.Location = New System.Drawing.Point(468, 449)
+        Me.LBHome.Location = New System.Drawing.Point(624, 561)
+        Me.LBHome.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.LBHome.Name = "LBHome"
-        Me.LBHome.Size = New System.Drawing.Size(64, 26)
+        Me.LBHome.Size = New System.Drawing.Size(85, 32)
         Me.LBHome.TabIndex = 17
         Me.LBHome.Text = "首页"
         Me.LBHome.UseVisualStyleBackColor = True
@@ -248,9 +270,10 @@ Partial Class FrmQueryBook
         'PageMes
         '
         Me.PageMes.AutoSize = True
-        Me.PageMes.Location = New System.Drawing.Point(1, 454)
+        Me.PageMes.Location = New System.Drawing.Point(1, 568)
+        Me.PageMes.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.PageMes.Name = "PageMes"
-        Me.PageMes.Size = New System.Drawing.Size(41, 12)
+        Me.PageMes.Size = New System.Drawing.Size(52, 15)
         Me.PageMes.TabIndex = 16
         Me.PageMes.Text = "待查询"
         '
@@ -266,18 +289,20 @@ Partial Class FrmQueryBook
         Me.groupBox1.Controls.Add(Me.label2)
         Me.groupBox1.Controls.Add(Me.txt_barcode)
         Me.groupBox1.Controls.Add(Me.label1)
-        Me.groupBox1.Location = New System.Drawing.Point(3, 2)
+        Me.groupBox1.Location = New System.Drawing.Point(4, 2)
+        Me.groupBox1.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.groupBox1.Name = "groupBox1"
-        Me.groupBox1.Size = New System.Drawing.Size(744, 91)
+        Me.groupBox1.Padding = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.groupBox1.Size = New System.Drawing.Size(992, 114)
         Me.groupBox1.TabIndex = 14
         Me.groupBox1.TabStop = False
         Me.groupBox1.Text = "设置查询条件"
         '
         'FrmQueryBook
         '
-        Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 12.0!)
+        Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 15.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(748, 476)
+        Me.ClientSize = New System.Drawing.Size(997, 595)
         Me.Controls.Add(Me.dataGridView_Book)
         Me.Controls.Add(Me.HPageSize)
         Me.Controls.Add(Me.HNowPage)
@@ -293,6 +318,7 @@ Partial Class FrmQueryBook
         Me.Controls.Add(Me.PageMes)
         Me.Controls.Add(Me.groupBox1)
         Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
+        Me.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.MaximizeBox = False
         Me.MinimizeBox = False
         Me.Name = "FrmQueryBook"
