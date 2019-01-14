@@ -22,24 +22,24 @@ Public Class Frm登陆成功显示进度
     'End Sub
 
     Private Sub Frm登陆成功显示进度_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
-        '    timer1.Enabled = False
+        timer1.Enabled = False
 
-        '    If init() Then
-        Dim frm As New Frm主面()
-        frm.Show()
-        Me.Close()
-        '    Else
-        '        If MessageBox.Show("连接服务器发生错误，请检查网络。如网络未发生异常，请联系客服。点击OK重试，点击Cancel退出程序 ",
-        '                        "服务器错误",
-        '                        MessageBoxButtons.OKCancel,
-        '                        MessageBoxIcon.Information,
-        '                        MessageBoxDefaultButton.Button1) = Windows.Forms.DialogResult.OK Then
+        If init() Then
+            Dim frm As New Frm主面()
+            frm.Show()
+            Me.Close()
+        Else
+            If MessageBox.Show("连接服务器发生错误，请检查网络。如网络未发生异常，请联系客服。点击OK重试，点击Cancel退出程序 ",
+                            "服务器错误",
+                            MessageBoxButtons.OKCancel,
+                            MessageBoxIcon.Information,
+                            MessageBoxDefaultButton.Button1) = Windows.Forms.DialogResult.OK Then
 
-        '            Frm登陆成功显示进度_Load(Nothing, Nothing)
-        '        Else
-        '            Application.Exit()
-        '        End If
-        '    End If
+                Frm登陆成功显示进度_Load(Nothing, Nothing)
+            Else
+                Application.Exit()
+            End If
+        End If
     End Sub
 
 

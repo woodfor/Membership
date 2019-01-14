@@ -173,8 +173,9 @@ Public Class MU_UserInfo
         End Set
     End Property
     ''' <summary>
-    ''' U_QQ
+    ''' 微信号
     ''' </summary>		
+
     Private _u_qq As String
     Public Property U_QQ() As String
         Get
@@ -242,6 +243,15 @@ Public Class MU_UserInfo
         End Get
         Set(ByVal value As Byte())
             _u_image = value
+        End Set
+    End Property
+    Private _store_id As Integer
+    Public Property store_id() As Integer
+        Get
+            Return _store_id
+        End Get
+        Set(value As Integer)
+            _store_id = value
         End Set
     End Property
 End Class

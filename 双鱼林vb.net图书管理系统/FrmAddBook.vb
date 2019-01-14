@@ -22,24 +22,25 @@ Partial Public Class FrmAddBook
     Private book As New Book()
     Private card As New CardInfo()
     Private token As New Token()
+    Private user As New User()
 
-    Private Sub btn_bookPhoto_Click(ByVal sender As Object, ByVal e As EventArgs) Handles btn_bookPhoto.Click
-        Dim openFileDialog1 As New OpenFileDialog()
-        Try
-            openFileDialog1.InitialDirectory = Environment.GetFolderPath(Environment.SpecialFolder.MyComputer)
-            openFileDialog1.Filter = "图片（*.jpg;*.bmp;*.gif,*.png）|*.jpg;*.bmp;*.gif;*.png"
-            If openFileDialog1.ShowDialog() = DialogResult.OK Then
-                Me.txt_bookPhoto.Text = openFileDialog1.FileName
-                pictureBox_bookPhoto.Image = Image.FromFile(txt_bookPhoto.Text)
-                pictureBox_bookPhoto.SizeMode = PictureBoxSizeMode.StretchImage
-                Dim fs As New FileStream(openFileDialog1.FileName, FileMode.Open, FileAccess.Read)
-                Dim bw As New BinaryReader(fs)
-                book.bookPhoto = bw.ReadBytes(CInt(fs.Length))
-            End If
-        Catch
-            MessageBox.Show("请选择正确的图片格式", "提示", MessageBoxButtons.OK, MessageBoxIcon.Asterisk)
-        End Try
-    End Sub
+    'Private Sub btn_bookPhoto_Click(ByVal sender As Object, ByVal e As EventArgs)
+    '    Dim openFileDialog1 As New OpenFileDialog()
+    '    Try
+    '        openFileDialog1.InitialDirectory = Environment.GetFolderPath(Environment.SpecialFolder.MyComputer)
+    '        openFileDialog1.Filter = "图片（*.jpg;*.bmp;*.gif,*.png）|*.jpg;*.bmp;*.gif;*.png"
+    '        If openFileDialog1.ShowDialog() = DialogResult.OK Then
+    '            Me.txt_bookPhoto.Text = openFileDialog1.FileName
+    '            pictureBox_bookPhoto.Image = Image.FromFile(txt_bookPhoto.Text)
+    '            pictureBox_bookPhoto.SizeMode = PictureBoxSizeMode.StretchImage
+    '            Dim fs As New FileStream(openFileDialog1.FileName, FileMode.Open, FileAccess.Read)
+    '            Dim bw As New BinaryReader(fs)
+    '            book.bookPhoto = bw.ReadBytes(CInt(fs.Length))
+    '        End If
+    '    Catch
+    '        MessageBox.Show("请选择正确的图片格式", "提示", MessageBoxButtons.OK, MessageBoxIcon.Asterisk)
+    '    End Try
+    'End Sub
 
     Private Sub Btn_Add_Click(ByVal sender As Object, ByVal e As EventArgs) Handles Btn_Add.Click
         If Me.txt_barcode.Text = "" Then
@@ -102,12 +103,12 @@ Partial Public Class FrmAddBook
     Private Sub FrmAddBook_Load(ByVal sender As Object, ByVal e As EventArgs) Handles MyBase.Load
 
         '查询所有的图书类别
-        Dim bookTypeDs As DataSet = BLL.bllBookType.getAllBookType()
+        'Dim bookTypeDs As DataSet = BLL.bllBookType.getAllBookType()
 
-        Me.cb_bookType.DataSource = bookTypeDs.Tables(0)
-        Me.cb_bookType.DisplayMember = "bookTypeName"
-        Me.cb_bookType.ValueMember = "bookTypeId"
-        '
+        'Me.cb_bookType.DataSource = bookTypeDs.Tables(0)
+        'Me.cb_bookType.DisplayMember = "bookTypeName"
+        'Me.cb_bookType.ValueMember = "bookTypeId"
+        GroupBox_topUp.Visible = False
         '
         '            DataTable newDataTable = new DataTable();
         '            newDataTable.Columns.Add("bookTypeId");
@@ -146,8 +147,9 @@ Partial Public Class FrmAddBook
     Private Sub txt_barcode_TextChanged(sender As Object, e As EventArgs) Handles txt_barcode.TextChanged
         If txt_barcode.Text.Length = 12 Then
             Dim response As String
-            Dim userName As String
+
             Dim userResponse As String
+
             Try
 
                 token.ID = getDataFromLocal.getToken()
@@ -179,8 +181,9 @@ Partial Public Class FrmAddBook
                                     Dim tempUrl As String = "https://api.weixin.qq.com/cgi-bin/user/info?access_token=" + token.ID + "&openid=" + pr("openid").ToString() + "&lang=zh_CN"
                                     userResponse = httpCon.PostData(tempUrl, "")
                                     Dim uPr As JObject = CType(JsonConvert.DeserializeObject(userResponse), Object)
-                                    userName = uPr("nickname").ToString()
-                                    txt_userName.Text = userName
+                                    user.Name = uPr("nickname").ToString()
+                                    user.openID = uPr("openid").ToString
+                                    txt_userName.Text = user.Name
                                     '基本信息读取完毕
                                     card.cardNumber = txt_barcode.Text
                                     card.bonus = txt_bonus.Text
@@ -235,6 +238,21 @@ Partial Public Class FrmAddBook
                 Return
             End Try
 
+            '读取储值数据库
+            Try
+                Dim card_topup As Card = DAL.dalCard.getSomeCard(card.ID)
+
+                If IsNothing(card_topup) Then
+                    Button_openTopUp.Enabled = True
+                Else
+                    GroupBox_topUp.Visible = True
+                    Button_openTopUp.Dispose()
+                    txt_balance.Text = card_topup.balance.ToString
+                    Button_topUp.Enabled = True
+                End If
+            Catch
+                MsgBox("数据库损坏，请联系客服")
+            End Try
 
         End If
 
@@ -250,5 +268,41 @@ Partial Public Class FrmAddBook
         Dim postStr As String = Newtonsoft.Json.JsonConvert.SerializeObject(post_dic)
         testbox.Text = postStr
         Text_temp.Text = httpCon.PostData("https://api.weixin.qq.com/card/update?access_token=" + token.ID, postStr)
+    End Sub
+
+    Private Sub Button_openTopUp_Click(sender As Object, e As EventArgs) Handles Button_openTopUp.Click
+        Dim card_TopUp As New Card
+        card_TopUp.card_id = card.ID
+        card_TopUp.user_name = user.Name
+        card_TopUp.open_id = user.openID
+        card_TopUp.balance = Decimal.Parse("0.00")
+        card_TopUp.store_id = 1
+        Dim frm_phone As New FrmRequestInfo(card_TopUp)
+        '事件完成，判断返回值
+        If frm_phone.ShowDialog() = DialogResult.OK Then
+            Try
+                card_TopUp = DAL.dalCard.getSomeCard(card.ID)
+
+                If IsNothing(card_TopUp) Then
+                    MsgBox("数据更新未完成，请重试")
+                    Return
+                Else
+                    GroupBox_topUp.Visible = True
+                    Button_openTopUp.Dispose()
+                    txt_balance.Text = card_TopUp.balance.ToString
+                    Button_topUp.Enabled = True
+                End If
+            Catch
+                MsgBox("数据库损坏，请联系客服")
+            End Try
+        End If
+    End Sub
+
+    Private Sub Button_topUp_Click(sender As Object, e As EventArgs) Handles Button_topUp.Click
+        Try
+
+        Catch ex As Exception
+
+        End Try
     End Sub
 End Class

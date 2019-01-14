@@ -69,36 +69,41 @@ Partial Class Frm个人信息
         Me.groupBox3.Controls.Add(Me.button3)
         Me.groupBox3.Controls.Add(Me.txt_pic)
         Me.groupBox3.Controls.Add(Me.pictureBox1)
-        Me.groupBox3.Location = New System.Drawing.Point(417, 20)
+        Me.groupBox3.Location = New System.Drawing.Point(556, 25)
+        Me.groupBox3.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.groupBox3.Name = "groupBox3"
-        Me.groupBox3.Size = New System.Drawing.Size(412, 368)
+        Me.groupBox3.Padding = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.groupBox3.Size = New System.Drawing.Size(549, 460)
         Me.groupBox3.TabIndex = 18
         Me.groupBox3.TabStop = False
         Me.groupBox3.Text = "生活照展示"
         '
         'button3
         '
-        Me.button3.Location = New System.Drawing.Point(329, 329)
+        Me.button3.Location = New System.Drawing.Point(439, 411)
+        Me.button3.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.button3.Name = "button3"
-        Me.button3.Size = New System.Drawing.Size(60, 26)
+        Me.button3.Size = New System.Drawing.Size(80, 32)
         Me.button3.TabIndex = 2
         Me.button3.Text = "上 传"
         Me.button3.UseVisualStyleBackColor = True
         '
         'txt_pic
         '
-        Me.txt_pic.Location = New System.Drawing.Point(16, 331)
+        Me.txt_pic.Location = New System.Drawing.Point(21, 414)
+        Me.txt_pic.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.txt_pic.Name = "txt_pic"
         Me.txt_pic.ReadOnly = True
-        Me.txt_pic.Size = New System.Drawing.Size(307, 21)
+        Me.txt_pic.Size = New System.Drawing.Size(408, 25)
         Me.txt_pic.TabIndex = 1
         '
         'pictureBox1
         '
         Me.pictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
-        Me.pictureBox1.Location = New System.Drawing.Point(16, 25)
+        Me.pictureBox1.Location = New System.Drawing.Point(21, 31)
+        Me.pictureBox1.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.pictureBox1.Name = "pictureBox1"
-        Me.pictureBox1.Size = New System.Drawing.Size(380, 289)
+        Me.pictureBox1.Size = New System.Drawing.Size(507, 361)
         Me.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
         Me.pictureBox1.TabIndex = 0
         Me.pictureBox1.TabStop = False
@@ -116,36 +121,41 @@ Partial Class Frm个人信息
         Me.groupBox2.Controls.Add(Me.label12)
         Me.groupBox2.Controls.Add(Me.label16)
         Me.groupBox2.ForeColor = System.Drawing.Color.Blue
-        Me.groupBox2.Location = New System.Drawing.Point(13, 160)
+        Me.groupBox2.Location = New System.Drawing.Point(17, 200)
+        Me.groupBox2.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.groupBox2.Name = "groupBox2"
-        Me.groupBox2.Size = New System.Drawing.Size(399, 181)
+        Me.groupBox2.Padding = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.groupBox2.Size = New System.Drawing.Size(532, 226)
         Me.groupBox2.TabIndex = 17
         Me.groupBox2.TabStop = False
         Me.groupBox2.Text = "个人详细信息"
         '
         'U_Position
         '
-        Me.U_Position.Location = New System.Drawing.Point(82, 141)
+        Me.U_Position.Location = New System.Drawing.Point(109, 176)
+        Me.U_Position.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.U_Position.MaxLength = 20
         Me.U_Position.Name = "U_Position"
-        Me.U_Position.Size = New System.Drawing.Size(166, 21)
+        Me.U_Position.Size = New System.Drawing.Size(220, 25)
         Me.U_Position.TabIndex = 21
         '
         'U_RelName
         '
-        Me.U_RelName.Location = New System.Drawing.Point(82, 28)
+        Me.U_RelName.Location = New System.Drawing.Point(109, 35)
+        Me.U_RelName.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.U_RelName.MaxLength = 20
         Me.U_RelName.Name = "U_RelName"
-        Me.U_RelName.Size = New System.Drawing.Size(167, 21)
+        Me.U_RelName.Size = New System.Drawing.Size(221, 25)
         Me.U_RelName.TabIndex = 20
         '
         'label2
         '
         Me.label2.AutoSize = True
         Me.label2.ForeColor = System.Drawing.Color.Black
-        Me.label2.Location = New System.Drawing.Point(18, 37)
+        Me.label2.Location = New System.Drawing.Point(24, 46)
+        Me.label2.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.label2.Name = "label2"
-        Me.label2.Size = New System.Drawing.Size(59, 12)
+        Me.label2.Size = New System.Drawing.Size(75, 15)
         Me.label2.TabIndex = 19
         Me.label2.Text = "真实姓名:"
         '
@@ -154,26 +164,29 @@ Partial Class Frm个人信息
         Me.U_NativePlace.ForeColor = System.Drawing.SystemColors.ActiveCaptionText
         Me.U_NativePlace.FormattingEnabled = True
         Me.U_NativePlace.Items.AddRange(New Object() {"汉族", "满族", "回族"})
-        Me.U_NativePlace.Location = New System.Drawing.Point(82, 109)
+        Me.U_NativePlace.Location = New System.Drawing.Point(109, 136)
+        Me.U_NativePlace.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.U_NativePlace.Name = "U_NativePlace"
-        Me.U_NativePlace.Size = New System.Drawing.Size(166, 20)
+        Me.U_NativePlace.Size = New System.Drawing.Size(220, 23)
         Me.U_NativePlace.TabIndex = 18
         '
         'U_IdCard
         '
-        Me.U_IdCard.Location = New System.Drawing.Point(82, 55)
+        Me.U_IdCard.Location = New System.Drawing.Point(109, 69)
+        Me.U_IdCard.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.U_IdCard.MaxLength = 20
         Me.U_IdCard.Name = "U_IdCard"
-        Me.U_IdCard.Size = New System.Drawing.Size(167, 21)
+        Me.U_IdCard.Size = New System.Drawing.Size(221, 25)
         Me.U_IdCard.TabIndex = 18
         '
         'label10
         '
         Me.label10.AutoSize = True
         Me.label10.ForeColor = System.Drawing.Color.Black
-        Me.label10.Location = New System.Drawing.Point(28, 117)
+        Me.label10.Location = New System.Drawing.Point(37, 146)
+        Me.label10.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.label10.Name = "label10"
-        Me.label10.Size = New System.Drawing.Size(47, 12)
+        Me.label10.Size = New System.Drawing.Size(61, 15)
         Me.label10.TabIndex = 16
         Me.label10.Text = "民  族:"
         '
@@ -181,27 +194,30 @@ Partial Class Frm个人信息
         '
         Me.label4.AutoSize = True
         Me.label4.ForeColor = System.Drawing.SystemColors.ActiveCaptionText
-        Me.label4.Location = New System.Drawing.Point(29, 150)
+        Me.label4.Location = New System.Drawing.Point(39, 188)
+        Me.label4.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.label4.Name = "label4"
-        Me.label4.Size = New System.Drawing.Size(47, 12)
+        Me.label4.Size = New System.Drawing.Size(61, 15)
         Me.label4.TabIndex = 4
         Me.label4.Text = "职  务:"
         '
         'U_Address
         '
-        Me.U_Address.Location = New System.Drawing.Point(83, 82)
+        Me.U_Address.Location = New System.Drawing.Point(111, 102)
+        Me.U_Address.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.U_Address.MaxLength = 20
         Me.U_Address.Name = "U_Address"
-        Me.U_Address.Size = New System.Drawing.Size(166, 21)
+        Me.U_Address.Size = New System.Drawing.Size(220, 25)
         Me.U_Address.TabIndex = 13
         '
         'label12
         '
         Me.label12.AutoSize = True
         Me.label12.ForeColor = System.Drawing.Color.Black
-        Me.label12.Location = New System.Drawing.Point(18, 91)
+        Me.label12.Location = New System.Drawing.Point(24, 114)
+        Me.label12.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.label12.Name = "label12"
-        Me.label12.Size = New System.Drawing.Size(59, 12)
+        Me.label12.Size = New System.Drawing.Size(75, 15)
         Me.label12.TabIndex = 12
         Me.label12.Text = "家庭住址:"
         '
@@ -209,18 +225,20 @@ Partial Class Frm个人信息
         '
         Me.label16.AutoSize = True
         Me.label16.ForeColor = System.Drawing.Color.Black
-        Me.label16.Location = New System.Drawing.Point(18, 64)
+        Me.label16.Location = New System.Drawing.Point(24, 80)
+        Me.label16.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.label16.Name = "label16"
-        Me.label16.Size = New System.Drawing.Size(59, 12)
+        Me.label16.Size = New System.Drawing.Size(75, 15)
         Me.label16.TabIndex = 4
         Me.label16.Text = "身份证号:"
         '
         'button1
         '
         Me.button1.BackgroundImage = CType(resources.GetObject("button1.BackgroundImage"), System.Drawing.Image)
-        Me.button1.Location = New System.Drawing.Point(528, 490)
+        Me.button1.Location = New System.Drawing.Point(704, 612)
+        Me.button1.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.button1.Name = "button1"
-        Me.button1.Size = New System.Drawing.Size(75, 29)
+        Me.button1.Size = New System.Drawing.Size(100, 36)
         Me.button1.TabIndex = 19
         Me.button1.Text = "保  存"
         Me.button1.UseVisualStyleBackColor = True
@@ -229,26 +247,29 @@ Partial Class Frm个人信息
         '
         Me.label17.AutoSize = True
         Me.label17.ForeColor = System.Drawing.Color.Black
-        Me.label17.Location = New System.Drawing.Point(17, 66)
+        Me.label17.Location = New System.Drawing.Point(23, 82)
+        Me.label17.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.label17.Name = "label17"
-        Me.label17.Size = New System.Drawing.Size(59, 12)
+        Me.label17.Size = New System.Drawing.Size(75, 15)
         Me.label17.TabIndex = 2
         Me.label17.Text = "邮箱号码:"
         '
         'U_PostalId
         '
-        Me.U_PostalId.Location = New System.Drawing.Point(83, 92)
+        Me.U_PostalId.Location = New System.Drawing.Point(111, 115)
+        Me.U_PostalId.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.U_PostalId.MaxLength = 20
         Me.U_PostalId.Name = "U_PostalId"
-        Me.U_PostalId.Size = New System.Drawing.Size(165, 21)
+        Me.U_PostalId.Size = New System.Drawing.Size(219, 25)
         Me.U_PostalId.TabIndex = 13
         '
         'button2
         '
         Me.button2.BackgroundImage = CType(resources.GetObject("button2.BackgroundImage"), System.Drawing.Image)
-        Me.button2.Location = New System.Drawing.Point(665, 490)
+        Me.button2.Location = New System.Drawing.Point(887, 612)
+        Me.button2.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.button2.Name = "button2"
-        Me.button2.Size = New System.Drawing.Size(75, 29)
+        Me.button2.Size = New System.Drawing.Size(100, 36)
         Me.button2.TabIndex = 20
         Me.button2.Text = "退  出"
         Me.button2.UseVisualStyleBackColor = True
@@ -257,9 +278,10 @@ Partial Class Frm个人信息
         '
         Me.label3.AutoSize = True
         Me.label3.ForeColor = System.Drawing.Color.Black
-        Me.label3.Location = New System.Drawing.Point(17, 101)
+        Me.label3.Location = New System.Drawing.Point(23, 126)
+        Me.label3.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.label3.Name = "label3"
-        Me.label3.Size = New System.Drawing.Size(59, 12)
+        Me.label3.Size = New System.Drawing.Size(75, 15)
         Me.label3.TabIndex = 12
         Me.label3.Text = "邮政编码:"
         '
@@ -267,18 +289,20 @@ Partial Class Frm个人信息
         '
         Me.label13.AutoSize = True
         Me.label13.ForeColor = System.Drawing.Color.Black
-        Me.label13.Location = New System.Drawing.Point(17, 30)
+        Me.label13.Location = New System.Drawing.Point(23, 38)
+        Me.label13.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.label13.Name = "label13"
-        Me.label13.Size = New System.Drawing.Size(59, 12)
+        Me.label13.Size = New System.Drawing.Size(75, 15)
         Me.label13.TabIndex = 10
         Me.label13.Text = "联系电话:"
         '
         'U_Telephone
         '
-        Me.U_Telephone.Location = New System.Drawing.Point(82, 21)
+        Me.U_Telephone.Location = New System.Drawing.Point(109, 26)
+        Me.U_Telephone.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.U_Telephone.MaxLength = 20
         Me.U_Telephone.Name = "U_Telephone"
-        Me.U_Telephone.Size = New System.Drawing.Size(165, 21)
+        Me.U_Telephone.Size = New System.Drawing.Size(219, 25)
         Me.U_Telephone.TabIndex = 3
         '
         'groupBox4
@@ -290,19 +314,22 @@ Partial Class Frm个人信息
         Me.groupBox4.Controls.Add(Me.label17)
         Me.groupBox4.Controls.Add(Me.U_Telephone)
         Me.groupBox4.ForeColor = System.Drawing.Color.Blue
-        Me.groupBox4.Location = New System.Drawing.Point(13, 358)
+        Me.groupBox4.Location = New System.Drawing.Point(17, 448)
+        Me.groupBox4.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.groupBox4.Name = "groupBox4"
-        Me.groupBox4.Size = New System.Drawing.Size(399, 161)
+        Me.groupBox4.Padding = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.groupBox4.Size = New System.Drawing.Size(532, 201)
         Me.groupBox4.TabIndex = 21
         Me.groupBox4.TabStop = False
         Me.groupBox4.Text = "联系方式"
         '
         'U_Email
         '
-        Me.U_Email.Location = New System.Drawing.Point(83, 57)
+        Me.U_Email.Location = New System.Drawing.Point(111, 71)
+        Me.U_Email.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.U_Email.MaxLength = 20
         Me.U_Email.Name = "U_Email"
-        Me.U_Email.Size = New System.Drawing.Size(165, 21)
+        Me.U_Email.Size = New System.Drawing.Size(219, 25)
         Me.U_Email.TabIndex = 11
         '
         'openFileDialog1
@@ -312,9 +339,10 @@ Partial Class Frm个人信息
         'checkBox1
         '
         Me.checkBox1.AutoSize = True
-        Me.checkBox1.Location = New System.Drawing.Point(309, 98)
+        Me.checkBox1.Location = New System.Drawing.Point(412, 122)
+        Me.checkBox1.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.checkBox1.Name = "checkBox1"
-        Me.checkBox1.Size = New System.Drawing.Size(72, 16)
+        Me.checkBox1.Size = New System.Drawing.Size(89, 19)
         Me.checkBox1.TabIndex = 16
         Me.checkBox1.Text = "密保设置"
         Me.checkBox1.UseVisualStyleBackColor = True
@@ -323,9 +351,10 @@ Partial Class Frm个人信息
         '
         Me.radio_women.AutoSize = True
         Me.radio_women.ForeColor = System.Drawing.Color.Black
-        Me.radio_women.Location = New System.Drawing.Point(166, 65)
+        Me.radio_women.Location = New System.Drawing.Point(221, 81)
+        Me.radio_women.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.radio_women.Name = "radio_women"
-        Me.radio_women.Size = New System.Drawing.Size(35, 16)
+        Me.radio_women.Size = New System.Drawing.Size(43, 19)
         Me.radio_women.TabIndex = 21
         Me.radio_women.Text = "女"
         Me.radio_women.UseVisualStyleBackColor = True
@@ -334,9 +363,10 @@ Partial Class Frm个人信息
         '
         Me.label5.AutoSize = True
         Me.label5.ForeColor = System.Drawing.SystemColors.ActiveCaptionText
-        Me.label5.Location = New System.Drawing.Point(29, 67)
+        Me.label5.Location = New System.Drawing.Point(39, 84)
+        Me.label5.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.label5.Name = "label5"
-        Me.label5.Size = New System.Drawing.Size(47, 12)
+        Me.label5.Size = New System.Drawing.Size(61, 15)
         Me.label5.TabIndex = 8
         Me.label5.Text = "性  别:"
         '
@@ -345,9 +375,10 @@ Partial Class Frm个人信息
         Me.radion_man.AutoSize = True
         Me.radion_man.Checked = True
         Me.radion_man.ForeColor = System.Drawing.Color.Black
-        Me.radion_man.Location = New System.Drawing.Point(87, 65)
+        Me.radion_man.Location = New System.Drawing.Point(116, 81)
+        Me.radion_man.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.radion_man.Name = "radion_man"
-        Me.radion_man.Size = New System.Drawing.Size(35, 16)
+        Me.radion_man.Size = New System.Drawing.Size(43, 19)
         Me.radion_man.TabIndex = 20
         Me.radion_man.TabStop = True
         Me.radion_man.Text = "男"
@@ -355,9 +386,10 @@ Partial Class Frm个人信息
         '
         'U_Birthday
         '
-        Me.U_Birthday.Location = New System.Drawing.Point(83, 93)
+        Me.U_Birthday.Location = New System.Drawing.Point(111, 116)
+        Me.U_Birthday.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.U_Birthday.Name = "U_Birthday"
-        Me.U_Birthday.Size = New System.Drawing.Size(151, 21)
+        Me.U_Birthday.Size = New System.Drawing.Size(200, 25)
         Me.U_Birthday.TabIndex = 19
         '
         'groupBox1
@@ -371,9 +403,11 @@ Partial Class Frm个人信息
         Me.groupBox1.Controls.Add(Me.U_Name)
         Me.groupBox1.Controls.Add(Me.label1)
         Me.groupBox1.ForeColor = System.Drawing.Color.Blue
-        Me.groupBox1.Location = New System.Drawing.Point(12, 19)
+        Me.groupBox1.Location = New System.Drawing.Point(16, 24)
+        Me.groupBox1.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.groupBox1.Name = "groupBox1"
-        Me.groupBox1.Size = New System.Drawing.Size(399, 135)
+        Me.groupBox1.Padding = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.groupBox1.Size = New System.Drawing.Size(532, 169)
         Me.groupBox1.TabIndex = 16
         Me.groupBox1.TabStop = False
         Me.groupBox1.Text = "个人基本信息"
@@ -382,36 +416,39 @@ Partial Class Frm个人信息
         '
         Me.label15.AutoSize = True
         Me.label15.ForeColor = System.Drawing.Color.Black
-        Me.label15.Location = New System.Drawing.Point(18, 102)
+        Me.label15.Location = New System.Drawing.Point(24, 128)
+        Me.label15.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.label15.Name = "label15"
-        Me.label15.Size = New System.Drawing.Size(59, 12)
+        Me.label15.Size = New System.Drawing.Size(75, 15)
         Me.label15.TabIndex = 6
         Me.label15.Text = "出生日期:"
         '
         'U_Name
         '
         Me.U_Name.ForeColor = System.Drawing.SystemColors.ActiveCaptionText
-        Me.U_Name.Location = New System.Drawing.Point(82, 26)
+        Me.U_Name.Location = New System.Drawing.Point(109, 32)
+        Me.U_Name.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.U_Name.MaxLength = 20
         Me.U_Name.Name = "U_Name"
-        Me.U_Name.Size = New System.Drawing.Size(152, 21)
+        Me.U_Name.Size = New System.Drawing.Size(201, 25)
         Me.U_Name.TabIndex = 1
         '
         'label1
         '
         Me.label1.AutoSize = True
         Me.label1.ForeColor = System.Drawing.SystemColors.ActiveCaptionText
-        Me.label1.Location = New System.Drawing.Point(29, 35)
+        Me.label1.Location = New System.Drawing.Point(39, 44)
+        Me.label1.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.label1.Name = "label1"
-        Me.label1.Size = New System.Drawing.Size(47, 12)
+        Me.label1.Size = New System.Drawing.Size(60, 15)
         Me.label1.TabIndex = 0
         Me.label1.Text = "用户名:"
         '
         'Frm个人信息
         '
-        Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 12.0!)
+        Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 15.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(845, 571)
+        Me.ClientSize = New System.Drawing.Size(1127, 714)
         Me.Controls.Add(Me.groupBox3)
         Me.Controls.Add(Me.groupBox2)
         Me.Controls.Add(Me.button1)
@@ -419,6 +456,7 @@ Partial Class Frm个人信息
         Me.Controls.Add(Me.groupBox4)
         Me.Controls.Add(Me.groupBox1)
         Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
+        Me.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.Name = "Frm个人信息"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "个人详细信息"

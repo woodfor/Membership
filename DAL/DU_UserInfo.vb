@@ -71,13 +71,13 @@ Public Class DU_UserInfo
     Public Function Add(ByVal model As MU_UserInfo) As Integer
         Dim strSql As New StringBuilder()
         strSql.Append("insert into U_UserInfo(")
-        strSql.Append("U_LoginTime,U_RoleType,U_Name,U_Sex,U_PassWord,U_Birthday")
+        strSql.Append("U_LoginTime,U_RoleType,U_Name,U_Sex,U_PassWord,U_Birthday,store_id")
         strSql.Append(") values (")
-        strSql.Append("@U_LoginTime,@U_RoleType,@U_Name,@U_Sex,@U_PassWord,@U_Birthday")
+        strSql.Append("@U_LoginTime,@U_RoleType,@U_Name,@U_Sex,@U_PassWord,@U_Birthday,@store_id")
         strSql.Append(") ")
         strSql.Append(";select @@IDENTITY")
 
-        Dim parameters As SqlParameter() = {New SqlParameter("@U_LoginTime", SqlDbType.DateTime), New SqlParameter("@U_RoleType", SqlDbType.Int, 4), New SqlParameter("@U_Name", SqlDbType.VarChar, 50), New SqlParameter("@U_Sex", SqlDbType.Bit, 1), New SqlParameter("@U_PassWord", SqlDbType.VarChar, 50), New SqlParameter("@U_Birthday", SqlDbType.DateTime)}
+        Dim parameters As SqlParameter() = {New SqlParameter("@U_LoginTime", SqlDbType.DateTime), New SqlParameter("@U_RoleType", SqlDbType.Int, 4), New SqlParameter("@U_Name", SqlDbType.VarChar, 50), New SqlParameter("@U_Sex", SqlDbType.Bit, 1), New SqlParameter("@U_PassWord", SqlDbType.VarChar, 50), New SqlParameter("@U_Birthday", SqlDbType.DateTime), New SqlParameter("@store_id", SqlDbType.Int)}
 
         parameters(0).Value = model.U_LoginTime
         parameters(1).Value = model.U_RoleType
@@ -85,6 +85,7 @@ Public Class DU_UserInfo
         parameters(3).Value = model.U_Sex
         parameters(4).Value = model.U_PassWord
         parameters(5).Value = model.U_Birthday
+        parameters(6).Value = model.store_id
 
         Dim obj As Object = DBHelp.ExecuteNonQuery(strSql.ToString(), parameters)
 
@@ -166,13 +167,13 @@ Public Class DU_UserInfo
         strSql.Append(" U_Birthday = @U_Birthday , ")
         strSql.Append(" U_IdCard = @U_IdCard,  ")
         strSql.Append(" U_Image = @U_Image ,")
-        strSql.Append(" U_QQ = @U_QQ ")
+        strSql.Append(" U_wechat = @U_wechat")
         strSql.Append(" where U_Id=@U_Id ")
 
 
-        Dim parameters As SqlParameter() = {New SqlParameter("@U_Id", SqlDbType.Int, 4), New SqlParameter("@U_NativePlace", SqlDbType.VarChar, 20), New SqlParameter("@U_Address", SqlDbType.VarChar, 50), New SqlParameter("@U_Telephone", SqlDbType.VarChar, 50), New SqlParameter("@U_Email", SqlDbType.VarChar, 50), New SqlParameter("@U_PostalId", SqlDbType.VarChar, 20), _
-         New SqlParameter("@U_Position", SqlDbType.VarChar, 20), New SqlParameter("@U_RelName", SqlDbType.VarChar, 50), New SqlParameter("@U_Sex", SqlDbType.Bit, 1), New SqlParameter("@U_Birthday", SqlDbType.DateTime), New SqlParameter("@U_IdCard", SqlDbType.VarChar, 20), New SqlParameter("@U_Image", SqlDbType.Image), _
-         New SqlParameter("@U_QQ", SqlDbType.VarChar, 50)}
+        Dim parameters As SqlParameter() = {New SqlParameter("@U_Id", SqlDbType.Int, 4), New SqlParameter("@U_NativePlace", SqlDbType.VarChar, 20), New SqlParameter("@U_Address", SqlDbType.VarChar, 50), New SqlParameter("@U_Telephone", SqlDbType.VarChar, 50), New SqlParameter("@U_Email", SqlDbType.VarChar, 50), New SqlParameter("@U_PostalId", SqlDbType.VarChar, 20),
+         New SqlParameter("@U_Position", SqlDbType.VarChar, 20), New SqlParameter("@U_RelName", SqlDbType.VarChar, 50), New SqlParameter("@U_Sex", SqlDbType.Bit, 1), New SqlParameter("@U_Birthday", SqlDbType.DateTime), New SqlParameter("@U_IdCard", SqlDbType.VarChar, 20), New SqlParameter("@U_Image", SqlDbType.Image),
+         New SqlParameter("@U_wechat", SqlDbType.VarChar, 50)}
 
         parameters(0).Value = model.U_Id
         parameters(1).Value = model.U_NativePlace

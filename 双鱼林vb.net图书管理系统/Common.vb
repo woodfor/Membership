@@ -27,7 +27,7 @@ Public Class Common
 
     '离开挂起
     Public Sub KeepLeve()
-        Dim about As New Frm离开挂起()
+        Dim about As New FrmAuthPrompt(1)
         about.ShowDialog()
     End Sub
 

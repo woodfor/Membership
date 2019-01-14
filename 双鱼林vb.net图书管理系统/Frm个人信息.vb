@@ -254,4 +254,6 @@ Partial Public Class Frm个人信息
             pictureBox1.Image = Image.FromStream(ms)
         End If
     End Sub
+
+
 End Class

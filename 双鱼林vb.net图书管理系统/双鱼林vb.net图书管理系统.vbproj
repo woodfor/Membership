@@ -105,16 +105,16 @@
     <Compile Include="FrmAllStore.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="FrmRequestInfo.Designer.vb">
+      <DependentUpon>FrmRequestInfo.vb</DependentUpon>
+    </Compile>
+    <Compile Include="FrmRequestInfo.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="FrmStore.Designer.vb">
       <DependentUpon>FrmStore.vb</DependentUpon>
     </Compile>
     <Compile Include="FrmStore.vb">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="membership.Designer.vb">
-      <DependentUpon>membership.vb</DependentUpon>
-    </Compile>
-    <Compile Include="membership.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="FrmAddBook.Designer.vb">
@@ -139,6 +139,12 @@
       <DependentUpon>FrmQueryBook.vb</DependentUpon>
     </Compile>
     <Compile Include="FrmQueryBook.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmTopUP.Designer.vb">
+      <DependentUpon>FrmTopUP.vb</DependentUpon>
+    </Compile>
+    <Compile Include="FrmTopUP.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Frm个人信息.Designer.vb">
@@ -183,10 +189,10 @@
     <Compile Include="Frm登陆成功显示进度.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Frm离开挂起.Designer.vb">
-      <DependentUpon>Frm离开挂起.vb</DependentUpon>
+    <Compile Include="FrmAuthPrompt.Designer.vb">
+      <DependentUpon>FrmAuthPrompt.vb</DependentUpon>
     </Compile>
-    <Compile Include="Frm离开挂起.vb">
+    <Compile Include="FrmAuthPrompt.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Frm管理员管理.Designer.vb">
@@ -229,11 +235,11 @@
     <EmbeddedResource Include="FrmAllStore.resx">
       <DependentUpon>FrmAllStore.vb</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="FrmRequestInfo.resx">
+      <DependentUpon>FrmRequestInfo.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FrmStore.resx">
       <DependentUpon>FrmStore.vb</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="membership.resx">
-      <DependentUpon>membership.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FrmAddBook.resx">
       <DependentUpon>FrmAddBook.vb</DependentUpon>
@@ -246,6 +252,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FrmQueryBook.resx">
       <DependentUpon>FrmQueryBook.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmTopUP.resx">
+      <DependentUpon>FrmTopUP.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Frm个人信息.resx">
       <DependentUpon>Frm个人信息.vb</DependentUpon>
@@ -268,8 +277,8 @@
     <EmbeddedResource Include="Frm登陆成功显示进度.resx">
       <DependentUpon>Frm登陆成功显示进度.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Frm离开挂起.resx">
-      <DependentUpon>Frm离开挂起.vb</DependentUpon>
+    <EmbeddedResource Include="FrmAuthPrompt.resx">
+      <DependentUpon>FrmAuthPrompt.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Frm管理员管理.resx">
       <DependentUpon>Frm管理员管理.vb</DependentUpon>

@@ -116,6 +116,7 @@
     <Compile Include="Token.vb" />
     <Compile Include="Trans.vb" />
     <Compile Include="Transaction.vb" />
+    <Compile Include="User.vb" />
     <Compile Include="Worker.vb" />
   </ItemGroup>
   <ItemGroup>

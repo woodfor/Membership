@@ -30,8 +30,7 @@ Partial Public Class Card
     <StringLength(20)>
     Public Property customer_phone As String
 
-    <Column(TypeName:="date")>
-    Public Property customer_datbirth As Date
+
 
     Public Overridable Property Store As Store
 

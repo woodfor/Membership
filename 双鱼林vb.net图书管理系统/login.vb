@@ -75,6 +75,7 @@ Partial Public Class login
                 info.U_Sex = Sex
                 info.U_Birthday = Convert.ToDateTime(birthday)
                 info.U_LoginTime = DateTime.Now
+                info.store_id = 1
                 If Pagetype = "AddAdmin" Then
                     '管理员
                     info.U_RoleType = 2
@@ -126,5 +127,6 @@ Partial Public Class login
         Me.Pagetype = type
         Me.frmUser = frmUser
     End Sub
+
 
 End Class
