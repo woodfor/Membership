@@ -77,7 +77,7 @@ Partial Public Class FrmEditBook
         End If
 
         'FrmQueryBook frmQueryBook = (FrmQueryBook)this.Parent;
-        frmQueryBook.BindData("refresh")
+        'frmQueryBook.BindData("refresh")
 
         Me.Close()
     End Sub

@@ -48,7 +48,7 @@ Partial Class FrmAddBook
         Me.TextBox1 = New System.Windows.Forms.TextBox()
         Me.testbox = New System.Windows.Forms.TextBox()
         Me.Label11 = New System.Windows.Forms.Label()
-        Me.TextBox2 = New System.Windows.Forms.TextBox()
+        Me.Text_discount = New System.Windows.Forms.TextBox()
         Me.GroupBox_basicInfo = New System.Windows.Forms.GroupBox()
         Me.GroupBox_level = New System.Windows.Forms.GroupBox()
         Me.GroupBox_topUp = New System.Windows.Forms.GroupBox()
@@ -60,6 +60,7 @@ Partial Class FrmAddBook
         Me.Button1 = New System.Windows.Forms.Button()
         Me.Button2 = New System.Windows.Forms.Button()
         Me.Button_openTopUp = New System.Windows.Forms.Button()
+        Me.Label13 = New System.Windows.Forms.Label()
         CType(Me.pictureBox_bookPhoto, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.GroupBox_basicInfo.SuspendLayout()
         Me.GroupBox_level.SuspendLayout()
@@ -299,14 +300,14 @@ Partial Class FrmAddBook
         Me.Label11.TabIndex = 46
         Me.Label11.Text = "折扣："
         '
-        'TextBox2
+        'Text_discount
         '
-        Me.TextBox2.Location = New System.Drawing.Point(133, 110)
-        Me.TextBox2.Margin = New System.Windows.Forms.Padding(4)
-        Me.TextBox2.Name = "TextBox2"
-        Me.TextBox2.ReadOnly = True
-        Me.TextBox2.Size = New System.Drawing.Size(157, 25)
-        Me.TextBox2.TabIndex = 47
+        Me.Text_discount.Location = New System.Drawing.Point(133, 110)
+        Me.Text_discount.Margin = New System.Windows.Forms.Padding(4)
+        Me.Text_discount.Name = "Text_discount"
+        Me.Text_discount.ReadOnly = True
+        Me.Text_discount.Size = New System.Drawing.Size(73, 25)
+        Me.Text_discount.TabIndex = 47
         '
         'GroupBox_basicInfo
         '
@@ -327,10 +328,11 @@ Partial Class FrmAddBook
         '
         'GroupBox_level
         '
+        Me.GroupBox_level.Controls.Add(Me.Label13)
         Me.GroupBox_level.Controls.Add(Me.Label8)
         Me.GroupBox_level.Controls.Add(Me.txt_level)
         Me.GroupBox_level.Controls.Add(Me.Label11)
-        Me.GroupBox_level.Controls.Add(Me.TextBox2)
+        Me.GroupBox_level.Controls.Add(Me.Text_discount)
         Me.GroupBox_level.Controls.Add(Me.txt_bonus)
         Me.GroupBox_level.Controls.Add(Me.label4)
         Me.GroupBox_level.Location = New System.Drawing.Point(519, 17)
@@ -435,6 +437,15 @@ Partial Class FrmAddBook
         Me.Button_openTopUp.Text = "开启储值服务"
         Me.Button_openTopUp.UseVisualStyleBackColor = True
         '
+        'Label13
+        '
+        Me.Label13.AutoSize = True
+        Me.Label13.Location = New System.Drawing.Point(227, 113)
+        Me.Label13.Name = "Label13"
+        Me.Label13.Size = New System.Drawing.Size(22, 15)
+        Me.Label13.TabIndex = 48
+        Me.Label13.Text = "折"
+        '
         'FrmAddBook
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 15.0!)
@@ -499,7 +510,7 @@ Partial Class FrmAddBook
     Friend WithEvents TextBox1 As TextBox
     Friend WithEvents testbox As TextBox
     Private WithEvents Label11 As Label
-    Private WithEvents TextBox2 As TextBox
+    Private WithEvents Text_discount As TextBox
     Friend WithEvents GroupBox_basicInfo As GroupBox
     Friend WithEvents GroupBox_level As GroupBox
     Friend WithEvents GroupBox_topUp As GroupBox
@@ -511,4 +522,5 @@ Partial Class FrmAddBook
     Friend WithEvents Button1 As Button
     Friend WithEvents Button2 As Button
     Friend WithEvents Button_openTopUp As Button
+    Friend WithEvents Label13 As Label
 End Class

@@ -285,15 +285,15 @@ Partial Class Frm主面
         Me.toolStripLabel10.Image = CType(resources.GetObject("toolStripLabel10.Image"), System.Drawing.Image)
         Me.toolStripLabel10.Name = "toolStripLabel10"
         Me.toolStripLabel10.Size = New System.Drawing.Size(73, 64)
-        Me.toolStripLabel10.Text = "信息查询"
+        Me.toolStripLabel10.Text = "卡券核销"
         Me.toolStripLabel10.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText
         '
         'toolStripLabel11
         '
         Me.toolStripLabel11.Image = CType(resources.GetObject("toolStripLabel11.Image"), System.Drawing.Image)
         Me.toolStripLabel11.Name = "toolStripLabel11"
-        Me.toolStripLabel11.Size = New System.Drawing.Size(73, 64)
-        Me.toolStripLabel11.Text = "信息查询"
+        Me.toolStripLabel11.Size = New System.Drawing.Size(103, 64)
+        Me.toolStripLabel11.Text = "充值信息查询"
         Me.toolStripLabel11.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText
         '
         'toolStripSeparator3
@@ -408,20 +408,20 @@ Partial Class Frm主面
         '
         Me.toolStripMenuItem9.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.BookAdd_ToolStripMenuItem, Me.BookManage_ToolStripMenuItem})
         Me.toolStripMenuItem9.Name = "toolStripMenuItem9"
-        Me.toolStripMenuItem9.Size = New System.Drawing.Size(130, 24)
-        Me.toolStripMenuItem9.Text = "图书信息管理(&B)"
+        Me.toolStripMenuItem9.Size = New System.Drawing.Size(99, 24)
+        Me.toolStripMenuItem9.Text = "查询卡券(&F)"
         '
         'BookAdd_ToolStripMenuItem
         '
         Me.BookAdd_ToolStripMenuItem.Name = "BookAdd_ToolStripMenuItem"
-        Me.BookAdd_ToolStripMenuItem.Size = New System.Drawing.Size(196, 26)
-        Me.BookAdd_ToolStripMenuItem.Text = "添加图书信息(&A)"
+        Me.BookAdd_ToolStripMenuItem.Size = New System.Drawing.Size(216, 26)
+        Me.BookAdd_ToolStripMenuItem.Text = "卡券核销(&S)"
         '
         'BookManage_ToolStripMenuItem
         '
         Me.BookManage_ToolStripMenuItem.Name = "BookManage_ToolStripMenuItem"
-        Me.BookManage_ToolStripMenuItem.Size = New System.Drawing.Size(196, 26)
-        Me.BookManage_ToolStripMenuItem.Text = "图书信息查询(&Q)"
+        Me.BookManage_ToolStripMenuItem.Size = New System.Drawing.Size(216, 26)
+        Me.BookManage_ToolStripMenuItem.Text = "充值记录查询(&Q)"
         '
         'toolStripMenuItem2
         '
@@ -434,7 +434,7 @@ Partial Class Frm主面
         '
         Me.订票记录ToolStripMenuItem.Image = CType(resources.GetObject("订票记录ToolStripMenuItem.Image"), System.Drawing.Image)
         Me.订票记录ToolStripMenuItem.Name = "订票记录ToolStripMenuItem"
-        Me.订票记录ToolStripMenuItem.Size = New System.Drawing.Size(216, 26)
+        Me.订票记录ToolStripMenuItem.Size = New System.Drawing.Size(144, 26)
         Me.订票记录ToolStripMenuItem.Text = "店面信息"
         '
         '退票记录ToolStripMenuItem
@@ -442,7 +442,7 @@ Partial Class Frm主面
         Me.退票记录ToolStripMenuItem.Image = CType(resources.GetObject("退票记录ToolStripMenuItem.Image"), System.Drawing.Image)
         Me.退票记录ToolStripMenuItem.Name = "退票记录ToolStripMenuItem"
         Me.退票记录ToolStripMenuItem.Size = New System.Drawing.Size(216, 26)
-        Me.退票记录ToolStripMenuItem.Text = "退票记录"
+        Me.退票记录ToolStripMenuItem.Text = "更改规则"
         '
         'toolStripMenuItem11
         '

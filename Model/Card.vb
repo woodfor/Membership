@@ -7,7 +7,8 @@ Imports System.Data.Entity.Spatial
 <Table("Card")>
 Partial Public Class Card
     Public Sub New()
-        Trans = New HashSet(Of Trans)()
+        Trans_TopUp = New HashSet(Of Trans_TopUp)()
+        Trans_purchase = New HashSet(Of Trans_purchase)()
     End Sub
 
     <Key>
@@ -30,9 +31,9 @@ Partial Public Class Card
     <StringLength(20)>
     Public Property customer_phone As String
 
-
-
     Public Overridable Property Store As Store
 
-    Public Overridable Property Trans As ICollection(Of Trans)
+    Public Overridable Property Trans_TopUp As ICollection(Of Trans_TopUp)
+
+    Public Overridable Property Trans_purchase As ICollection(Of Trans_purchase)
 End Class

@@ -12,6 +12,7 @@ Imports Model
 Imports System.Net
 Imports BLL
 Imports System.Runtime.Serialization.Formatters.Binary
+Imports System.Runtime.Serialization
 
 Partial Public Class FrmAddBook
     Inherits Form
@@ -23,7 +24,8 @@ Partial Public Class FrmAddBook
     Private card As New CardInfo()
     Private token As New Token()
     Private user As New User()
-
+    Private card_TopUp As New Card
+    Dim db As New Transaction
     'Private Sub btn_bookPhoto_Click(ByVal sender As Object, ByVal e As EventArgs)
     '    Dim openFileDialog1 As New OpenFileDialog()
     '    Try
@@ -139,7 +141,7 @@ Partial Public Class FrmAddBook
         Dim fs As New FileStream("pic/NoImage.jpg", FileMode.Open, FileAccess.Read)
         Dim bw As New BinaryReader(fs)
         book.bookPhoto = bw.ReadBytes(CInt(fs.Length))
-
+        txt_barcode.Focus()
 
 
     End Sub
@@ -147,149 +149,142 @@ Partial Public Class FrmAddBook
     Private Sub txt_barcode_TextChanged(sender As Object, e As EventArgs) Handles txt_barcode.TextChanged
         If txt_barcode.Text.Length = 12 Then
             Dim response As String
-
+            Dim pr As JObject
             Dim userResponse As String
+            Dim cardNumber As String
 
             Try
-
                 token.ID = getDataFromLocal.getToken()
-
                 Dim dic As Dictionary(Of String, Object) = New Dictionary(Of String, Object) From {
                 {"code", txt_barcode.Text}}
-                Dim cardNumber As String = Newtonsoft.Json.JsonConvert.SerializeObject(dic)
+                cardNumber = Newtonsoft.Json.JsonConvert.SerializeObject(dic)
+                pr = CType(JsonConvert.DeserializeObject(httpCon.PostData("https://api.weixin.qq.com/card/code/get?access_token=" + token.ID, cardNumber)), Object)
+                If String.Compare(pr("errcode").ToString(), "0") = 0 Then
 
-                Try
-                    Dim idPr As JObject = CType(JsonConvert.DeserializeObject(httpCon.PostData("https://api.weixin.qq.com/card/code/get?access_token=" + token.ID, cardNumber)), Object)
-                    If String.Compare(idPr("errcode").ToString(), "0") = 0 Then
-
-                        Dim mPr As JObject = CType(JsonConvert.DeserializeObject(idPr("card").ToString), Object)
-                        card.ID = mPr("card_id").ToString()
-
-
-                        Dim tokenAPI As String = "https://api.weixin.qq.com/card/membercard/userinfo/get?access_token=" + token.ID
-                        Try
-                            response = httpCon.PostData(tokenAPI, cardNumber)
-                            txt_publish.Text = response
-                            Dim pr As JObject = CType(JsonConvert.DeserializeObject(response), Object)
-                            response = pr("errcode").ToString()
-                            If String.Compare(response, "0") = 0 Then
-                                MessageBox.Show("获取卡的信息成功")
-                                txt_bonus.Text = pr("bonus").ToString
-                                txt_card_status.Text = pr("user_card_status").ToString
-
-                                Try
-                                    Dim tempUrl As String = "https://api.weixin.qq.com/cgi-bin/user/info?access_token=" + token.ID + "&openid=" + pr("openid").ToString() + "&lang=zh_CN"
-                                    userResponse = httpCon.PostData(tempUrl, "")
-                                    Dim uPr As JObject = CType(JsonConvert.DeserializeObject(userResponse), Object)
-                                    user.Name = uPr("nickname").ToString()
-                                    user.openID = uPr("openid").ToString
-                                    txt_userName.Text = user.Name
-                                    '基本信息读取完毕
-                                    card.cardNumber = txt_barcode.Text
-                                    card.bonus = txt_bonus.Text
-                                    card.status = txt_card_status.Text
-                                    Dim customPr As JObject = CType(JsonConvert.DeserializeObject(pr("user_info").ToString()), Object)
-                                    If String.Compare(customPr("custom_field_list").ToString(), "[]") = 0 Then
-                                        txt_level.Text = "暂未设置会员等级"
-                                        Button_addLevel.Enabled = True
-                                    Else
-                                        Dim levelPr As JObject = CType(JsonConvert.DeserializeObject(customPr("custom_field_list").ToString()), Object)
-                                        card.memberLevel = levelPr("level").ToString
-                                    End If
-                                Catch
-                                    MessageBox.Show("获取用户信息时发生网络错误")
-                                    Return
-                                End Try
-                            Else
-                                MessageBox.Show(pr("errmsg").ToString)
-                                Return
-                            End If
-                        Catch
-                            MessageBox.Show("网络未连接，请更新WIFI后重试")
-                            Return
-                        End Try
-
-
-                    Else
-                        MessageBox.Show("卡片信息不正确，请重新扫描")
-                        Return
-                    End If
-
-                Catch ex As Exception
-                    If GetToken.GetToken() = True Then
+                    card.ID = pr("card")("card_id").ToString()
+                Else
+                    MessageBox.Show("卡片信息不正确，请重新扫描")
+                    Return
+                End If
+            Catch ex As Exception
+                If GetToken.GetToken() = True Then
+                    txt_barcode_TextChanged(Nothing, Nothing)
+                Else
+                    If MessageBox.Show("连接服务器发生错误，请检查网络。如网络未发生异常，请联系客服。点击OK重试，点击Cancel取消操作。 ",
+                        "服务器错误",
+                        MessageBoxButtons.OKCancel,
+                        MessageBoxIcon.Information,
+                        MessageBoxDefaultButton.Button1) = Windows.Forms.DialogResult.OK Then
                         txt_barcode_TextChanged(Nothing, Nothing)
                     Else
-                        If MessageBox.Show("连接服务器发生错误，请检查网络。如网络未发生异常，请联系客服。点击OK重试，点击Cancel取消操作。 ",
-                            "服务器错误",
-                            MessageBoxButtons.OKCancel,
-                            MessageBoxIcon.Information,
-                            MessageBoxDefaultButton.Button1) = Windows.Forms.DialogResult.OK Then
-                            txt_barcode_TextChanged(Nothing, Nothing)
-                        Else
 
-                        End If
                     End If
-
-                    Return
-                End Try
-
-            Catch
-                MessageBox.Show("local file error")
+                End If
                 Return
             End Try
 
             '读取储值数据库
             Try
-                Dim card_topup As Card = DAL.dalCard.getSomeCard(card.ID)
-
-                If IsNothing(card_topup) Then
+                card_TopUp = DAL.dalCard.getSomeCard(db, card.ID)
+                Dim trans = DAL.dalTrans.findLastTopUp(db, card_TopUp.card_id)
+                If IsNothing(card_TopUp) Then
                     Button_openTopUp.Enabled = True
+                    Dim postStr As String = BLL.UpdateCardInfo.openDiscount(card)
+                    Dim updateStr As String = BLL.UpdateCardInfo.setDiscount(card, "9折")
+                    Text_temp.Text = httpCon.PostData("https://api.weixin.qq.com/card/update?access_token=" + token.ID, postStr)
+                    Text_temp.Text = httpCon.PostData("https://api.weixin.qq.com/card/membercard/updateuser?access_token=" + token.ID, updateStr)
                 Else
                     GroupBox_topUp.Visible = True
                     Button_openTopUp.Dispose()
-                    txt_balance.Text = card_topup.balance.ToString
+                    txt_balance.Text = card_TopUp.balance.ToString
+                    Text_lastTopUp.Text = trans.time
                     Button_topUp.Enabled = True
                 End If
             Catch
                 MsgBox("数据库损坏，请联系客服")
+                Return
             End Try
+
+            'Read all the info
+            Dim tokenAPI As String = "https://api.weixin.qq.com/card/membercard/userinfo/get?access_token=" + token.ID
+                Try
+                    response = httpCon.PostData(tokenAPI, cardNumber)
+                    testbox.Text = response
+                    pr = CType(JsonConvert.DeserializeObject(response), Object)
+                    If String.Compare(pr("errcode").ToString(), "0") = 0 Then
+                        txt_bonus.Text = pr("bonus").ToString
+                        txt_card_status.Text = pr("user_card_status").ToString
+                    'read users' info
+                    Try
+                            Dim tempUrl As String = "https://api.weixin.qq.com/cgi-bin/user/info?access_token=" + token.ID + "&openid=" + pr("openid").ToString() + "&lang=zh_CN"
+                            userResponse = httpCon.PostData(tempUrl, "")
+                            pr = CType(JsonConvert.DeserializeObject(userResponse), Object)
+                            user.Name = pr("nickname").ToString()
+                            user.openID = pr("openid").ToString
+                            txt_userName.Text = user.Name
+                            '基本信息读取完毕
+                            card.cardNumber = txt_barcode.Text
+                            card.bonus = txt_bonus.Text
+                            card.status = txt_card_status.Text
+                            '获取折扣信息
+                            Dim postStr As String = BLL.UpdateCardInfo.getDetail(card)
+                            pr = CType(JsonConvert.DeserializeObject(httpCon.PostData("https://api.weixin.qq.com/card/get?access_token=" + token.ID, postStr)), Object)
+                            Text_discount.Text = pr("card")("member_card")("discount").ToString
+                            txt_level.Text = "暂未设置会员等级"
+                        Catch
+                            MessageBox.Show("获取用户信息时发生网络错误")
+                            Return
+                        End Try
+                    Else
+                        MessageBox.Show(pr("errmsg").ToString)
+                        Return
+                    End If
+                Catch
+                    MessageBox.Show("网络未连接，请更新WIFI后重试")
+                    Return
+                End Try
+
 
         End If
 
     End Sub
 
     Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button_addLevel.Click
+        Try
+            token.ID = getDataFromLocal.getToken()
+        Catch ex As Exception
+            MsgBox("本地文件异常，请重试")
+        End Try
 
+        'Dim postStr As String = BLL.UpdateCardInfo.getDetail(card)
+        'testbox.Text = postStr
+        'Text_temp.Text = httpCon.PostData("https://api.weixin.qq.com/card/get?access_token=" + token.ID, postStr)
 
-        Dim post_dic As Dictionary(Of String, Object) = New Dictionary(Of String, Object) From {
-               {"card_id", card.ID},
-               {"member_card", New memberCard("C")}
-            }
-        Dim postStr As String = Newtonsoft.Json.JsonConvert.SerializeObject(post_dic)
-        testbox.Text = postStr
-        Text_temp.Text = httpCon.PostData("https://api.weixin.qq.com/card/update?access_token=" + token.ID, postStr)
     End Sub
 
     Private Sub Button_openTopUp_Click(sender As Object, e As EventArgs) Handles Button_openTopUp.Click
-        Dim card_TopUp As New Card
+
         card_TopUp.card_id = card.ID
         card_TopUp.user_name = user.Name
         card_TopUp.open_id = user.openID
         card_TopUp.balance = Decimal.Parse("0.00")
         card_TopUp.store_id = 1
         Dim frm_phone As New FrmRequestInfo(card_TopUp)
+
         '事件完成，判断返回值
         If frm_phone.ShowDialog() = DialogResult.OK Then
             Try
+                Dim db = New Transaction
                 card_TopUp = DAL.dalCard.getSomeCard(card.ID)
-
-                If IsNothing(card_TopUp) Then
+                Dim trans = DAL.dalTrans.findLastTopUp(db, card_TopUp.card_id)
+                If IsNothing(card_TopUp) AndAlso IsNothing(trans) Then
                     MsgBox("数据更新未完成，请重试")
                     Return
                 Else
                     GroupBox_topUp.Visible = True
                     Button_openTopUp.Dispose()
                     txt_balance.Text = card_TopUp.balance.ToString
+                    Text_lastTopUp.Text = trans.time
                     Button_topUp.Enabled = True
                 End If
             Catch
@@ -299,10 +294,29 @@ Partial Public Class FrmAddBook
     End Sub
 
     Private Sub Button_topUp_Click(sender As Object, e As EventArgs) Handles Button_topUp.Click
-        Try
+        'Try
+        Dim frm_topUp As New FrmTopUP(db, card_TopUp)
+        If frm_topUp.ShowDialog = DialogResult.OK Then
+            Try
 
-        Catch ex As Exception
+                card_TopUp = DAL.dalCard.getSomeCard(db, card.ID)
+                Dim trans = DAL.dalTrans.findLastTopUp(db, card_TopUp.card_id)
+                If IsNothing(card_TopUp) AndAlso IsNothing(trans) Then
+                    MsgBox("数据更新未完成，请重试")
+                    Return
+                Else
+                    GroupBox_topUp.Visible = True
+                    Button_openTopUp.Dispose()
+                    txt_balance.Text = card_TopUp.balance.ToString
+                    Text_lastTopUp.Text = trans.time
+                    Button_topUp.Enabled = True
+                End If
+            Catch
+                MsgBox("数据库损坏，请联系客服")
+            End Try
+        End If
+        'Catch ex As Exception
 
-        End Try
+        'End Try
     End Sub
 End Class

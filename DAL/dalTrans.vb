@@ -1,127 +1,52 @@
-﻿Imports System.Collections.Generic
-Imports System.Linq
-Imports System.Text
-Imports System.Data.SqlClient
-Imports System.Data
-Public Class dalTrans
-    Public Shared sql As String = ""
-
-    '添加图书实现
-
-    Public Shared Function AddTrans(ByVal trans As Model.Trans) As Boolean
-        Dim sql As String = "insert into Trans(card_id,U_id,time,trans_money,payer_name,payer_phone) values(@card_id,@U_id,@time,@trans_money,@payer_name,@payer_phone)"
-        '构建sql参数
-
-        Dim parm As SqlParameter() = New SqlParameter() {New SqlParameter("@card_id", SqlDbType.VarChar), New SqlParameter("@U_id", SqlDbType.VarChar), New SqlParameter("@time", SqlDbType.DateTime), New SqlParameter("@trans_money", SqlDbType.Decimal), New SqlParameter("@payer_name", SqlDbType.VarChar), New SqlParameter("@payer_phone", SqlDbType.VarChar)}
-        '给参数赋值
-
-        parm(0).Value = trans.card_id
-        '图书名称
-        parm(1).Value = 
-        '图书所在类别
-        parm(2).Value = Book.price
-        '图书价格
-        parm(3).Value = Book.count
-        '库存
-        parm(4).Value = Book.publish
-        '出版社
-        parm(5).Value = Book.barcode
-        '图书条形码
-        parm(6).Value = Book.bookPhoto
-        '图书图片
-        parm(7).Value = Book.publishDate
-        '出版日期
-        '执行sql进行添加
-
-        Return If((DBHelp.ExecuteNonQuery(sql, parm) > 0), True, False)
-    End Function
-
-    '根据barcode获取某条图书记录
-
-    Public Shared Function getSomeBook(ByVal barcode As String) As Model.Book
-        '构建查询sql
-
-        Dim sql As String = "select * from Book where barcode='" & barcode & "'"
-        Dim DataRead As SqlDataReader = DBHelp.ExecuteReader(sql, Nothing)
-        Dim book As New Model.Book()
-        '如果查询存在记录，就包装到对象中返回
-
-        If DataRead.Read() Then
-            book.bookName = DataRead("bookName").ToString()
-            book.bookType = Convert.ToInt32(DataRead("bookType"))
-            book.price = Single.Parse(DataRead("price").ToString())
-            book.count = Convert.ToInt32(DataRead("count"))
-            book.publish = DataRead("publish").ToString()
-            book.barcode = DataRead("barcode").ToString()
-            book.bookPhoto = DirectCast(DataRead("bookPhoto"), Byte())
-            book.publishDate = Convert.ToDateTime(DataRead("publishDate").ToString())
-        End If
-        DataRead.Close()
-        Return book
-    End Function
-
-    '更新图书实现
-
-    Public Shared Function EditBook(ByVal book As Model.Book) As Boolean
-        Dim sql As String = "update Book set bookName=@bookName,bookType=@bookType,price=@price,count=@count,publish=@publish,bookPhoto=@bookPhoto,publishDate=@publishDate where barcode=@barcode"
-        '构建sql参数信息
-
-        Dim parm As SqlParameter() = New SqlParameter() {New SqlParameter("@bookName", SqlDbType.VarChar), New SqlParameter("@bookType", SqlDbType.Int), New SqlParameter("@price", SqlDbType.Float), New SqlParameter("@count", SqlDbType.Int), New SqlParameter("@publish", SqlDbType.VarChar), New SqlParameter("@bookPhoto", SqlDbType.Image),
-         New SqlParameter("@publishDate", SqlDbType.DateTime), New SqlParameter("@barcode", SqlDbType.VarChar)}
-        '为参数赋值
-
-        parm(0).Value = book.bookName
-        parm(1).Value = book.bookType
-        parm(2).Value = book.price
-        parm(3).Value = book.count
-        parm(4).Value = book.publish
-        parm(5).Value = book.bookPhoto
-        parm(6).Value = book.publishDate
-        parm(7).Value = book.barcode
-        '执行更新
-
-        Return If((DBHelp.ExecuteNonQuery(sql, parm) > 0), True, False)
-    End Function
-
-
-    '删除图书
-
-    Public Shared Function DelBook(ByVal p As String) As Boolean
-        Dim sql As String = ""
-        Dim ids As String() = p.Split(","c)
-        For i As Integer = 0 To ids.Length - 1
-            If i <> ids.Length - 1 Then
-                sql += "'" & ids(i) & "',"
-            Else
-                sql += "'" & ids(i) & "'"
-            End If
-        Next
-        sql = "delete from Book where barcode in (" & sql & ")"
-        Return If(((DBHelp.ExecuteNonQuery(sql, Nothing)) > 0), True, False)
-    End Function
-
-
-    '查询图书
-
-    Public Shared Function GetBook(ByVal PageIndex As Integer, ByVal PageSize As Integer, ByRef PageCount As Integer, ByRef RecordCount As Integer, ByVal strWhere As String) As System.Data.DataTable
+﻿Public Class dalTrans
+    Public Shared Function addTrans(ByRef db As Model.Transaction, ByVal card As Model.Card, ByVal id As Integer, ByVal money As Decimal) As Boolean
         Try
-            Dim strSql As String = " select Book.*,BookType.bookTypeName from Book,BookType where  Book.bookType=BookType.bookTypeId "
-            Dim strShow As String = "barcode as 图书条形码,bookName as 图书名称,bookTypeName as 图书类别,price as 价格,count as 库存,publish as 出版社,convert(char(11),publishDate,20) as 出版日期,bookPhoto as 图书图片"
-
-            Return DAL.DBHelp.ExecutePagerWhenPrimaryIsString(PageIndex, PageSize, "barcode", strShow, strSql, strWhere,
-             " barcode asc ", PageCount, RecordCount)
+            Dim topup As New Trans_TopUp With {
+                    .Card = card,
+                    .time = DateTime.Now,
+                    .payer_name = card.user_name,
+                    .payer_phone = card.customer_phone,
+                    .trans_money = money,
+                    .U_UserInfo = db.U_UserInfo.Where(Function(s) s.U_Id = id).ToList.First}
+            db.Trans_TopUp.Add(topup)
+            db.SaveChanges()
+            Return True
         Catch ex As Exception
-            Throw ex
+            Return False
+        End Try
+
+    End Function
+    Public Shared Function addTrans(ByRef db As Model.Transaction, ByVal card As Model.Card, ByVal id As Integer, ByVal money As Decimal, ByVal payer_name As String, ByVal payer_phone As String) As Boolean
+        Try
+            Dim topUp As New Trans_TopUp With {
+                .Card = card,
+                .time = DateTime.Now,
+                .payer_name = payer_name,
+                .payer_phone = payer_phone,
+                .trans_money = money,
+                .U_UserInfo = db.U_UserInfo.Where(Function(s) s.U_Id = id).ToList.First}
+            db.Trans_TopUp.Add(topUp)
+            db.SaveChanges()
+            Return True
+        Catch ex As Exception
+            Return False
+        End Try
+
+    End Function
+    Public Shared Function findLastTopUp(ByRef db As Transaction, ByVal id As String) As Trans_TopUp
+        Try
+            Return db.Trans_TopUp.Where(Function(s) s.card_id = id).OrderByDescending(Function(s) s.time).First
+        Catch ex As Exception
+            Return Nothing
         End Try
     End Function
+    Public Shared Function findAllTrans(ByRef db As Transaction, ByVal id As String) As Array
 
-
-    Public Shared Function getAllBook() As DataSet
+        Return (From x In db.Trans_TopUp Where x.card_id = id Order By x.time Descending Select x.card_id, x.time, x.Card.user_name).ToArray
+        'db.Trans_TopUp.Where(Function(s) s.card_id = id).Select(New{}).
         Try
-            Dim strSql As String = "select * from Book"
-            Return DBHelp.ExecuteDataSet(strSql, Nothing)
         Catch ex As Exception
-            Throw ex
+            Return Nothing
         End Try
     End Function
 End Class

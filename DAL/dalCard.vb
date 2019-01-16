@@ -5,70 +5,81 @@ Public Class dalCard
 
     '添加图书实现
 
-    Public Shared Function Addcard(ByVal card As Model.Card) As Boolean
-        Dim sql As String = "insert into Card(card_id,user_name,open_id,balance,store_id,customer_phone) values(@card_id,@user_name,@open_id,@balance,@store_id,@customer_phone)"
-        '构建sql参数
+    Public Shared Function Addcard(ByRef db As Model.Transaction, ByVal card As Model.Card) As Boolean
+        'Dim sql As String = "insert into Card(card_id,user_name,open_id,balance,store_id,customer_phone) values(@card_id,@user_name,@open_id,@balance,@store_id,@customer_phone)"
+        ''构建sql参数
 
-        Dim parm As SqlParameter() = New SqlParameter() {New SqlParameter("@card_id", SqlDbType.VarChar), New SqlParameter("@user_name", SqlDbType.VarChar), New SqlParameter("@open_id", SqlDbType.VarChar), New SqlParameter("@balance", SqlDbType.Decimal), New SqlParameter("@store_id", SqlDbType.Int),
-         New SqlParameter("@customer_phone", SqlDbType.VarChar)}
-        '给参数赋值
+        'Dim parm As SqlParameter() = New SqlParameter() {New SqlParameter("@card_id", SqlDbType.VarChar), New SqlParameter("@user_name", SqlDbType.VarChar), New SqlParameter("@open_id", SqlDbType.VarChar), New SqlParameter("@balance", SqlDbType.Decimal), New SqlParameter("@store_id", SqlDbType.Int),
+        ' New SqlParameter("@customer_phone", SqlDbType.VarChar)}
+        ''给参数赋值
 
-        parm(0).Value = card.card_id
-        '图书名称
-        parm(1).Value = card.user_name
-        '图书所在类别
-        parm(2).Value = card.open_id
-        '图书价格
-        parm(3).Value = card.balance
-        '库存
-        parm(4).Value = card.store_id
-        '出版社
-        parm(5).Value = card.customer_phone
+        'parm(0).Value = card.card_id
+        ''图书名称
+        'parm(1).Value = card.user_name
+        ''图书所在类别
+        'parm(2).Value = card.open_id
+        ''图书价格
+        'parm(3).Value = card.balance
+        ''库存
+        'parm(4).Value = card.store_id
+        ''出版社
+        'parm(5).Value = card.customer_phone
 
 
-        Return If((DBHelp.ExecuteNonQuery(sql, parm) > 0), True, False)
+        'Return If((DBHelp.ExecuteNonQuery(sql, parm) > 0), True, False)
+        Try
+
+            db.Card.Add(card)
+            db.SaveChanges()
+            Return True
+        Catch ex As Exception
+            Return False
+        End Try
+
+
     End Function
 
     '根据barcode获取某条图书记录
 
     Public Shared Function getSomeCard(ByVal id As String) As Model.Card
-        '构建查询sql
-        Dim sql As String = "select * from Card where card_id='" & id & "'"
-        Dim DataRead As SqlDataReader = DBHelp.ExecuteReader(sql, Nothing)
-        Dim card As New Model.Card()
-        '如果查询存在记录，就包装到对象中返回
 
-        If DataRead.Read() Then
-            card.store_id = DirectCast(DataRead("store_id"), Integer)
-            card.card_id = DataRead("card_id").ToString()
-            card.user_name = DataRead("user_name").ToString()
-            card.open_id = DataRead("open_id").ToString()
-            card.balance = DirectCast(DataRead("balance"), Decimal)
-            card.customer_phone = DataRead("customer_phone").ToString()
-            'store.store_phone = DirectCast(DataRead("bookPhoto"), Byte())
+        Try
+            Dim db As New Model.Transaction
+            Return db.Card.Where(Function(s) s.card_id = id).First
+        Catch ex As Exception
+            Return Nothing
+        End Try
 
-            Return card
-        End If
-        DataRead.Close()
-        Return Nothing
+
     End Function
 
+    Public Shared Function getSomeCard(ByRef db As Transaction, ByVal id As String) As Model.Card
+
+        Try
+            Return db.Card.Where(Function(s) s.card_id = id).First
+        Catch ex As Exception
+            Return Nothing
+        End Try
+
+
+    End Function
     '更新图书实现
 
-    Public Shared Function EditCard(ByVal card As Model.Card) As Boolean
-        Dim sql As String = "update Card set user_name=@user_name,customer_phone=@customer_phone where card_id=@card_id"
-        '构建sql参数信息
+    'Public Shared Function EditCard(ByRef db As Model.Transaction, ByVal card As Model.Card) As Boolean
+    '    'Dim sql As String = "update Card set user_name=@user_name,customer_phone=@customer_phone where card_id=@card_id"
+    '    ''构建sql参数信息
 
-        Dim parm As SqlParameter() = New SqlParameter() {New SqlParameter("@user_name", SqlDbType.VarChar), New SqlParameter("@customer_phone", SqlDbType.VarChar), New SqlParameter("@card_id", SqlDbType.VarChar)}
-        '为参数赋值
+    '    'Dim parm As SqlParameter() = New SqlParameter() {New SqlParameter("@user_name", SqlDbType.VarChar), New SqlParameter("@customer_phone", SqlDbType.VarChar), New SqlParameter("@card_id", SqlDbType.VarChar)}
+    '    ''为参数赋值
 
-        parm(0).Value = card.user_name
-        parm(1).Value = card.customer_phone
-        parm(3).Value = card.card_id
-        '执行更新
+    '    'parm(0).Value = card.user_name
+    '    'parm(1).Value = card.customer_phone
+    '    'parm(3).Value = card.card_id
+    '    ''执行更新
 
-        Return If((DBHelp.ExecuteNonQuery(sql, parm) > 0), True, False)
-    End Function
+    '    'Return If((DBHelp.ExecuteNonQuery(sql, parm) > 0), True, False)
+    '    Dim original = db.Card.Where(Function(s) s.card_id = card.card_id)
+    'End Function
 
     Public Shared Function EditBalance(ByVal card_id As String, ByVal number As Decimal) As Boolean
         Dim sql As String = "update Card set balance=@balance where card_id=@card_id"

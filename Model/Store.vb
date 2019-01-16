@@ -8,7 +8,7 @@ Imports System.Data.Entity.Spatial
 Partial Public Class Store
     Public Sub New()
         Card = New HashSet(Of Card)()
-        Worker = New HashSet(Of Worker)()
+        U_UserInfo = New HashSet(Of U_UserInfo)()
     End Sub
 
     <Key>
@@ -40,5 +40,5 @@ Partial Public Class Store
 
     Public Overridable Property Card As ICollection(Of Card)
 
-    Public Overridable Property Worker As ICollection(Of Worker)
+    Public Overridable Property U_UserInfo As ICollection(Of U_UserInfo)
 End Class

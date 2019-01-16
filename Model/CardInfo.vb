@@ -29,6 +29,15 @@ Public Class CardInfo
             _status = value
         End Set
     End Property
+    Private _discount As String
+    Public Property discount() As String
+        Get
+            Return _discount
+        End Get
+        Set(ByVal value As String)
+            _discount = value
+        End Set
+    End Property
 
     '图书所在类别
 

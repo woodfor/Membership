@@ -143,7 +143,8 @@ Partial Public Class Frm主面
     End Sub
     '车次
     Private Sub toolStripLabel10_Click(ByVal sender As Object, ByVal e As EventArgs) Handles toolStripLabel10.Click
-
+        Dim frmAddBook As New FrmAddBook()
+        frmAddBook.ShowDialog()
     End Sub
     '站点维护
     Private Sub 站点维护ToolStripMenuItem_Click(ByVal sender As Object, ByVal e As EventArgs)
@@ -213,7 +214,7 @@ Partial Public Class Frm主面
                 Sleep(1000)
             End If
         Next
-        If flag = True Then
+        If flag = False Then
             MessageBox.Show("连接服务器发生错误，请检查网络。如网络未发生异常，请联系客服。")
         End If
     End Sub

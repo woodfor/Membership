@@ -37,7 +37,7 @@
             Text_fstTopUp.Focus()
             Return
         ElseIf Not IsNumeric(Text_fstTopUp.Text.Trim) Then
-            MsgBox("电话号码应当是数字")
+            MsgBox("输入金额应当是数字")
             Text_fstTopUp.Focus()
             Return
         End If
@@ -58,15 +58,18 @@
             MsgBox("需要验证密码")
             Return
         Else
-            Try
-                DAL.dalCard.Addcard(card)
-            Catch ex As Exception
+
+            Dim db As New Model.Transaction
+            If DAL.dalCard.Addcard(db, card) AndAlso
+                DAL.dalTrans.addTrans(db, card, LoginRoler.U_Id， Decimal.Parse(Text_fstTopUp.Text)) Then
+
+                MsgBox("储值服务已开通")
+                Me.DialogResult = DialogResult.OK
+            Else
                 MsgBox("数据库损坏，请联系客服")
                 Return
-            End Try
+            End If
 
-            MsgBox("储值服务已开通")
-            Me.DialogResult = DialogResult.OK
             Me.Close()
         End If
 

@@ -45,7 +45,7 @@ Partial Public Class FrmAuthPrompt
             Dim ds As DataSet = bll.ExistsPwd(lbuser.Text.Trim(), BitConverter.ToString(output).Replace("-", ""))
 
             If ds.Tables(0).Rows.Count > 0 Then
-                MessageBox.Show("解锁成功!", "提示", MessageBoxButtons.OK, MessageBoxIcon.Asterisk)
+                'MessageBox.Show("解锁成功!", "提示", MessageBoxButtons.OK, MessageBoxIcon.Asterisk)
                 Me.result = True
                 Me.Close()
             Else

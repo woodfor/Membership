@@ -46,6 +46,7 @@
     <OptionInfer>On</OptionInfer>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
     <Reference Include="System" />
     <Reference Include="System.configuration" />
     <Reference Include="System.Data" />
@@ -70,6 +71,7 @@
     <Compile Include="dalBookType.vb" />
     <Compile Include="dalCard.vb" />
     <Compile Include="dalStore.vb" />
+    <Compile Include="dalTrans.vb" />
     <Compile Include="DBHelp.vb" />
     <Compile Include="DU_UserInfo.vb" />
     <Compile Include="My Project\AssemblyInfo.vb" />
