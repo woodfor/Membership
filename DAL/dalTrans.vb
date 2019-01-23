@@ -1,4 +1,7 @@
-﻿Public Class dalTrans
+﻿Imports System.Globalization
+Imports System.Reflection
+
+Public Class dalTrans
     Public Shared Function addTrans(ByRef db As Model.Transaction, ByVal card As Model.Card, ByVal id As Integer, ByVal money As Decimal) As Boolean
         Try
             Dim topup As New Trans_TopUp With {
@@ -40,13 +43,16 @@
             Return Nothing
         End Try
     End Function
-    Public Shared Function findAllTrans(ByRef db As Transaction, ByVal id As String) As Array
-
-        Return (From x In db.Trans_TopUp Where x.card_id = id Order By x.time Descending Select x.card_id, x.time, x.Card.user_name).ToArray
-        'db.Trans_TopUp.Where(Function(s) s.card_id = id).Select(New{}).
+    Public Shared Function GetTrans(ByVal PageIndex As Integer, ByVal PageSize As Integer, ByRef PageCount As Integer, ByRef RecordCount As Integer, ByVal strWhere As String) As System.Data.DataTable
         Try
+            Dim strSql As String = " select t.*, c.number, c.user_name, u.U_Name from Trans_TopUp t join Card c on t.card_id=c.card_id join U_UserInfo u on t.U_Id=u.U_Id"
+            Dim strShow As String = "number as 卡号,user_name as 持卡人姓名, U_Name as 办理人姓名, convert(char(11),time,111) as 办理时间, trans_money as 充值金额, payer_phone as 预留电话"
+
+            Return DAL.DBHelp.ExecutePagerWhenPrimaryIsString(PageIndex, PageSize, "card_id", strShow, strSql, strWhere,
+             " time desc ", PageCount, RecordCount)
         Catch ex As Exception
-            Return Nothing
+            Throw ex
         End Try
     End Function
+
 End Class

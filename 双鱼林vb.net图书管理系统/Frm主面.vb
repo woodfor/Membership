@@ -69,7 +69,7 @@ Partial Public Class Frm主面
             '管理员
 
             'toolStripMenuItem2.Visible = False
-            toolStripMenuItem11.Visible = False
+
             toolStripButton1.Visible = False
             toolStripButton2.Visible = False
             toolStripSeparator4.Visible = False
@@ -151,14 +151,14 @@ Partial Public Class Frm主面
         toolStripButton7_Click(sender, e)
     End Sub
     '车次
-    Private Sub toolStripMenuItem12_Click(ByVal sender As Object, ByVal e As EventArgs) Handles toolStripMenuItem12.Click
+    Private Sub toolStripMenuItem12_Click(ByVal sender As Object, ByVal e As EventArgs)
         toolStripLabel10_Click(sender, e)
     End Sub
     'Frm车票查询
     Private Sub toolStripLabel11_Click(ByVal sender As Object, ByVal e As EventArgs) Handles toolStripLabel11.Click
     End Sub
     'Frm车票查询
-    Private Sub 个检信息分析ToolStripMenuItem_Click(ByVal sender As Object, ByVal e As EventArgs) Handles 个检信息分析ToolStripMenuItem.Click
+    Private Sub 个检信息分析ToolStripMenuItem_Click(ByVal sender As Object, ByVal e As EventArgs)
         toolStripLabel11_Click(sender, e)
     End Sub
     '订票记录
@@ -171,6 +171,8 @@ Partial Public Class Frm主面
     End Sub
 
     Private Sub toolStripButton1_Click(ByVal sender As Object, ByVal e As EventArgs) Handles toolStripButton1.Click
+        Dim frm As New FrmRules
+        frm.ShowDialog()
     End Sub
 
     Private Sub 退票记录ToolStripMenuItem_Click(ByVal sender As Object, ByVal e As EventArgs) Handles 退票记录ToolStripMenuItem.Click
@@ -218,6 +220,25 @@ Partial Public Class Frm主面
             MessageBox.Show("连接服务器发生错误，请检查网络。如网络未发生异常，请联系客服。")
         End If
     End Sub
+    Private Sub Frm_closing(sender As Object, e As FormClosingEventArgs) Handles Me.FormClosing
+        If MsgBox("是否退出系统？", vbYesNo + vbQuestion, "提示") = DialogResult.Yes Then
 
+            Dim config As System.Configuration.Configuration = ConfigurationManager.OpenExeConfiguration(ConfigurationUserLevel.None)
+            Dim appSettings As System.Configuration.AppSettingsSection = CType(config.GetSection("appSettings"), System.Configuration.AppSettingsSection)
+            appSettings.Settings("nLevel").Value = Rules.normal_level
+            appSettings.Settings("mLevel").Value = Rules.meidum_level
+            appSettings.Settings("tLevel").Value = Rules.top_level
+            appSettings.Settings("nDis").Value = Rules.normal_discount
+            appSettings.Settings("mDis").Value = Rules.medium_discount
+            appSettings.Settings("tDis").Value = Rules.top_discount
+            config.Save()
+            Application.ExitThread()
+
+        Else
+            e.Cancel = True
+
+        End If
+
+    End Sub
 
 End Class

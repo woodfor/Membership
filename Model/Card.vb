@@ -31,6 +31,10 @@ Partial Public Class Card
     <StringLength(20)>
     Public Property customer_phone As String
 
+    <Required>
+    <StringLength(15)>
+    Public Property number As String
+
     Public Overridable Property Store As Store
 
     Public Overridable Property Trans_TopUp As ICollection(Of Trans_TopUp)

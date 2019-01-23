@@ -23,24 +23,19 @@ Partial Class FrmAddBook
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(FrmAddBook))
-        Me.dtp_publishDate = New System.Windows.Forms.DateTimePicker()
         Me.label9 = New System.Windows.Forms.Label()
-        Me.Btn_Add = New System.Windows.Forms.Button()
         Me.pictureBox_bookPhoto = New System.Windows.Forms.PictureBox()
         Me.label7 = New System.Windows.Forms.Label()
-        Me.txt_publish = New System.Windows.Forms.TextBox()
         Me.txt_balance = New System.Windows.Forms.TextBox()
         Me.label5 = New System.Windows.Forms.Label()
         Me.txt_bonus = New System.Windows.Forms.TextBox()
         Me.label4 = New System.Windows.Forms.Label()
-        Me.cb_bookType = New System.Windows.Forms.ComboBox()
         Me.label3 = New System.Windows.Forms.Label()
         Me.txt_userName = New System.Windows.Forms.TextBox()
         Me.label2 = New System.Windows.Forms.Label()
         Me.txt_barcode = New System.Windows.Forms.TextBox()
         Me.label1 = New System.Windows.Forms.Label()
         Me.txt_card_status = New System.Windows.Forms.TextBox()
-        Me.label10 = New System.Windows.Forms.Label()
         Me.Button_addLevel = New System.Windows.Forms.Button()
         Me.Label8 = New System.Windows.Forms.Label()
         Me.txt_level = New System.Windows.Forms.TextBox()
@@ -51,6 +46,7 @@ Partial Class FrmAddBook
         Me.Text_discount = New System.Windows.Forms.TextBox()
         Me.GroupBox_basicInfo = New System.Windows.Forms.GroupBox()
         Me.GroupBox_level = New System.Windows.Forms.GroupBox()
+        Me.Label13 = New System.Windows.Forms.Label()
         Me.GroupBox_topUp = New System.Windows.Forms.GroupBox()
         Me.Button_topUp = New System.Windows.Forms.Button()
         Me.Text_lastTopUp = New System.Windows.Forms.TextBox()
@@ -60,20 +56,11 @@ Partial Class FrmAddBook
         Me.Button1 = New System.Windows.Forms.Button()
         Me.Button2 = New System.Windows.Forms.Button()
         Me.Button_openTopUp = New System.Windows.Forms.Button()
-        Me.Label13 = New System.Windows.Forms.Label()
         CType(Me.pictureBox_bookPhoto, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.GroupBox_basicInfo.SuspendLayout()
         Me.GroupBox_level.SuspendLayout()
         Me.GroupBox_topUp.SuspendLayout()
         Me.SuspendLayout()
-        '
-        'dtp_publishDate
-        '
-        Me.dtp_publishDate.Location = New System.Drawing.Point(742, 565)
-        Me.dtp_publishDate.Margin = New System.Windows.Forms.Padding(4)
-        Me.dtp_publishDate.Name = "dtp_publishDate"
-        Me.dtp_publishDate.Size = New System.Drawing.Size(172, 25)
-        Me.dtp_publishDate.TabIndex = 37
         '
         'label9
         '
@@ -84,16 +71,6 @@ Partial Class FrmAddBook
         Me.label9.Size = New System.Drawing.Size(90, 15)
         Me.label9.TabIndex = 36
         Me.label9.Text = "会员卡状态:"
-        '
-        'Btn_Add
-        '
-        Me.Btn_Add.Location = New System.Drawing.Point(181, 572)
-        Me.Btn_Add.Margin = New System.Windows.Forms.Padding(4)
-        Me.Btn_Add.Name = "Btn_Add"
-        Me.Btn_Add.Size = New System.Drawing.Size(189, 31)
-        Me.Btn_Add.TabIndex = 35
-        Me.Btn_Add.Text = "添加图书"
-        Me.Btn_Add.UseVisualStyleBackColor = True
         '
         'pictureBox_bookPhoto
         '
@@ -115,14 +92,6 @@ Partial Class FrmAddBook
         Me.label7.Size = New System.Drawing.Size(82, 15)
         Me.label7.TabIndex = 31
         Me.label7.Text = "用户照片："
-        '
-        'txt_publish
-        '
-        Me.txt_publish.Location = New System.Drawing.Point(605, 532)
-        Me.txt_publish.Margin = New System.Windows.Forms.Padding(4)
-        Me.txt_publish.Name = "txt_publish"
-        Me.txt_publish.Size = New System.Drawing.Size(319, 25)
-        Me.txt_publish.TabIndex = 30
         '
         'txt_balance
         '
@@ -162,15 +131,6 @@ Partial Class FrmAddBook
         Me.label4.TabIndex = 25
         Me.label4.Text = "用户积分："
         '
-        'cb_bookType
-        '
-        Me.cb_bookType.FormattingEnabled = True
-        Me.cb_bookType.Location = New System.Drawing.Point(970, 598)
-        Me.cb_bookType.Margin = New System.Windows.Forms.Padding(4)
-        Me.cb_bookType.Name = "cb_bookType"
-        Me.cb_bookType.Size = New System.Drawing.Size(264, 23)
-        Me.cb_bookType.TabIndex = 24
-        '
         'label3
         '
         Me.label3.AutoSize = True
@@ -206,7 +166,7 @@ Partial Class FrmAddBook
         Me.txt_barcode.Margin = New System.Windows.Forms.Padding(4)
         Me.txt_barcode.Name = "txt_barcode"
         Me.txt_barcode.Size = New System.Drawing.Size(264, 25)
-        Me.txt_barcode.TabIndex = 20
+        Me.txt_barcode.TabIndex = 1
         '
         'label1
         '
@@ -227,20 +187,10 @@ Partial Class FrmAddBook
         Me.txt_card_status.Size = New System.Drawing.Size(264, 25)
         Me.txt_card_status.TabIndex = 38
         '
-        'label10
-        '
-        Me.label10.AutoSize = True
-        Me.label10.Location = New System.Drawing.Point(638, 572)
-        Me.label10.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
-        Me.label10.Name = "label10"
-        Me.label10.Size = New System.Drawing.Size(67, 15)
-        Me.label10.TabIndex = 39
-        Me.label10.Text = "开卡日期"
-        '
         'Button_addLevel
         '
         Me.Button_addLevel.Enabled = False
-        Me.Button_addLevel.Location = New System.Drawing.Point(428, 590)
+        Me.Button_addLevel.Location = New System.Drawing.Point(681, 539)
         Me.Button_addLevel.Name = "Button_addLevel"
         Me.Button_addLevel.Size = New System.Drawing.Size(188, 32)
         Me.Button_addLevel.TabIndex = 40
@@ -322,7 +272,7 @@ Partial Class FrmAddBook
         Me.GroupBox_basicInfo.Location = New System.Drawing.Point(69, 17)
         Me.GroupBox_basicInfo.Name = "GroupBox_basicInfo"
         Me.GroupBox_basicInfo.Size = New System.Drawing.Size(413, 402)
-        Me.GroupBox_basicInfo.TabIndex = 48
+        Me.GroupBox_basicInfo.TabIndex = 0
         Me.GroupBox_basicInfo.TabStop = False
         Me.GroupBox_basicInfo.Text = "基本信息"
         '
@@ -341,6 +291,15 @@ Partial Class FrmAddBook
         Me.GroupBox_level.TabIndex = 49
         Me.GroupBox_level.TabStop = False
         Me.GroupBox_level.Text = "等级活动"
+        '
+        'Label13
+        '
+        Me.Label13.AutoSize = True
+        Me.Label13.Location = New System.Drawing.Point(227, 113)
+        Me.Label13.Name = "Label13"
+        Me.Label13.Size = New System.Drawing.Size(22, 15)
+        Me.Label13.TabIndex = 48
+        Me.Label13.Text = "折"
         '
         'GroupBox_topUp
         '
@@ -437,15 +396,6 @@ Partial Class FrmAddBook
         Me.Button_openTopUp.Text = "开启储值服务"
         Me.Button_openTopUp.UseVisualStyleBackColor = True
         '
-        'Label13
-        '
-        Me.Label13.AutoSize = True
-        Me.Label13.Location = New System.Drawing.Point(227, 113)
-        Me.Label13.Name = "Label13"
-        Me.Label13.Size = New System.Drawing.Size(22, 15)
-        Me.Label13.TabIndex = 48
-        Me.Label13.Text = "折"
-        '
         'FrmAddBook
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 15.0!)
@@ -457,15 +407,10 @@ Partial Class FrmAddBook
         Me.Controls.Add(Me.GroupBox_level)
         Me.Controls.Add(Me.GroupBox_basicInfo)
         Me.Controls.Add(Me.TextBox1)
-        Me.Controls.Add(Me.dtp_publishDate)
         Me.Controls.Add(Me.Button_openTopUp)
         Me.Controls.Add(Me.Text_temp)
         Me.Controls.Add(Me.testbox)
         Me.Controls.Add(Me.Button_addLevel)
-        Me.Controls.Add(Me.label10)
-        Me.Controls.Add(Me.Btn_Add)
-        Me.Controls.Add(Me.txt_publish)
-        Me.Controls.Add(Me.cb_bookType)
         Me.Controls.Add(Me.label3)
         Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
         Me.Margin = New System.Windows.Forms.Padding(4)
@@ -485,24 +430,19 @@ Partial Class FrmAddBook
         Me.PerformLayout()
 
     End Sub
-    Private WithEvents dtp_publishDate As System.Windows.Forms.DateTimePicker
     Private WithEvents label9 As System.Windows.Forms.Label
-    Private WithEvents Btn_Add As System.Windows.Forms.Button
     Private WithEvents pictureBox_bookPhoto As System.Windows.Forms.PictureBox
     Private WithEvents label7 As System.Windows.Forms.Label
-    Private WithEvents txt_publish As System.Windows.Forms.TextBox
     Private WithEvents txt_balance As System.Windows.Forms.TextBox
     Private WithEvents label5 As System.Windows.Forms.Label
     Private WithEvents txt_bonus As System.Windows.Forms.TextBox
     Private WithEvents label4 As System.Windows.Forms.Label
-    Private WithEvents cb_bookType As System.Windows.Forms.ComboBox
     Private WithEvents label3 As System.Windows.Forms.Label
     Private WithEvents txt_userName As System.Windows.Forms.TextBox
     Private WithEvents label2 As System.Windows.Forms.Label
     Private WithEvents txt_barcode As System.Windows.Forms.TextBox
     Private WithEvents label1 As System.Windows.Forms.Label
     Private WithEvents txt_card_status As TextBox
-    Private WithEvents label10 As Label
     Friend WithEvents Button_addLevel As Button
     Private WithEvents Label8 As Label
     Private WithEvents txt_level As TextBox

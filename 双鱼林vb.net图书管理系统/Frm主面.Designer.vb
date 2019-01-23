@@ -75,9 +75,6 @@ Partial Class Frm主面
         Me.toolStripMenuItem2 = New System.Windows.Forms.ToolStripMenuItem()
         Me.订票记录ToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.退票记录ToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-        Me.toolStripMenuItem11 = New System.Windows.Forms.ToolStripMenuItem()
-        Me.toolStripMenuItem12 = New System.Windows.Forms.ToolStripMenuItem()
-        Me.个检信息分析ToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.toolStripMenuItem15 = New System.Windows.Forms.ToolStripMenuItem()
         Me.toolStripMenuItem16 = New System.Windows.Forms.ToolStripMenuItem()
         Me.toolStripSeparator11 = New System.Windows.Forms.ToolStripSeparator()
@@ -313,7 +310,7 @@ Partial Class Frm主面
         'menuStrip1
         '
         Me.menuStrip1.ImageScalingSize = New System.Drawing.Size(20, 20)
-        Me.menuStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.toolStripMenuItem3, Me.toolStripMenuItem7, Me.toolStripMenuItem8, Me.toolStripMenuItem9, Me.toolStripMenuItem2, Me.toolStripMenuItem11, Me.toolStripMenuItem15})
+        Me.menuStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.toolStripMenuItem3, Me.toolStripMenuItem7, Me.toolStripMenuItem8, Me.toolStripMenuItem9, Me.toolStripMenuItem2, Me.toolStripMenuItem15})
         Me.menuStrip1.Location = New System.Drawing.Point(0, 0)
         Me.menuStrip1.Name = "menuStrip1"
         Me.menuStrip1.Padding = New System.Windows.Forms.Padding(8, 2, 0, 2)
@@ -331,58 +328,58 @@ Partial Class Frm主面
         'toolStripMenuItem1
         '
         Me.toolStripMenuItem1.Name = "toolStripMenuItem1"
-        Me.toolStripMenuItem1.Size = New System.Drawing.Size(198, 26)
+        Me.toolStripMenuItem1.Size = New System.Drawing.Size(216, 26)
         Me.toolStripMenuItem1.Text = "我的信息"
         '
         'toolStripMenuItem4
         '
         Me.toolStripMenuItem4.Name = "toolStripMenuItem4"
-        Me.toolStripMenuItem4.Size = New System.Drawing.Size(198, 26)
+        Me.toolStripMenuItem4.Size = New System.Drawing.Size(216, 26)
         Me.toolStripMenuItem4.Text = "密码修改"
         '
         'toolStripSeparator8
         '
         Me.toolStripSeparator8.Name = "toolStripSeparator8"
-        Me.toolStripSeparator8.Size = New System.Drawing.Size(195, 6)
+        Me.toolStripSeparator8.Size = New System.Drawing.Size(213, 6)
         '
         'toolStripMenuItem5
         '
         Me.toolStripMenuItem5.Name = "toolStripMenuItem5"
-        Me.toolStripMenuItem5.Size = New System.Drawing.Size(198, 26)
+        Me.toolStripMenuItem5.Size = New System.Drawing.Size(216, 26)
         Me.toolStripMenuItem5.Text = "离开挂起"
         '
         'toolStripSeparator9
         '
         Me.toolStripSeparator9.Name = "toolStripSeparator9"
-        Me.toolStripSeparator9.Size = New System.Drawing.Size(195, 6)
+        Me.toolStripSeparator9.Size = New System.Drawing.Size(213, 6)
         '
         'toolStripMenuItem6
         '
         Me.toolStripMenuItem6.Image = CType(resources.GetObject("toolStripMenuItem6.Image"), System.Drawing.Image)
         Me.toolStripMenuItem6.Name = "toolStripMenuItem6"
         Me.toolStripMenuItem6.ShortcutKeys = CType((System.Windows.Forms.Keys.Control Or System.Windows.Forms.Keys.E), System.Windows.Forms.Keys)
-        Me.toolStripMenuItem6.Size = New System.Drawing.Size(198, 26)
+        Me.toolStripMenuItem6.Size = New System.Drawing.Size(216, 26)
         Me.toolStripMenuItem6.Text = "退出系统"
         '
         'toolStripMenuItem7
         '
         Me.toolStripMenuItem7.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.用户管理ToolStripMenuItem, Me.管理员管理ToolStripMenuItem})
         Me.toolStripMenuItem7.Name = "toolStripMenuItem7"
-        Me.toolStripMenuItem7.Size = New System.Drawing.Size(106, 24)
-        Me.toolStripMenuItem7.Text = "信息管理(&M)"
+        Me.toolStripMenuItem7.Size = New System.Drawing.Size(132, 24)
+        Me.toolStripMenuItem7.Text = "用户信息管理(&U)"
         '
         '用户管理ToolStripMenuItem
         '
         Me.用户管理ToolStripMenuItem.Image = CType(resources.GetObject("用户管理ToolStripMenuItem.Image"), System.Drawing.Image)
         Me.用户管理ToolStripMenuItem.Name = "用户管理ToolStripMenuItem"
-        Me.用户管理ToolStripMenuItem.Size = New System.Drawing.Size(159, 26)
+        Me.用户管理ToolStripMenuItem.Size = New System.Drawing.Size(216, 26)
         Me.用户管理ToolStripMenuItem.Text = "用户管理"
         '
         '管理员管理ToolStripMenuItem
         '
         Me.管理员管理ToolStripMenuItem.Image = CType(resources.GetObject("管理员管理ToolStripMenuItem.Image"), System.Drawing.Image)
         Me.管理员管理ToolStripMenuItem.Name = "管理员管理ToolStripMenuItem"
-        Me.管理员管理ToolStripMenuItem.Size = New System.Drawing.Size(159, 26)
+        Me.管理员管理ToolStripMenuItem.Size = New System.Drawing.Size(216, 26)
         Me.管理员管理ToolStripMenuItem.Text = "管理员管理"
         '
         'toolStripMenuItem8
@@ -434,7 +431,7 @@ Partial Class Frm主面
         '
         Me.订票记录ToolStripMenuItem.Image = CType(resources.GetObject("订票记录ToolStripMenuItem.Image"), System.Drawing.Image)
         Me.订票记录ToolStripMenuItem.Name = "订票记录ToolStripMenuItem"
-        Me.订票记录ToolStripMenuItem.Size = New System.Drawing.Size(144, 26)
+        Me.订票记录ToolStripMenuItem.Size = New System.Drawing.Size(216, 26)
         Me.订票记录ToolStripMenuItem.Text = "店面信息"
         '
         '退票记录ToolStripMenuItem
@@ -443,27 +440,6 @@ Partial Class Frm主面
         Me.退票记录ToolStripMenuItem.Name = "退票记录ToolStripMenuItem"
         Me.退票记录ToolStripMenuItem.Size = New System.Drawing.Size(216, 26)
         Me.退票记录ToolStripMenuItem.Text = "更改规则"
-        '
-        'toolStripMenuItem11
-        '
-        Me.toolStripMenuItem11.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.toolStripMenuItem12, Me.个检信息分析ToolStripMenuItem})
-        Me.toolStripMenuItem11.Name = "toolStripMenuItem11"
-        Me.toolStripMenuItem11.Size = New System.Drawing.Size(100, 24)
-        Me.toolStripMenuItem11.Text = "查询管理(&T)"
-        '
-        'toolStripMenuItem12
-        '
-        Me.toolStripMenuItem12.Image = CType(resources.GetObject("toolStripMenuItem12.Image"), System.Drawing.Image)
-        Me.toolStripMenuItem12.Name = "toolStripMenuItem12"
-        Me.toolStripMenuItem12.Size = New System.Drawing.Size(174, 26)
-        Me.toolStripMenuItem12.Text = "火车车次查询"
-        '
-        '个检信息分析ToolStripMenuItem
-        '
-        Me.个检信息分析ToolStripMenuItem.Image = CType(resources.GetObject("个检信息分析ToolStripMenuItem.Image"), System.Drawing.Image)
-        Me.个检信息分析ToolStripMenuItem.Name = "个检信息分析ToolStripMenuItem"
-        Me.个检信息分析ToolStripMenuItem.Size = New System.Drawing.Size(174, 26)
-        Me.个检信息分析ToolStripMenuItem.Text = "剩余车票查询"
         '
         'toolStripMenuItem15
         '
@@ -477,19 +453,19 @@ Partial Class Frm主面
         Me.toolStripMenuItem16.Image = CType(resources.GetObject("toolStripMenuItem16.Image"), System.Drawing.Image)
         Me.toolStripMenuItem16.Name = "toolStripMenuItem16"
         Me.toolStripMenuItem16.ShortcutKeys = CType((System.Windows.Forms.Keys.Control Or System.Windows.Forms.Keys.H), System.Windows.Forms.Keys)
-        Me.toolStripMenuItem16.Size = New System.Drawing.Size(202, 26)
+        Me.toolStripMenuItem16.Size = New System.Drawing.Size(216, 26)
         Me.toolStripMenuItem16.Text = "使用帮助"
         '
         'toolStripSeparator11
         '
         Me.toolStripSeparator11.Name = "toolStripSeparator11"
-        Me.toolStripSeparator11.Size = New System.Drawing.Size(199, 6)
+        Me.toolStripSeparator11.Size = New System.Drawing.Size(213, 6)
         '
         'toolStripMenuItem17
         '
         Me.toolStripMenuItem17.Name = "toolStripMenuItem17"
         Me.toolStripMenuItem17.ShortcutKeys = CType((System.Windows.Forms.Keys.Control Or System.Windows.Forms.Keys.A), System.Windows.Forms.Keys)
-        Me.toolStripMenuItem17.Size = New System.Drawing.Size(202, 26)
+        Me.toolStripMenuItem17.Size = New System.Drawing.Size(216, 26)
         Me.toolStripMenuItem17.Text = "关于..."
         '
         'Timer2
@@ -572,9 +548,6 @@ Partial Class Frm主面
     Private WithEvents toolStripMenuItem2 As System.Windows.Forms.ToolStripMenuItem
     Private WithEvents 订票记录ToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
     Private WithEvents 退票记录ToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
-    Private WithEvents toolStripMenuItem11 As System.Windows.Forms.ToolStripMenuItem
-    Private WithEvents toolStripMenuItem12 As System.Windows.Forms.ToolStripMenuItem
-    Private WithEvents 个检信息分析ToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
     Private WithEvents toolStripMenuItem15 As System.Windows.Forms.ToolStripMenuItem
     Private WithEvents toolStripMenuItem16 As System.Windows.Forms.ToolStripMenuItem
     Private WithEvents toolStripSeparator11 As System.Windows.Forms.ToolStripSeparator

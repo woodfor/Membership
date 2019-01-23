@@ -305,10 +305,7 @@ Public Class DBHelp
         End If
         Dim m_Conn As SqlConnection = GetConnection
 
-        Try
-            m_Conn.Open()
-        Catch
-        End Try
+
         Dim myVw As String = String.Format(" ( {0} ) tempVw ", queryString)
         Dim cmdCount As New SqlCommand(String.Format(" select count(*) as recordCount from {0} {1}", myVw, whereString), m_Conn)
 

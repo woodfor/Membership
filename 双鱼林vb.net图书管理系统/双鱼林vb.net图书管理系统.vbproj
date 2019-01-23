@@ -120,6 +120,12 @@
     <Compile Include="FrmRequestInfo.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="FrmRules.Designer.vb">
+      <DependentUpon>FrmRules.vb</DependentUpon>
+    </Compile>
+    <Compile Include="FrmRules.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="FrmStore.Designer.vb">
       <DependentUpon>FrmStore.vb</DependentUpon>
     </Compile>
@@ -239,6 +245,7 @@
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
     <Compile Include="Program.vb" />
+    <Compile Include="Rules.vb" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="FrmAllStore.resx">
@@ -246,6 +253,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FrmRequestInfo.resx">
       <DependentUpon>FrmRequestInfo.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmRules.resx">
+      <DependentUpon>FrmRules.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FrmStore.resx">
       <DependentUpon>FrmStore.vb</DependentUpon>

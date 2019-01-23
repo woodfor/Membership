@@ -26,27 +26,25 @@ Partial Class FrmQueryBook
         Me.Btn_Query = New System.Windows.Forms.Button()
         Me.dataGridView_Book = New System.Windows.Forms.DataGridView()
         Me.HPageSize = New System.Windows.Forms.TextBox()
-        Me.dtp_publishDate = New System.Windows.Forms.DateTimePicker()
         Me.HNowPage = New System.Windows.Forms.TextBox()
-        Me.txt_publishDate = New System.Windows.Forms.TextBox()
         Me.HWhere = New System.Windows.Forms.TextBox()
-        Me.cb_bookType = New System.Windows.Forms.ComboBox()
         Me.HAllPage = New System.Windows.Forms.TextBox()
         Me.label4 = New System.Windows.Forms.Label()
-        Me.label3 = New System.Windows.Forms.Label()
-        Me.Btn_Update = New System.Windows.Forms.Button()
+        Me.labelx = New System.Windows.Forms.Label()
         Me.txt_bookName = New System.Windows.Forms.TextBox()
         Me.label2 = New System.Windows.Forms.Label()
         Me.HSelectID = New System.Windows.Forms.TextBox()
         Me.txt_barcode = New System.Windows.Forms.TextBox()
         Me.LBEnd = New System.Windows.Forms.Button()
-        Me.Btn_Del = New System.Windows.Forms.Button()
         Me.label1 = New System.Windows.Forms.Label()
         Me.LBNext = New System.Windows.Forms.Button()
         Me.LBUp = New System.Windows.Forms.Button()
         Me.LBHome = New System.Windows.Forms.Button()
         Me.PageMes = New System.Windows.Forms.Label()
         Me.groupBox1 = New System.Windows.Forms.GroupBox()
+        Me.txt_date = New System.Windows.Forms.TextBox()
+        Me.DateTimePicker1 = New System.Windows.Forms.DateTimePicker()
+        Me.txt_phone = New System.Windows.Forms.TextBox()
         CType(Me.dataGridView_Book, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.groupBox1.SuspendLayout()
         Me.SuspendLayout()
@@ -82,14 +80,6 @@ Partial Class FrmQueryBook
         Me.HPageSize.Text = "5"
         Me.HPageSize.Visible = False
         '
-        'dtp_publishDate
-        '
-        Me.dtp_publishDate.Location = New System.Drawing.Point(779, 71)
-        Me.dtp_publishDate.Margin = New System.Windows.Forms.Padding(4)
-        Me.dtp_publishDate.Name = "dtp_publishDate"
-        Me.dtp_publishDate.Size = New System.Drawing.Size(20, 25)
-        Me.dtp_publishDate.TabIndex = 8
-        '
         'HNowPage
         '
         Me.HNowPage.Location = New System.Drawing.Point(197, 564)
@@ -100,14 +90,6 @@ Partial Class FrmQueryBook
         Me.HNowPage.Text = "1"
         Me.HNowPage.Visible = False
         '
-        'txt_publishDate
-        '
-        Me.txt_publishDate.Location = New System.Drawing.Point(603, 71)
-        Me.txt_publishDate.Margin = New System.Windows.Forms.Padding(4)
-        Me.txt_publishDate.Name = "txt_publishDate"
-        Me.txt_publishDate.Size = New System.Drawing.Size(172, 25)
-        Me.txt_publishDate.TabIndex = 7
-        '
         'HWhere
         '
         Me.HWhere.Location = New System.Drawing.Point(143, 564)
@@ -116,15 +98,6 @@ Partial Class FrmQueryBook
         Me.HWhere.Size = New System.Drawing.Size(73, 25)
         Me.HWhere.TabIndex = 22
         Me.HWhere.Visible = False
-        '
-        'cb_bookType
-        '
-        Me.cb_bookType.FormattingEnabled = True
-        Me.cb_bookType.Location = New System.Drawing.Point(103, 66)
-        Me.cb_bookType.Margin = New System.Windows.Forms.Padding(4)
-        Me.cb_bookType.Name = "cb_bookType"
-        Me.cb_bookType.Size = New System.Drawing.Size(192, 23)
-        Me.cb_bookType.TabIndex = 5
         '
         'HAllPage
         '
@@ -146,30 +119,19 @@ Partial Class FrmQueryBook
         Me.label4.TabIndex = 6
         Me.label4.Text = "充值日期："
         '
-        'label3
+        'labelx
         '
-        Me.label3.AutoSize = True
-        Me.label3.Location = New System.Drawing.Point(8, 75)
-        Me.label3.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
-        Me.label3.Name = "label3"
-        Me.label3.Size = New System.Drawing.Size(82, 15)
-        Me.label3.TabIndex = 4
-        Me.label3.Text = "图书类别："
-        '
-        'Btn_Update
-        '
-        Me.Btn_Update.Enabled = False
-        Me.Btn_Update.Location = New System.Drawing.Point(372, 566)
-        Me.Btn_Update.Margin = New System.Windows.Forms.Padding(4)
-        Me.Btn_Update.Name = "Btn_Update"
-        Me.Btn_Update.Size = New System.Drawing.Size(101, 26)
-        Me.Btn_Update.TabIndex = 26
-        Me.Btn_Update.Text = "查看/编辑"
-        Me.Btn_Update.UseVisualStyleBackColor = True
+        Me.labelx.AutoSize = True
+        Me.labelx.Location = New System.Drawing.Point(23, 76)
+        Me.labelx.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
+        Me.labelx.Name = "labelx"
+        Me.labelx.Size = New System.Drawing.Size(82, 15)
+        Me.labelx.TabIndex = 4
+        Me.labelx.Text = "预留电话："
         '
         'txt_bookName
         '
-        Me.txt_bookName.Location = New System.Drawing.Point(603, 22)
+        Me.txt_bookName.Location = New System.Drawing.Point(603, 26)
         Me.txt_bookName.Margin = New System.Windows.Forms.Padding(4)
         Me.txt_bookName.Name = "txt_bookName"
         Me.txt_bookName.Size = New System.Drawing.Size(196, 25)
@@ -178,7 +140,7 @@ Partial Class FrmQueryBook
         'label2
         '
         Me.label2.AutoSize = True
-        Me.label2.Location = New System.Drawing.Point(508, 29)
+        Me.label2.Location = New System.Drawing.Point(542, 32)
         Me.label2.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.label2.Name = "label2"
         Me.label2.Size = New System.Drawing.Size(52, 15)
@@ -196,7 +158,7 @@ Partial Class FrmQueryBook
         '
         'txt_barcode
         '
-        Me.txt_barcode.Location = New System.Drawing.Point(105, 25)
+        Me.txt_barcode.Location = New System.Drawing.Point(113, 26)
         Me.txt_barcode.Margin = New System.Windows.Forms.Padding(4)
         Me.txt_barcode.Name = "txt_barcode"
         Me.txt_barcode.Size = New System.Drawing.Size(189, 25)
@@ -213,21 +175,10 @@ Partial Class FrmQueryBook
         Me.LBEnd.Text = "尾页"
         Me.LBEnd.UseVisualStyleBackColor = True
         '
-        'Btn_Del
-        '
-        Me.Btn_Del.Enabled = False
-        Me.Btn_Del.Location = New System.Drawing.Point(481, 564)
-        Me.Btn_Del.Margin = New System.Windows.Forms.Padding(4)
-        Me.Btn_Del.Name = "Btn_Del"
-        Me.Btn_Del.Size = New System.Drawing.Size(95, 30)
-        Me.Btn_Del.TabIndex = 27
-        Me.Btn_Del.Text = "删除记录"
-        Me.Btn_Del.UseVisualStyleBackColor = True
-        '
         'label1
         '
         Me.label1.AutoSize = True
-        Me.label1.Location = New System.Drawing.Point(23, 32)
+        Me.label1.Location = New System.Drawing.Point(38, 29)
         Me.label1.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.label1.Name = "label1"
         Me.label1.Size = New System.Drawing.Size(67, 15)
@@ -279,12 +230,12 @@ Partial Class FrmQueryBook
         '
         'groupBox1
         '
+        Me.groupBox1.Controls.Add(Me.txt_date)
+        Me.groupBox1.Controls.Add(Me.DateTimePicker1)
+        Me.groupBox1.Controls.Add(Me.txt_phone)
         Me.groupBox1.Controls.Add(Me.Btn_Query)
-        Me.groupBox1.Controls.Add(Me.dtp_publishDate)
-        Me.groupBox1.Controls.Add(Me.txt_publishDate)
         Me.groupBox1.Controls.Add(Me.label4)
-        Me.groupBox1.Controls.Add(Me.cb_bookType)
-        Me.groupBox1.Controls.Add(Me.label3)
+        Me.groupBox1.Controls.Add(Me.labelx)
         Me.groupBox1.Controls.Add(Me.txt_bookName)
         Me.groupBox1.Controls.Add(Me.label2)
         Me.groupBox1.Controls.Add(Me.txt_barcode)
@@ -298,6 +249,31 @@ Partial Class FrmQueryBook
         Me.groupBox1.TabStop = False
         Me.groupBox1.Text = "设置查询条件"
         '
+        'txt_date
+        '
+        Me.txt_date.Location = New System.Drawing.Point(603, 73)
+        Me.txt_date.Margin = New System.Windows.Forms.Padding(4)
+        Me.txt_date.Name = "txt_date"
+        Me.txt_date.Size = New System.Drawing.Size(196, 25)
+        Me.txt_date.TabIndex = 12
+        '
+        'DateTimePicker1
+        '
+        Me.DateTimePicker1.CustomFormat = "yyyy/MM/dd"
+        Me.DateTimePicker1.Format = System.Windows.Forms.DateTimePickerFormat.Custom
+        Me.DateTimePicker1.Location = New System.Drawing.Point(797, 73)
+        Me.DateTimePicker1.Name = "DateTimePicker1"
+        Me.DateTimePicker1.Size = New System.Drawing.Size(21, 25)
+        Me.DateTimePicker1.TabIndex = 11
+        '
+        'txt_phone
+        '
+        Me.txt_phone.Location = New System.Drawing.Point(113, 71)
+        Me.txt_phone.Margin = New System.Windows.Forms.Padding(4)
+        Me.txt_phone.Name = "txt_phone"
+        Me.txt_phone.Size = New System.Drawing.Size(189, 25)
+        Me.txt_phone.TabIndex = 10
+        '
         'FrmQueryBook
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 15.0!)
@@ -308,10 +284,8 @@ Partial Class FrmQueryBook
         Me.Controls.Add(Me.HNowPage)
         Me.Controls.Add(Me.HWhere)
         Me.Controls.Add(Me.HAllPage)
-        Me.Controls.Add(Me.Btn_Update)
         Me.Controls.Add(Me.HSelectID)
         Me.Controls.Add(Me.LBEnd)
-        Me.Controls.Add(Me.Btn_Del)
         Me.Controls.Add(Me.LBNext)
         Me.Controls.Add(Me.LBUp)
         Me.Controls.Add(Me.LBHome)
@@ -334,25 +308,23 @@ Partial Class FrmQueryBook
     Private WithEvents Btn_Query As System.Windows.Forms.Button
     Private WithEvents dataGridView_Book As System.Windows.Forms.DataGridView
     Private WithEvents HPageSize As System.Windows.Forms.TextBox
-    Private WithEvents dtp_publishDate As System.Windows.Forms.DateTimePicker
     Private WithEvents HNowPage As System.Windows.Forms.TextBox
-    Private WithEvents txt_publishDate As System.Windows.Forms.TextBox
     Private WithEvents HWhere As System.Windows.Forms.TextBox
-    Private WithEvents cb_bookType As System.Windows.Forms.ComboBox
     Private WithEvents HAllPage As System.Windows.Forms.TextBox
     Private WithEvents label4 As System.Windows.Forms.Label
-    Private WithEvents label3 As System.Windows.Forms.Label
-    Private WithEvents Btn_Update As System.Windows.Forms.Button
+    Private WithEvents labelx As System.Windows.Forms.Label
     Private WithEvents txt_bookName As System.Windows.Forms.TextBox
     Private WithEvents label2 As System.Windows.Forms.Label
     Private WithEvents HSelectID As System.Windows.Forms.TextBox
     Private WithEvents txt_barcode As System.Windows.Forms.TextBox
     Private WithEvents LBEnd As System.Windows.Forms.Button
-    Private WithEvents Btn_Del As System.Windows.Forms.Button
     Private WithEvents label1 As System.Windows.Forms.Label
     Private WithEvents LBNext As System.Windows.Forms.Button
     Private WithEvents LBUp As System.Windows.Forms.Button
     Private WithEvents LBHome As System.Windows.Forms.Button
     Private WithEvents PageMes As System.Windows.Forms.Label
     Private WithEvents groupBox1 As System.Windows.Forms.GroupBox
+    Private WithEvents txt_phone As TextBox
+    Friend WithEvents DateTimePicker1 As DateTimePicker
+    Private WithEvents txt_date As TextBox
 End Class

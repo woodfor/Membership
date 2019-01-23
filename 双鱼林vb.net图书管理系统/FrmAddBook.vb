@@ -44,62 +44,6 @@ Partial Public Class FrmAddBook
     '    End Try
     'End Sub
 
-    Private Sub Btn_Add_Click(ByVal sender As Object, ByVal e As EventArgs) Handles Btn_Add.Click
-        If Me.txt_barcode.Text = "" Then
-            MessageBox.Show("条形码输入不能为空!")
-            Me.txt_barcode.Focus()
-            Return
-        End If
-
-
-        'book.barcode = Me.txt_barcode.Text
-        ''图书条形码
-        'If Me.txt_bookName.Text = "" Then
-        '    MessageBox.Show("图书名称输入不能为空!")
-        '    Me.txt_bookName.Focus()
-        '    Return
-        'End If
-        'book.bookName = Me.txt_bookName.Text
-        ''图书名称
-
-        'book.bookType = Int32.Parse(Me.cb_bookType.SelectedValue.ToString())
-        ''图书类别
-        'Try
-        '    '图书价格
-        '    book.price = Convert.ToSingle(Me.txt_price.Text)
-        'Catch
-        '    MessageBox.Show("图书价格请输入正确的格式!")
-        '    Me.txt_price.SelectAll()
-        '    Me.txt_price.Focus()
-        '    Return
-        'End Try
-
-        'Try
-        '    '图书库存
-        '    book.count = Convert.ToInt32(Me.txt_count.Text)
-        'Catch
-        '    MessageBox.Show("图书库存请输入正确的格式!")
-        '    Me.txt_count.SelectAll()
-        '    Me.txt_count.Focus()
-        '    Return
-        'End Try
-
-        'book.publish = Me.txt_publish.Text
-        ''出版社
-        'book.publishDate = Me.dtp_publishDate.Value
-
-
-
-        'If BLL.bllBook.AddBook(book) Then
-        '    MessageBox.Show("图书添加成功!")
-        'Else
-        '    MessageBox.Show("图书添加失败!")
-        'End If
-
-        'Me.Close()
-
-
-    End Sub
 
 
     Private Sub FrmAddBook_Load(ByVal sender As Object, ByVal e As EventArgs) Handles MyBase.Load
@@ -141,7 +85,7 @@ Partial Public Class FrmAddBook
         Dim fs As New FileStream("pic/NoImage.jpg", FileMode.Open, FileAccess.Read)
         Dim bw As New BinaryReader(fs)
         book.bookPhoto = bw.ReadBytes(CInt(fs.Length))
-        txt_barcode.Focus()
+        txt_barcode.TabIndex = 0
 
 
     End Sub
@@ -184,16 +128,22 @@ Partial Public Class FrmAddBook
             End Try
 
             '读取储值数据库
+
+
+
+
             Try
-                card_TopUp = DAL.dalCard.getSomeCard(db, card.ID)
-                Dim trans = DAL.dalTrans.findLastTopUp(db, card_TopUp.card_id)
-                If IsNothing(card_TopUp) Then
+                Dim tmpCard As New Card
+                tmpCard = DAL.dalCard.getSomeCard(db, card.ID)
+                If IsNothing(tmpCard) Then
                     Button_openTopUp.Enabled = True
                     Dim postStr As String = BLL.UpdateCardInfo.openDiscount(card)
                     Dim updateStr As String = BLL.UpdateCardInfo.setDiscount(card, "9折")
                     Text_temp.Text = httpCon.PostData("https://api.weixin.qq.com/card/update?access_token=" + token.ID, postStr)
                     Text_temp.Text = httpCon.PostData("https://api.weixin.qq.com/card/membercard/updateuser?access_token=" + token.ID, updateStr)
                 Else
+                    card_TopUp = tmpCard
+                    Dim trans = DAL.dalTrans.findLastTopUp(db, card_TopUp.card_id)
                     GroupBox_topUp.Visible = True
                     Button_openTopUp.Dispose()
                     txt_balance.Text = card_TopUp.balance.ToString
@@ -265,6 +215,7 @@ Partial Public Class FrmAddBook
     Private Sub Button_openTopUp_Click(sender As Object, e As EventArgs) Handles Button_openTopUp.Click
 
         card_TopUp.card_id = card.ID
+        card_TopUp.number = card.cardNumber
         card_TopUp.user_name = user.Name
         card_TopUp.open_id = user.openID
         card_TopUp.balance = Decimal.Parse("0.00")
@@ -274,8 +225,7 @@ Partial Public Class FrmAddBook
         '事件完成，判断返回值
         If frm_phone.ShowDialog() = DialogResult.OK Then
             Try
-                Dim db = New Transaction
-                card_TopUp = DAL.dalCard.getSomeCard(card.ID)
+                card_TopUp = DAL.dalCard.getSomeCard(db, card.ID)
                 Dim trans = DAL.dalTrans.findLastTopUp(db, card_TopUp.card_id)
                 If IsNothing(card_TopUp) AndAlso IsNothing(trans) Then
                     MsgBox("数据更新未完成，请重试")

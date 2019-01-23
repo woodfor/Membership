@@ -40,6 +40,10 @@ Partial Public Class Transaction
             .IsUnicode(False)
 
         modelBuilder.Entity(Of Card)() _
+            .Property(Function(e) e.number) _
+            .IsUnicode(False)
+
+        modelBuilder.Entity(Of Card)() _
             .HasMany(Function(e) e.Trans_TopUp) _
             .WithRequired(Function(e) e.Card) _
             .WillCascadeOnDelete(False)

@@ -18,182 +18,101 @@ Partial Public Class FrmQueryBook
         InitializeComponent()
     End Sub
 
-    Private Sub dtp_publishDate_ValueChanged(ByVal sender As Object, ByVal e As EventArgs) Handles dtp_publishDate.ValueChanged
-        Me.txt_publishDate.Text = Me.dtp_publishDate.Value.ToShortDateString()
-
-    End Sub
-    Private Sub txt_publishDate_DoubleClick(ByVal sender As Object, ByVal e As EventArgs) Handles txt_publishDate.DoubleClick
-        Me.txt_publishDate.Text = ""
-    End Sub
 
     Private Sub Btn_Query_Click(ByVal sender As Object, ByVal e As EventArgs) Handles Btn_Query.Click
         Dim sqlstr As String = " where 1=1 "
-        If Me.txt_bookName.Text <> "" Then
-            sqlstr += "  and bookName like '%" & Convert.ToString(Me.txt_bookName.Text) & "%'"
+        If Me.txt_bookName.Text.Trim <> "" Then
+            sqlstr += "  and user_name like '%" & Convert.ToString(Me.txt_bookName.Text.Trim) & "%'"
         End If
-        If Me.cb_bookType.SelectedValue.ToString() <> "0" Then
-            sqlstr += "  and bookType=" & Me.cb_bookType.SelectedValue.ToString()
+        If Me.txt_phone.Text.Trim <> "0" Then
+            sqlstr += "  and payer_phone like '%" & Convert.ToString(Me.txt_phone.Text.Trim) & "%'"
         End If
-        If Me.txt_barcode.Text <> "" Then
-            sqlstr += "  and barcode like '%" & Convert.ToString(Me.txt_barcode.Text) & "%'"
+        If Me.txt_barcode.Text.Trim <> "" Then
+            sqlstr += "  and number like '%" & Convert.ToString(Me.txt_barcode.Text.Trim) & "%'"
         End If
-        If Me.txt_publishDate.Text <> "" Then
-            sqlstr += "  and convert(char(11),publishDate,20) ='" & Convert.ToString(Me.txt_publishDate.Text) & "'"
+        If Me.DateTimePicker1.Text.Trim <> "" Then
+            sqlstr += "  and convert(char(11),time,111) ='" & Convert.ToString(Me.DateTimePicker1.Text.Trim) & "'"
         End If
         HWhere.Text = sqlstr
-        'BindData("")
+        BindData("")
     End Sub
 
 
-    'Public Sub BindData(ByVal strClass As String)
-    '    Dim DataCount As Integer = 0
-    '    Dim NowPage As Integer = 1
-    '    Dim AllPage As Integer = 0
-    '    Dim PageSize As Integer = Convert.ToInt32(HPageSize.Text)
-    '    Select Case strClass
-    '        Case "next"
-    '            NowPage = Convert.ToInt32(HNowPage.Text) + 1
-    '            Exit Select
-    '        Case "up"
-    '            NowPage = Convert.ToInt32(HNowPage.Text) - 1
-    '            Exit Select
-    '        Case "end"
-    '            NowPage = Convert.ToInt32(HAllPage.Text)
-    '            Exit Select
-    '        Case "refresh"
-    '            NowPage = Convert.ToInt32(HNowPage.Text)
-    '            Exit Select
-    '        Case Else
-    '            Exit Select
-    '    End Select
-    '    Dim dsLog As DataTable = BLL.bllBook.GetBook(NowPage, PageSize, AllPage, DataCount, HWhere.Text)
-    '    If dsLog.Rows.Count = 0 OrElse AllPage = 1 Then
-    '        LBEnd.Enabled = False
-    '        LBHome.Enabled = False
-    '        LBNext.Enabled = False
-    '        LBUp.Enabled = False
-    '    ElseIf NowPage = 1 Then
-    '        LBHome.Enabled = False
-    '        LBUp.Enabled = False
-    '        LBNext.Enabled = True
-    '        LBEnd.Enabled = True
-    '    ElseIf NowPage = AllPage Then
-    '        LBHome.Enabled = True
-    '        LBUp.Enabled = True
-    '        LBNext.Enabled = False
-    '        LBEnd.Enabled = False
-    '    Else
-    '        LBEnd.Enabled = True
-    '        LBHome.Enabled = True
-    '        LBNext.Enabled = True
-    '        LBUp.Enabled = True
-    '    End If
-    '    Me.dataGridView_Book.DataSource = dsLog.DefaultView
-    '    PageMes.Text = String.Format("[每页{0}条 第{1}页／共{2}页   共{3}条]", PageSize, NowPage, AllPage, DataCount)
-    '    HNowPage.Text = NowPage.ToString() 'Convert.ToString(System.Math.Max(System.Threading.Interlocked.Increment(NowPage), NowPage - 1))
-    '    HAllPage.Text = AllPage.ToString()
+    Public Sub BindData(ByVal strClass As String)
+        Dim DataCount As Integer = 0
+        Dim NowPage As Integer = 1
+        Dim AllPage As Integer = 0
+        Dim PageSize As Integer = Convert.ToInt32(HPageSize.Text)
+        Select Case strClass
+            Case "next"
+                NowPage = Convert.ToInt32(HNowPage.Text) + 1
+                Exit Select
+            Case "up"
+                NowPage = Convert.ToInt32(HNowPage.Text) - 1
+                Exit Select
+            Case "end"
+                NowPage = Convert.ToInt32(HAllPage.Text)
+                Exit Select
+            Case "refresh"
+                NowPage = Convert.ToInt32(HNowPage.Text)
+                Exit Select
+            Case Else
+                Exit Select
+        End Select
+        Dim dsLog As DataTable = DAL.dalTrans.GetTrans(NowPage, PageSize, AllPage, DataCount, HWhere.Text)
+        If dsLog.Rows.Count = 0 OrElse AllPage = 1 Then
+            LBEnd.Enabled = False
+            LBHome.Enabled = False
+            LBNext.Enabled = False
+            LBUp.Enabled = False
+        ElseIf NowPage = 1 Then
+            LBHome.Enabled = False
+            LBUp.Enabled = False
+            LBNext.Enabled = True
+            LBEnd.Enabled = True
+        ElseIf NowPage = AllPage Then
+            LBHome.Enabled = True
+            LBUp.Enabled = True
+            LBNext.Enabled = False
+            LBEnd.Enabled = False
+        Else
+            LBEnd.Enabled = True
+            LBHome.Enabled = True
+            LBNext.Enabled = True
+            LBUp.Enabled = True
+        End If
+        Me.dataGridView_Book.DataSource = dsLog.DefaultView
+        PageMes.Text = String.Format("[每页{0}条 第{1}页／共{2}页   共{3}条]", PageSize, NowPage, AllPage, DataCount)
+        HNowPage.Text = NowPage.ToString() 'Convert.ToString(System.Math.Max(System.Threading.Interlocked.Increment(NowPage), NowPage - 1))
+        HAllPage.Text = AllPage.ToString()
 
-    '    If dsLog.Rows.Count > 0 Then
-    '        Me.Btn_Update.Enabled = True
-    '        Me.Btn_Del.Enabled = True
-    '    Else
-    '        Me.Btn_Update.Enabled = False
-    '        Me.Btn_Del.Enabled = False
-    '    End If
-    'End Sub
+
+    End Sub
 
     '开始加载窗体后
 
     Private Sub FrmQueryBook_Load(ByVal sender As Object, ByVal e As EventArgs) Handles MyBase.Load
-        ''查询所有的图书类别
-        'Dim bookTypeDs As DataSet = BLL.bllBookType.getAllBookType()
+        DateTimePicker1.CustomFormat = "yyyy/MM/dd"
+        DateTimePicker1.Format = DateTimePickerFormat.Custom
 
-        'Dim newDataTable As New DataTable()
-        'newDataTable.Columns.Add("bookTypeId")
-        'newDataTable.Columns.Add("bookTypeName")
-
-        'For Each oldDR As DataRow In bookTypeDs.Tables(0).Rows
-        '    Dim newDR As DataRow = newDataTable.NewRow()
-        '    newDR(0) = oldDR("bookTypeId").ToString()
-        '    newDR(1) = oldDR("bookTypeName").ToString()
-        '    newDataTable.Rows.InsertAt(newDR, newDataTable.Rows.Count)
-        'Next
-
-        '' Add your 'Select an item' option at the top  
-        'Dim dr As DataRow = newDataTable.NewRow()
-        'dr(0) = "0"
-        'dr(1) = "不限制"
-        'newDataTable.Rows.InsertAt(dr, 0)
-
-        'Me.cb_bookType.DataSource = newDataTable
-        'Me.cb_bookType.DisplayMember = "bookTypeName"
-        'Me.cb_bookType.ValueMember = "bookTypeId"
 
     End Sub
 
-    Private Sub txt_barcode_TextChanged(sender As Object, e As EventArgs) Handles txt_barcode.TextChanged
-        Dim db As New Transaction
-        Dim cardNumber As String
-        Dim pr As JObject
-        If txt_barcode.Text.Length = 12 Then
-            Try
-                token.ID = getDataFromLocal.getToken()
-                Dim dic As Dictionary(Of String, Object) = New Dictionary(Of String, Object) From {
-                {"code", txt_barcode.Text}}
-
-                cardNumber = Newtonsoft.Json.JsonConvert.SerializeObject(dic)
-
-                pr = CType(JsonConvert.DeserializeObject(httpCon.PostData("https://api.weixin.qq.com/card/code/get?access_token=" + token.ID, cardNumber)), Object)
-                If String.Compare(pr("errcode").ToString(), "0") = 0 Then
-
-                    Card.ID = pr("card")("card_id").ToString()
-                Else
-                    MessageBox.Show("卡片信息不正确，请重新扫描")
-                    Return
-                End If
-            Catch ex As Exception
-                If GetToken.GetToken() = True Then
-                    txt_barcode_TextChanged(Nothing, Nothing)
-                Else
-                    If MessageBox.Show("连接服务器发生错误，请检查网络。如网络未发生异常，请联系客服。点击OK重试，点击Cancel取消操作。 ",
-                        "服务器错误",
-                        MessageBoxButtons.OKCancel,
-                        MessageBoxIcon.Information,
-                        MessageBoxDefaultButton.Button1) = Windows.Forms.DialogResult.OK Then
-                        txt_barcode_TextChanged(Nothing, Nothing)
-                    Else
-
-                    End If
-                End If
-                Return
-            End Try
-            Try
-                dataGridView_Book.DataSource = DAL.dalTrans.findAllTrans(db, card.ID)
-                dataGridView_Book.AutoSize = True
-                dataGridView_Book.Show()
-            Catch ex As Exception
-                MsgBox("数据库查询出现异常")
-                Return
-            End Try
-
-        End If
+    Private Sub LBHome_Click(ByVal sender As Object, ByVal e As EventArgs) Handles LBHome.Click
+        BindData("")
     End Sub
 
-    'Private Sub LBHome_Click(ByVal sender As Object, ByVal e As EventArgs) Handles LBHome.Click
-    '    BindData("")
-    'End Sub
+    Private Sub LBUp_Click(ByVal sender As Object, ByVal e As EventArgs) Handles LBUp.Click
+        BindData("up")
+    End Sub
 
-    'Private Sub LBUp_Click(ByVal sender As Object, ByVal e As EventArgs) Handles LBUp.Click
-    '    BindData("up")
-    'End Sub
+    Private Sub LBNext_Click(ByVal sender As Object, ByVal e As EventArgs) Handles LBNext.Click
+        BindData("next")
+    End Sub
 
-    'Private Sub LBNext_Click(ByVal sender As Object, ByVal e As EventArgs) Handles LBNext.Click
-    '    BindData("next")
-    'End Sub
-
-    'Private Sub LBEnd_Click(ByVal sender As Object, ByVal e As EventArgs) Handles LBEnd.Click
-    '    BindData("end")
-    'End Sub
+    Private Sub LBEnd_Click(ByVal sender As Object, ByVal e As EventArgs) Handles LBEnd.Click
+        BindData("end")
+    End Sub
 
     'Private Sub Btn_Update_Click(ByVal sender As Object, ByVal e As EventArgs) Handles Btn_Update.Click
     '    If DirectCast(dataGridView_Book.SelectedRows, System.Windows.Forms.BaseCollection).Count <> 1 Then
@@ -223,5 +142,11 @@ Partial Public Class FrmQueryBook
     '    End If
     'End Sub
 
+    Private Sub DateTimePicker1_ValueChanged(sender As Object, e As EventArgs) Handles DateTimePicker1.ValueChanged
+        txt_date.Text = DateTimePicker1.Text
 
+    End Sub
+    Private Sub DateTimePicker1_DoubleClick(sender As Object, e As EventArgs) Handles DateTimePicker1.DoubleClick
+        txt_date.Text = ""
+    End Sub
 End Class
