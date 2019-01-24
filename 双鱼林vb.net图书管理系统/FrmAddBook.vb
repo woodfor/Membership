@@ -137,10 +137,10 @@ Partial Public Class FrmAddBook
                 tmpCard = DAL.dalCard.getSomeCard(db, card.ID)
                 If IsNothing(tmpCard) Then
                     Button_openTopUp.Enabled = True
-                    Dim postStr As String = BLL.UpdateCardInfo.openDiscount(card)
-                    Dim updateStr As String = BLL.UpdateCardInfo.setDiscount(card, "9折")
-                    Text_temp.Text = httpCon.PostData("https://api.weixin.qq.com/card/update?access_token=" + token.ID, postStr)
-                    Text_temp.Text = httpCon.PostData("https://api.weixin.qq.com/card/membercard/updateuser?access_token=" + token.ID, updateStr)
+                    'Dim postStr As String = BLL.UpdateCardInfo.openDiscount(card.ID, 9)
+                    'Dim updateStr As String = BLL.UpdateCardInfo.setDiscount(card, "9折")
+                    'Text_temp.Text = httpCon.PostData("https://api.weixin.qq.com/card/update?access_token=" + token.ID, postStr)
+                    'Text_temp.Text = httpCon.PostData("https://api.weixin.qq.com/card/membercard/updateuser?access_token=" + token.ID, updateStr)
                 Else
                     card_TopUp = tmpCard
                     Dim trans = DAL.dalTrans.findLastTopUp(db, card_TopUp.card_id)
@@ -179,9 +179,13 @@ Partial Public Class FrmAddBook
                             '获取折扣信息
                             Dim postStr As String = BLL.UpdateCardInfo.getDetail(card)
                             pr = CType(JsonConvert.DeserializeObject(httpCon.PostData("https://api.weixin.qq.com/card/get?access_token=" + token.ID, postStr)), Object)
+                        Try
                             Text_discount.Text = pr("card")("member_card")("discount").ToString
-                            txt_level.Text = "暂未设置会员等级"
-                        Catch
+                        Catch ex As Exception
+                            MsgBox("未设置折扣")
+                        End Try
+                        txt_level.Text = "暂未设置会员等级"
+                    Catch
                             MessageBox.Show("获取用户信息时发生网络错误")
                             Return
                         End Try
