@@ -18,18 +18,19 @@
         Dim postStr As String = Newtonsoft.Json.JsonConvert.SerializeObject(post_dic)
         Return postStr
     End Function
-    Public Shared Function openDiscount(ByVal card As CardInfo) As String
+    Public Shared Function openDiscount(ByVal id As String) As String
         Dim post_dic As Dictionary(Of String, Object) = New Dictionary(Of String, Object) From {
-             {"card_id", card.ID},
-        {"member_card", New memberCard("等级", "折扣", 9)}
+             {"card_id", id},
+        {"member_card", New memberCard("等级", "折扣")}
         }
         Dim postStr As String = Newtonsoft.Json.JsonConvert.SerializeObject(post_dic)
         Return postStr
     End Function
-    Public Shared Function setDiscount(ByVal card As CardInfo, ByVal discount As String) As String
+    Public Shared Function setDiscount(ByVal card As Card, ByVal level As String, ByVal discount As String) As String
         Dim post_dic As Dictionary(Of String, Object) = New Dictionary(Of String, Object) From {
-             {"code", card.cardNumber}，
-        {"card_id", card.ID},
+             {"code", card.number}，
+        {"card_id", card.card_id},
+        {"custom_field_value1", level},
         {"custom_field_value2", discount}
         }
 
@@ -42,6 +43,15 @@
         {"card_id", card.ID}
         }
 
+        Dim postStr As String = Newtonsoft.Json.JsonConvert.SerializeObject(post_dic)
+        Return postStr
+    End Function
+
+    Public Shared Function openPay(ByVal id As String) As String
+        Dim post_dic As Dictionary(Of String, Object) = New Dictionary(Of String, Object) From {
+             {"card_id", id},
+        {"member_card", New memberCard("等级", "折扣")}
+        }
         Dim postStr As String = Newtonsoft.Json.JsonConvert.SerializeObject(post_dic)
         Return postStr
     End Function

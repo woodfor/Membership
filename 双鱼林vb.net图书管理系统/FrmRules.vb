@@ -1,6 +1,7 @@
 ﻿Imports System.Configuration
 
 Public Class FrmRules
+    Private db As New Model.Transaction
     Private Sub GroupBox1_Enter(sender As Object, e As EventArgs) Handles GroupBox1.Enter
 
     End Sub
@@ -71,8 +72,12 @@ Public Class FrmRules
         Rules.normal_discount = Math.Round(Double.Parse(TextBox4.Text.Trim), 2)
         Rules.medium_discount = Math.Round(Double.Parse(TextBox5.Text.Trim), 2)
         Rules.top_discount = Math.Round(Double.Parse(TextBox6.Text.Trim), 2)
-
+        db.MemberType.Where(Function(x) x.name = "高级").First.discount = Rules.top_discount
+        db.MemberType.Where(Function(x) x.name = "中等").First.discount = Rules.medium_discount
+        db.MemberType.Where(Function(x) x.name = "普通").First.discount = Rules.normal_discount
+        db.SaveChanges()
         MsgBox("修改完成")
+
     End Sub
     'Private Sub DealXML()
     '    Dim myDs As New DataSet

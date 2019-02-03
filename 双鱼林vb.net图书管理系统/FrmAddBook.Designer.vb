@@ -189,7 +189,6 @@ Partial Class FrmAddBook
         '
         'Button_addLevel
         '
-        Me.Button_addLevel.Enabled = False
         Me.Button_addLevel.Location = New System.Drawing.Point(681, 539)
         Me.Button_addLevel.Name = "Button_addLevel"
         Me.Button_addLevel.Size = New System.Drawing.Size(188, 32)

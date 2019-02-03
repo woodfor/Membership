@@ -107,11 +107,7 @@ Partial Public Class login
     End Sub
 
 
-    ''' <summary>
-    ''' 传递参数
-    ''' </summary>
-    ''' <param name="sid">主键</param>
-    ''' <param name="type">添加 | 修改</param>
+
     Public Sub Message(ByVal type As String)
         Me.Pagetype = type
     End Sub

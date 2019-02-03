@@ -35,7 +35,11 @@ Partial Public Class Card
     <StringLength(15)>
     Public Property number As String
 
+    Public Property type_id As Integer
+
     Public Overridable Property Store As Store
+
+    Public Overridable Property MemberType As MemberType
 
     Public Overridable Property Trans_TopUp As ICollection(Of Trans_TopUp)
 

@@ -11,6 +11,7 @@ Partial Public Class Transaction
     End Sub
 
     Public Overridable Property Card As DbSet(Of Card)
+    Public Overridable Property MemberType As DbSet(Of MemberType)
     Public Overridable Property P_PasswordType As DbSet(Of P_PasswordType)
     Public Overridable Property Store As DbSet(Of Store)
     Public Overridable Property Trans_purchase As DbSet(Of Trans_purchase)
@@ -51,6 +52,20 @@ Partial Public Class Transaction
         modelBuilder.Entity(Of Card)() _
             .HasMany(Function(e) e.Trans_purchase) _
             .WithRequired(Function(e) e.Card) _
+            .WillCascadeOnDelete(False)
+
+        modelBuilder.Entity(Of MemberType)() _
+            .Property(Function(e) e.name) _
+            .IsUnicode(False)
+
+        modelBuilder.Entity(Of MemberType)() _
+            .Property(Function(e) e.discount) _
+            .HasPrecision(4, 2)
+
+        modelBuilder.Entity(Of MemberType)() _
+            .HasMany(Function(e) e.Card) _
+            .WithRequired(Function(e) e.MemberType) _
+            .HasForeignKey(Function(e) e.type_id) _
             .WillCascadeOnDelete(False)
 
         modelBuilder.Entity(Of P_PasswordType)() _

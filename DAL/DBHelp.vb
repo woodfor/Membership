@@ -17,17 +17,13 @@ Public Class DBHelp
     ''' </summary>
     Public Shared ReadOnly Property GetConnection() As SqlConnection
         Get
-            Dim connectionStr As String = "Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=E:\Membership system\Membership\数据库\BookSystemDB.mdf;Integrated Security=True;Connect Timeout=30"
-            'Dim connectionStr As String = "server=.\SQLEXPRESS;database=BookSystemDB;user=sa;pwd=morrowsoft"
-            Dim config As System.Configuration.Configuration = ConfigurationManager.OpenExeConfiguration(ConfigurationUserLevel.None)
-            Dim appSettings As System.Configuration.AppSettingsSection = CType(config.GetSection("appSettings"), System.Configuration.AppSettingsSection)
+            Dim constr As String = System.Configuration.ConfigurationManager.ConnectionStrings("Transaction").ConnectionString
 
-            'connectionStr = appSettings.Settings("strCon").Value
             If connection Is Nothing Then
-                connection = New SqlConnection(connectionStr)
+                connection = New SqlConnection(constr)
                 connection.Open()
             ElseIf connection.State = ConnectionState.Closed Then
-                connection = New SqlConnection(connectionStr)
+                connection = New SqlConnection(constr)
                 connection.Open()
             ElseIf connection.State = ConnectionState.Broken Then
                 connection.Close()
@@ -147,13 +143,6 @@ Public Class DBHelp
     End Function
 
 
-    ''' <summary>
-    ''' 返回一个DataSet数据集
-    ''' </summary>
-    ''' <param name="connectionString">一个有效的连接字符串</param>
-    ''' <param name="cmdText">存储过程名称或者sql命令语句</param>
-    ''' <param name="commandParameters">执行命令所用参数的集合</param>
-    ''' <returns>包含结果的数据集</returns>
     Public Shared Function ExecuteDataSet(ByVal cmdText As String, ByVal ParamArray commandParameters As SqlParameter()) As DataSet
         '创建一个SqlCommand对象，并对其进行初始化
         Dim cmd As New SqlCommand()

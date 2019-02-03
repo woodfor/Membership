@@ -8,11 +8,7 @@ Imports Model
 
 Public Class DU_UserInfo
 
-    ''' <summary>
-    ''' 查询用户名是否存在
-    ''' </summary>
-    ''' <param name="U_Id"></param>
-    ''' <returns></returns>
+
     Public Function ExistsName(ByVal U_Name As String) As Integer
         Dim strSql As New StringBuilder()
         strSql.Append("select count(1) from U_UserInfo")
@@ -25,11 +21,7 @@ Public Class DU_UserInfo
     End Function
 
 
-    ''' <summary>
-    ''' 查询用户名和密码是否存在
-    ''' </summary>
-    ''' <param name="U_Id"></param>
-    ''' <returns></returns>
+
     Public Function ExistsPwd(ByVal U_Name As String, ByVal pwd As String) As DataSet
         Dim strSql As New StringBuilder()
         strSql.Append("select top 1 U_Id,U_RoleType from U_UserInfo")
@@ -44,11 +36,6 @@ Public Class DU_UserInfo
         Return ds
     End Function
 
-    ''' <summary>
-    ''' 根据用户名和密保问题查询出密码
-    ''' </summary>
-    ''' <param name="U_Id"></param>
-    ''' <returns></returns>
     Public Function ShowPwd(ByVal U_Name As String, ByVal pwd As String) As DataSet
         Dim strSql As New StringBuilder()
         strSql.Append("select top 1 U_PassWord from U_UserInfo")
@@ -322,11 +309,6 @@ Public Class DU_UserInfo
         Return DBHelp.DateSet(strSql.ToString())
     End Function
 
-    ''' <summary>
-    ''' 查询所有管理员| 用户信息
-    ''' </summary>
-    ''' <param name="roletype">1:普通用户 2:管理员</param>
-    ''' <returns></returns>
     Public Function SelectAdmin(ByVal where As String) As DataSet
         Dim strSql As New StringBuilder()
         strSql.Append("select U_Id as 用户编号,")

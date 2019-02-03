@@ -25,4 +25,6 @@ Public Class httpCon
         Dim sr As StreamReader = New StreamReader(request.GetResponse().GetResponseStream)
         Return sr.ReadToEnd
     End Function
+
+
 End Class

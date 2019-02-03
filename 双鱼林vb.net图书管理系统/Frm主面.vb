@@ -12,6 +12,7 @@ Imports System.Windows.Forms
 Imports System.Xml
 Imports System.Net.Sockets
 Imports System.Threading.Thread
+Imports System.Data.Entity
 
 Partial Public Class Frm主面
     Inherits Form
@@ -28,20 +29,14 @@ Partial Public Class Frm主面
 
     '退出系统
     Private Sub toolStripMenuItem6_Click(ByVal sender As Object, ByVal e As EventArgs) Handles toolStripMenuItem6.Click
-        Dim button As DialogResult = MessageBox.Show("确定要退出系统?", "提示", MessageBoxButtons.YesNo, MessageBoxIcon.Asterisk)
-
-        If button = DialogResult.Yes Then
-            Application.ExitThread()
-        End If
+        Dim Closing As New FormClosingEventArgs(CloseReason.None, True)
+        Frm_closing(Nothing, Closing)
     End Sub
 
 
     Private Sub toolStripLabel16_Click(ByVal sender As Object, ByVal e As EventArgs) Handles toolStripLabel16.Click
-        Dim button As DialogResult = MessageBox.Show("确定要退出系统?", "提示", MessageBoxButtons.YesNo, MessageBoxIcon.Asterisk)
-
-        If button = DialogResult.Yes Then
-            Application.ExitThread()
-        End If
+        Dim Closing As New FormClosingEventArgs(CloseReason.None, True)
+        Frm_closing(Nothing, Closing)
     End Sub
 
     ''' <summary>
@@ -232,8 +227,9 @@ Partial Public Class Frm主面
             appSettings.Settings("mDis").Value = Rules.medium_discount
             appSettings.Settings("tDis").Value = Rules.top_discount
             config.Save()
-            Application.ExitThread()
 
+            'DAL.dalBackUp.backup()
+            Application.ExitThread()
         Else
             e.Cancel = True
 

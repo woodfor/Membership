@@ -23,50 +23,50 @@ Partial Class FrmRules
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
         Me.GroupBox1 = New System.Windows.Forms.GroupBox()
-        Me.Label1 = New System.Windows.Forms.Label()
-        Me.TextBox1 = New System.Windows.Forms.TextBox()
-        Me.Label2 = New System.Windows.Forms.Label()
-        Me.Label3 = New System.Windows.Forms.Label()
-        Me.TextBox2 = New System.Windows.Forms.TextBox()
-        Me.Label4 = New System.Windows.Forms.Label()
-        Me.Label5 = New System.Windows.Forms.Label()
-        Me.TextBox3 = New System.Windows.Forms.TextBox()
         Me.Label6 = New System.Windows.Forms.Label()
+        Me.TextBox3 = New System.Windows.Forms.TextBox()
+        Me.Label5 = New System.Windows.Forms.Label()
+        Me.Label4 = New System.Windows.Forms.Label()
+        Me.TextBox2 = New System.Windows.Forms.TextBox()
+        Me.Label3 = New System.Windows.Forms.Label()
+        Me.Label2 = New System.Windows.Forms.Label()
+        Me.TextBox1 = New System.Windows.Forms.TextBox()
+        Me.Label1 = New System.Windows.Forms.Label()
         Me.GroupBox2 = New System.Windows.Forms.GroupBox()
+        Me.Label12 = New System.Windows.Forms.Label()
+        Me.Label10 = New System.Windows.Forms.Label()
+        Me.Label8 = New System.Windows.Forms.Label()
         Me.Label7 = New System.Windows.Forms.Label()
         Me.TextBox4 = New System.Windows.Forms.TextBox()
         Me.Label9 = New System.Windows.Forms.Label()
         Me.TextBox5 = New System.Windows.Forms.TextBox()
         Me.Label11 = New System.Windows.Forms.Label()
         Me.TextBox6 = New System.Windows.Forms.TextBox()
-        Me.Label8 = New System.Windows.Forms.Label()
-        Me.Label10 = New System.Windows.Forms.Label()
-        Me.Label12 = New System.Windows.Forms.Label()
         Me.GroupBox3 = New System.Windows.Forms.GroupBox()
-        Me.Label13 = New System.Windows.Forms.Label()
-        Me.CheckBox1 = New System.Windows.Forms.CheckBox()
+        Me.CheckBox2 = New System.Windows.Forms.CheckBox()
         Me.TextBox7 = New System.Windows.Forms.TextBox()
-        Me.Label14 = New System.Windows.Forms.Label()
-        Me.TextBox8 = New System.Windows.Forms.TextBox()
-        Me.Label15 = New System.Windows.Forms.Label()
-        Me.TextBox9 = New System.Windows.Forms.TextBox()
-        Me.Label16 = New System.Windows.Forms.Label()
-        Me.Label17 = New System.Windows.Forms.Label()
-        Me.TextBox10 = New System.Windows.Forms.TextBox()
-        Me.Label18 = New System.Windows.Forms.Label()
+        Me.Label22 = New System.Windows.Forms.Label()
+        Me.Label21 = New System.Windows.Forms.Label()
+        Me.TextBox11 = New System.Windows.Forms.TextBox()
+        Me.Label13 = New System.Windows.Forms.Label()
         Me.Label19 = New System.Windows.Forms.Label()
         Me.Label20 = New System.Windows.Forms.Label()
-        Me.TextBox11 = New System.Windows.Forms.TextBox()
+        Me.Label18 = New System.Windows.Forms.Label()
+        Me.TextBox10 = New System.Windows.Forms.TextBox()
+        Me.Label17 = New System.Windows.Forms.Label()
+        Me.Label16 = New System.Windows.Forms.Label()
+        Me.TextBox9 = New System.Windows.Forms.TextBox()
+        Me.Label15 = New System.Windows.Forms.Label()
+        Me.TextBox8 = New System.Windows.Forms.TextBox()
+        Me.Label14 = New System.Windows.Forms.Label()
+        Me.CheckBox1 = New System.Windows.Forms.CheckBox()
         Me.TextBox12 = New System.Windows.Forms.TextBox()
-        Me.Label21 = New System.Windows.Forms.Label()
-        Me.Label22 = New System.Windows.Forms.Label()
         Me.Label23 = New System.Windows.Forms.Label()
         Me.Label24 = New System.Windows.Forms.Label()
         Me.TextBox13 = New System.Windows.Forms.TextBox()
         Me.Label25 = New System.Windows.Forms.Label()
         Me.Button1 = New System.Windows.Forms.Button()
         Me.Label26 = New System.Windows.Forms.Label()
-        Me.CheckBox2 = New System.Windows.Forms.CheckBox()
         Me.GroupBox4 = New System.Windows.Forms.GroupBox()
         Me.GroupBox1.SuspendLayout()
         Me.GroupBox2.SuspendLayout()
@@ -92,55 +92,21 @@ Partial Class FrmRules
         Me.GroupBox1.TabStop = False
         Me.GroupBox1.Text = "储值规则"
         '
-        'Label1
+        'Label6
         '
-        Me.Label1.AutoSize = True
-        Me.Label1.Location = New System.Drawing.Point(11, 49)
-        Me.Label1.Name = "Label1"
-        Me.Label1.Size = New System.Drawing.Size(97, 15)
-        Me.Label1.TabIndex = 0
-        Me.Label1.Text = "一次性充值满"
+        Me.Label6.AutoSize = True
+        Me.Label6.Location = New System.Drawing.Point(238, 130)
+        Me.Label6.Name = "Label6"
+        Me.Label6.Size = New System.Drawing.Size(112, 15)
+        Me.Label6.TabIndex = 8
+        Me.Label6.Text = "元成为高级会员"
         '
-        'TextBox1
+        'TextBox3
         '
-        Me.TextBox1.Location = New System.Drawing.Point(126, 39)
-        Me.TextBox1.Name = "TextBox1"
-        Me.TextBox1.Size = New System.Drawing.Size(100, 25)
-        Me.TextBox1.TabIndex = 1
-        '
-        'Label2
-        '
-        Me.Label2.AutoSize = True
-        Me.Label2.Location = New System.Drawing.Point(238, 49)
-        Me.Label2.Name = "Label2"
-        Me.Label2.Size = New System.Drawing.Size(112, 15)
-        Me.Label2.TabIndex = 2
-        Me.Label2.Text = "元成为普通会员"
-        '
-        'Label3
-        '
-        Me.Label3.AutoSize = True
-        Me.Label3.Location = New System.Drawing.Point(11, 90)
-        Me.Label3.Name = "Label3"
-        Me.Label3.Size = New System.Drawing.Size(97, 15)
-        Me.Label3.TabIndex = 3
-        Me.Label3.Text = "一次性充值满"
-        '
-        'TextBox2
-        '
-        Me.TextBox2.Location = New System.Drawing.Point(126, 80)
-        Me.TextBox2.Name = "TextBox2"
-        Me.TextBox2.Size = New System.Drawing.Size(100, 25)
-        Me.TextBox2.TabIndex = 4
-        '
-        'Label4
-        '
-        Me.Label4.AutoSize = True
-        Me.Label4.Location = New System.Drawing.Point(238, 90)
-        Me.Label4.Name = "Label4"
-        Me.Label4.Size = New System.Drawing.Size(112, 15)
-        Me.Label4.TabIndex = 5
-        Me.Label4.Text = "元成为中级会员"
+        Me.TextBox3.Location = New System.Drawing.Point(126, 120)
+        Me.TextBox3.Name = "TextBox3"
+        Me.TextBox3.Size = New System.Drawing.Size(100, 25)
+        Me.TextBox3.TabIndex = 7
         '
         'Label5
         '
@@ -151,21 +117,55 @@ Partial Class FrmRules
         Me.Label5.TabIndex = 6
         Me.Label5.Text = "一次性充值满"
         '
-        'TextBox3
+        'Label4
         '
-        Me.TextBox3.Location = New System.Drawing.Point(126, 120)
-        Me.TextBox3.Name = "TextBox3"
-        Me.TextBox3.Size = New System.Drawing.Size(100, 25)
-        Me.TextBox3.TabIndex = 7
+        Me.Label4.AutoSize = True
+        Me.Label4.Location = New System.Drawing.Point(238, 90)
+        Me.Label4.Name = "Label4"
+        Me.Label4.Size = New System.Drawing.Size(112, 15)
+        Me.Label4.TabIndex = 5
+        Me.Label4.Text = "元成为中级会员"
         '
-        'Label6
+        'TextBox2
         '
-        Me.Label6.AutoSize = True
-        Me.Label6.Location = New System.Drawing.Point(238, 130)
-        Me.Label6.Name = "Label6"
-        Me.Label6.Size = New System.Drawing.Size(112, 15)
-        Me.Label6.TabIndex = 8
-        Me.Label6.Text = "元成为高级会员"
+        Me.TextBox2.Location = New System.Drawing.Point(126, 80)
+        Me.TextBox2.Name = "TextBox2"
+        Me.TextBox2.Size = New System.Drawing.Size(100, 25)
+        Me.TextBox2.TabIndex = 4
+        '
+        'Label3
+        '
+        Me.Label3.AutoSize = True
+        Me.Label3.Location = New System.Drawing.Point(11, 90)
+        Me.Label3.Name = "Label3"
+        Me.Label3.Size = New System.Drawing.Size(97, 15)
+        Me.Label3.TabIndex = 3
+        Me.Label3.Text = "一次性充值满"
+        '
+        'Label2
+        '
+        Me.Label2.AutoSize = True
+        Me.Label2.Location = New System.Drawing.Point(238, 49)
+        Me.Label2.Name = "Label2"
+        Me.Label2.Size = New System.Drawing.Size(112, 15)
+        Me.Label2.TabIndex = 2
+        Me.Label2.Text = "元成为普通会员"
+        '
+        'TextBox1
+        '
+        Me.TextBox1.Location = New System.Drawing.Point(126, 39)
+        Me.TextBox1.Name = "TextBox1"
+        Me.TextBox1.Size = New System.Drawing.Size(100, 25)
+        Me.TextBox1.TabIndex = 1
+        '
+        'Label1
+        '
+        Me.Label1.AutoSize = True
+        Me.Label1.Location = New System.Drawing.Point(11, 49)
+        Me.Label1.Name = "Label1"
+        Me.Label1.Size = New System.Drawing.Size(97, 15)
+        Me.Label1.TabIndex = 0
+        Me.Label1.Text = "一次性充值满"
         '
         'GroupBox2
         '
@@ -184,6 +184,33 @@ Partial Class FrmRules
         Me.GroupBox2.TabIndex = 9
         Me.GroupBox2.TabStop = False
         Me.GroupBox2.Text = "会员规则"
+        '
+        'Label12
+        '
+        Me.Label12.AutoSize = True
+        Me.Label12.Location = New System.Drawing.Point(268, 128)
+        Me.Label12.Name = "Label12"
+        Me.Label12.Size = New System.Drawing.Size(22, 15)
+        Me.Label12.TabIndex = 11
+        Me.Label12.Text = "折"
+        '
+        'Label10
+        '
+        Me.Label10.AutoSize = True
+        Me.Label10.Location = New System.Drawing.Point(268, 88)
+        Me.Label10.Name = "Label10"
+        Me.Label10.Size = New System.Drawing.Size(22, 15)
+        Me.Label10.TabIndex = 10
+        Me.Label10.Text = "折"
+        '
+        'Label8
+        '
+        Me.Label8.AutoSize = True
+        Me.Label8.Location = New System.Drawing.Point(268, 47)
+        Me.Label8.Name = "Label8"
+        Me.Label8.Size = New System.Drawing.Size(22, 15)
+        Me.Label8.TabIndex = 9
+        Me.Label8.Text = "折"
         '
         'Label7
         '
@@ -233,33 +260,6 @@ Partial Class FrmRules
         Me.TextBox6.Size = New System.Drawing.Size(100, 25)
         Me.TextBox6.TabIndex = 1
         '
-        'Label8
-        '
-        Me.Label8.AutoSize = True
-        Me.Label8.Location = New System.Drawing.Point(268, 47)
-        Me.Label8.Name = "Label8"
-        Me.Label8.Size = New System.Drawing.Size(22, 15)
-        Me.Label8.TabIndex = 9
-        Me.Label8.Text = "折"
-        '
-        'Label10
-        '
-        Me.Label10.AutoSize = True
-        Me.Label10.Location = New System.Drawing.Point(268, 88)
-        Me.Label10.Name = "Label10"
-        Me.Label10.Size = New System.Drawing.Size(22, 15)
-        Me.Label10.TabIndex = 10
-        Me.Label10.Text = "折"
-        '
-        'Label12
-        '
-        Me.Label12.AutoSize = True
-        Me.Label12.Location = New System.Drawing.Point(268, 128)
-        Me.Label12.Name = "Label12"
-        Me.Label12.Size = New System.Drawing.Size(22, 15)
-        Me.Label12.TabIndex = 11
-        Me.Label12.Text = "折"
-        '
         'GroupBox3
         '
         Me.GroupBox3.AutoSize = True
@@ -280,12 +280,54 @@ Partial Class FrmRules
         Me.GroupBox3.Controls.Add(Me.Label15)
         Me.GroupBox3.Controls.Add(Me.TextBox8)
         Me.GroupBox3.Controls.Add(Me.Label14)
-        Me.GroupBox3.Location = New System.Drawing.Point(428, 113)
+        Me.GroupBox3.Location = New System.Drawing.Point(434, 111)
         Me.GroupBox3.Name = "GroupBox3"
         Me.GroupBox3.Size = New System.Drawing.Size(345, 254)
         Me.GroupBox3.TabIndex = 12
         Me.GroupBox3.TabStop = False
         Me.GroupBox3.Text = "积分规则"
+        '
+        'CheckBox2
+        '
+        Me.CheckBox2.AutoSize = True
+        Me.CheckBox2.Location = New System.Drawing.Point(144, 211)
+        Me.CheckBox2.Name = "CheckBox2"
+        Me.CheckBox2.Size = New System.Drawing.Size(59, 19)
+        Me.CheckBox2.TabIndex = 25
+        Me.CheckBox2.Text = "开启"
+        Me.CheckBox2.UseVisualStyleBackColor = True
+        '
+        'TextBox7
+        '
+        Me.TextBox7.Location = New System.Drawing.Point(64, 36)
+        Me.TextBox7.Name = "TextBox7"
+        Me.TextBox7.Size = New System.Drawing.Size(87, 25)
+        Me.TextBox7.TabIndex = 11
+        '
+        'Label22
+        '
+        Me.Label22.AutoSize = True
+        Me.Label22.Location = New System.Drawing.Point(7, 168)
+        Me.Label22.Name = "Label22"
+        Me.Label22.Size = New System.Drawing.Size(52, 15)
+        Me.Label22.TabIndex = 20
+        Me.Label22.Text = "积分满"
+        '
+        'Label21
+        '
+        Me.Label21.AutoSize = True
+        Me.Label21.Location = New System.Drawing.Point(6, 128)
+        Me.Label21.Name = "Label21"
+        Me.Label21.Size = New System.Drawing.Size(52, 15)
+        Me.Label21.TabIndex = 19
+        Me.Label21.Text = "积分满"
+        '
+        'TextBox11
+        '
+        Me.TextBox11.Location = New System.Drawing.Point(64, 158)
+        Me.TextBox11.Name = "TextBox11"
+        Me.TextBox11.Size = New System.Drawing.Size(87, 25)
+        Me.TextBox11.TabIndex = 17
         '
         'Label13
         '
@@ -295,89 +337,6 @@ Partial Class FrmRules
         Me.Label13.Size = New System.Drawing.Size(112, 15)
         Me.Label13.TabIndex = 9
         Me.Label13.Text = "积分抵扣现金？"
-        '
-        'CheckBox1
-        '
-        Me.CheckBox1.AutoSize = True
-        Me.CheckBox1.Location = New System.Drawing.Point(520, 70)
-        Me.CheckBox1.Name = "CheckBox1"
-        Me.CheckBox1.Size = New System.Drawing.Size(59, 19)
-        Me.CheckBox1.TabIndex = 10
-        Me.CheckBox1.Text = "开启"
-        Me.CheckBox1.UseVisualStyleBackColor = True
-        '
-        'TextBox7
-        '
-        Me.TextBox7.Location = New System.Drawing.Point(64, 36)
-        Me.TextBox7.Name = "TextBox7"
-        Me.TextBox7.Size = New System.Drawing.Size(87, 25)
-        Me.TextBox7.TabIndex = 11
-        '
-        'Label14
-        '
-        Me.Label14.AutoSize = True
-        Me.Label14.Location = New System.Drawing.Point(6, 46)
-        Me.Label14.Name = "Label14"
-        Me.Label14.Size = New System.Drawing.Size(52, 15)
-        Me.Label14.TabIndex = 9
-        Me.Label14.Text = "每消费"
-        '
-        'TextBox8
-        '
-        Me.TextBox8.Location = New System.Drawing.Point(206, 39)
-        Me.TextBox8.Name = "TextBox8"
-        Me.TextBox8.Size = New System.Drawing.Size(87, 25)
-        Me.TextBox8.TabIndex = 9
-        '
-        'Label15
-        '
-        Me.Label15.AutoSize = True
-        Me.Label15.Location = New System.Drawing.Point(163, 46)
-        Me.Label15.Name = "Label15"
-        Me.Label15.Size = New System.Drawing.Size(37, 15)
-        Me.Label15.TabIndex = 12
-        Me.Label15.Text = "元送"
-        '
-        'TextBox9
-        '
-        Me.TextBox9.Location = New System.Drawing.Point(64, 80)
-        Me.TextBox9.Name = "TextBox9"
-        Me.TextBox9.Size = New System.Drawing.Size(87, 25)
-        Me.TextBox9.TabIndex = 13
-        '
-        'Label16
-        '
-        Me.Label16.AutoSize = True
-        Me.Label16.Location = New System.Drawing.Point(302, 46)
-        Me.Label16.Name = "Label16"
-        Me.Label16.Size = New System.Drawing.Size(37, 15)
-        Me.Label16.TabIndex = 14
-        Me.Label16.Text = "积分"
-        '
-        'Label17
-        '
-        Me.Label17.AutoSize = True
-        Me.Label17.Location = New System.Drawing.Point(6, 90)
-        Me.Label17.Name = "Label17"
-        Me.Label17.Size = New System.Drawing.Size(52, 15)
-        Me.Label17.TabIndex = 15
-        Me.Label17.Text = "积分满"
-        '
-        'TextBox10
-        '
-        Me.TextBox10.Location = New System.Drawing.Point(64, 118)
-        Me.TextBox10.Name = "TextBox10"
-        Me.TextBox10.Size = New System.Drawing.Size(87, 25)
-        Me.TextBox10.TabIndex = 16
-        '
-        'Label18
-        '
-        Me.Label18.AutoSize = True
-        Me.Label18.Location = New System.Drawing.Point(163, 90)
-        Me.Label18.Name = "Label18"
-        Me.Label18.Size = New System.Drawing.Size(97, 15)
-        Me.Label18.TabIndex = 9
-        Me.Label18.Text = "成为普通会员"
         '
         'Label19
         '
@@ -397,12 +356,81 @@ Partial Class FrmRules
         Me.Label20.TabIndex = 9
         Me.Label20.Text = "成为中级会员"
         '
-        'TextBox11
+        'Label18
         '
-        Me.TextBox11.Location = New System.Drawing.Point(64, 158)
-        Me.TextBox11.Name = "TextBox11"
-        Me.TextBox11.Size = New System.Drawing.Size(87, 25)
-        Me.TextBox11.TabIndex = 17
+        Me.Label18.AutoSize = True
+        Me.Label18.Location = New System.Drawing.Point(163, 90)
+        Me.Label18.Name = "Label18"
+        Me.Label18.Size = New System.Drawing.Size(97, 15)
+        Me.Label18.TabIndex = 9
+        Me.Label18.Text = "成为普通会员"
+        '
+        'TextBox10
+        '
+        Me.TextBox10.Location = New System.Drawing.Point(64, 118)
+        Me.TextBox10.Name = "TextBox10"
+        Me.TextBox10.Size = New System.Drawing.Size(87, 25)
+        Me.TextBox10.TabIndex = 16
+        '
+        'Label17
+        '
+        Me.Label17.AutoSize = True
+        Me.Label17.Location = New System.Drawing.Point(6, 90)
+        Me.Label17.Name = "Label17"
+        Me.Label17.Size = New System.Drawing.Size(52, 15)
+        Me.Label17.TabIndex = 15
+        Me.Label17.Text = "积分满"
+        '
+        'Label16
+        '
+        Me.Label16.AutoSize = True
+        Me.Label16.Location = New System.Drawing.Point(302, 46)
+        Me.Label16.Name = "Label16"
+        Me.Label16.Size = New System.Drawing.Size(37, 15)
+        Me.Label16.TabIndex = 14
+        Me.Label16.Text = "积分"
+        '
+        'TextBox9
+        '
+        Me.TextBox9.Location = New System.Drawing.Point(64, 80)
+        Me.TextBox9.Name = "TextBox9"
+        Me.TextBox9.Size = New System.Drawing.Size(87, 25)
+        Me.TextBox9.TabIndex = 13
+        '
+        'Label15
+        '
+        Me.Label15.AutoSize = True
+        Me.Label15.Location = New System.Drawing.Point(163, 46)
+        Me.Label15.Name = "Label15"
+        Me.Label15.Size = New System.Drawing.Size(37, 15)
+        Me.Label15.TabIndex = 12
+        Me.Label15.Text = "元送"
+        '
+        'TextBox8
+        '
+        Me.TextBox8.Location = New System.Drawing.Point(206, 39)
+        Me.TextBox8.Name = "TextBox8"
+        Me.TextBox8.Size = New System.Drawing.Size(87, 25)
+        Me.TextBox8.TabIndex = 9
+        '
+        'Label14
+        '
+        Me.Label14.AutoSize = True
+        Me.Label14.Location = New System.Drawing.Point(6, 46)
+        Me.Label14.Name = "Label14"
+        Me.Label14.Size = New System.Drawing.Size(52, 15)
+        Me.Label14.TabIndex = 9
+        Me.Label14.Text = "每消费"
+        '
+        'CheckBox1
+        '
+        Me.CheckBox1.AutoSize = True
+        Me.CheckBox1.Location = New System.Drawing.Point(526, 68)
+        Me.CheckBox1.Name = "CheckBox1"
+        Me.CheckBox1.Size = New System.Drawing.Size(59, 19)
+        Me.CheckBox1.TabIndex = 10
+        Me.CheckBox1.Text = "开启"
+        Me.CheckBox1.UseVisualStyleBackColor = True
         '
         'TextBox12
         '
@@ -410,24 +438,6 @@ Partial Class FrmRules
         Me.TextBox12.Name = "TextBox12"
         Me.TextBox12.Size = New System.Drawing.Size(87, 25)
         Me.TextBox12.TabIndex = 18
-        '
-        'Label21
-        '
-        Me.Label21.AutoSize = True
-        Me.Label21.Location = New System.Drawing.Point(6, 128)
-        Me.Label21.Name = "Label21"
-        Me.Label21.Size = New System.Drawing.Size(52, 15)
-        Me.Label21.TabIndex = 19
-        Me.Label21.Text = "积分满"
-        '
-        'Label22
-        '
-        Me.Label22.AutoSize = True
-        Me.Label22.Location = New System.Drawing.Point(7, 168)
-        Me.Label22.Name = "Label22"
-        Me.Label22.Size = New System.Drawing.Size(52, 15)
-        Me.Label22.TabIndex = 20
-        Me.Label22.Text = "积分满"
         '
         'Label23
         '
@@ -475,21 +485,11 @@ Partial Class FrmRules
         'Label26
         '
         Me.Label26.AutoSize = True
-        Me.Label26.Location = New System.Drawing.Point(434, 71)
+        Me.Label26.Location = New System.Drawing.Point(440, 69)
         Me.Label26.Name = "Label26"
         Me.Label26.Size = New System.Drawing.Size(67, 15)
         Me.Label26.TabIndex = 9
         Me.Label26.Text = "积分奖励"
-        '
-        'CheckBox2
-        '
-        Me.CheckBox2.AutoSize = True
-        Me.CheckBox2.Location = New System.Drawing.Point(144, 211)
-        Me.CheckBox2.Name = "CheckBox2"
-        Me.CheckBox2.Size = New System.Drawing.Size(59, 19)
-        Me.CheckBox2.TabIndex = 25
-        Me.CheckBox2.Text = "开启"
-        Me.CheckBox2.UseVisualStyleBackColor = True
         '
         'GroupBox4
         '
@@ -498,7 +498,7 @@ Partial Class FrmRules
         Me.GroupBox4.Controls.Add(Me.Label23)
         Me.GroupBox4.Controls.Add(Me.Label24)
         Me.GroupBox4.Controls.Add(Me.TextBox13)
-        Me.GroupBox4.Location = New System.Drawing.Point(428, 361)
+        Me.GroupBox4.Location = New System.Drawing.Point(434, 359)
         Me.GroupBox4.Name = "GroupBox4"
         Me.GroupBox4.Size = New System.Drawing.Size(345, 52)
         Me.GroupBox4.TabIndex = 25
@@ -508,7 +508,7 @@ Partial Class FrmRules
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 15.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(808, 506)
+        Me.ClientSize = New System.Drawing.Size(818, 510)
         Me.Controls.Add(Me.GroupBox4)
         Me.Controls.Add(Me.Label26)
         Me.Controls.Add(Me.Button1)

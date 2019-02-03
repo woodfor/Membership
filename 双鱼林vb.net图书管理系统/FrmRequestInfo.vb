@@ -1,10 +1,14 @@
-﻿Public Class FrmRequestInfo
+﻿Imports BLL
+
+Public Class FrmRequestInfo
     Private card As Model.Card
-    Public Sub New(ByVal card As Model.Card)
+    Private db As Model.Transaction
+    Public Sub New(ByRef db As Model.Transaction, ByVal card As Model.Card)
 
         ' This call is required by the designer.
         InitializeComponent()
         Me.card = card
+        Me.db = db
         ' Add any initialization after the InitializeComponent() call.
 
     End Sub
@@ -48,18 +52,51 @@
         If Decimal.TryParse(Text_fstTopUp.Text, decResult) = True Then
             card.balance = decResult
         Else
-            MsgBox("输入金额的小数点应不超过两位")
+            MsgBox("输入金额有误")
             Text_fstTopUp.Focus()
             Return
         End If
 
+        Dim token As String = getDataFromLocal.getToken()
         Dim frmAuth As New FrmAuthPrompt(2)
         If Not frmAuth.AuthResult = True Then
             MsgBox("需要验证密码")
             Return
         Else
+            Try
+                If decResult > Rules.top_level Then
+                    Dim postStr As String = BLL.UpdateCardInfo.openDiscount(card.card_id)
+                    httpCon.PostData("https://api.weixin.qq.com/card/update?access_token=" + token, postStr)
+                    Dim updateStr As String = BLL.UpdateCardInfo.setDiscount(card, "高级", Rules.top_discount.ToString + "折")
+                    httpCon.PostData("https://api.weixin.qq.com/card/membercard/updateuser?access_token=" + token, updateStr)
+                    card.type_id = db.MemberType.Where(Function(x) x.name = "高级").First.id
+                    MsgBox("已充值满" + Rules.top_level.ToString + "元获得高级会员资格")
 
-            Dim db As New Model.Transaction
+                ElseIf decResult > Rules.meidum_level Then
+                    Dim postStr As String = BLL.UpdateCardInfo.openDiscount(card.card_id)
+                    httpCon.PostData("https://api.weixin.qq.com/card/update?access_token=" + token, postStr)
+                    Dim updateStr As String = BLL.UpdateCardInfo.setDiscount(card, "中等", Rules.medium_discount.ToString + "折")
+                    httpCon.PostData("https://api.weixin.qq.com/card/membercard/updateuser?access_token=" + token, updateStr)
+                    card.type_id = db.MemberType.Where(Function(x) x.name = "中等").First.id
+                    MsgBox("已充值满" + Rules.meidum_level.ToString + "元获得中级会员资格")
+
+                ElseIf decResult > Rules.normal_level Then
+                    Dim postStr As String = BLL.UpdateCardInfo.openDiscount(card.card_id)
+                    httpCon.PostData("https://api.weixin.qq.com/card/update?access_token=" + token, postStr)
+                    Dim updateStr As String = BLL.UpdateCardInfo.setDiscount(card, "普通", Rules.normal_discount.ToString + "折")
+                    httpCon.PostData("https://api.weixin.qq.com/card/membercard/updateuser?access_token=" + token, updateStr)
+                    card.type_id = db.MemberType.Where(Function(x) x.name = "普通").First.id
+                    MsgBox("已充值满" + Rules.normal_level.ToString + "元获得普通会员资格")
+                Else
+                    card.type_id = db.MemberType.Where(Function(x) x.name = "无").First.id
+                End If
+
+            Catch ex As Exception
+                MsgBox("网络连接有误，请重试", vbQuestion)
+                Return
+            End Try
+
+
             If DAL.dalCard.Addcard(db, card) AndAlso
                 DAL.dalTrans.addTrans(db, card, LoginRoler.U_Id， Decimal.Parse(Text_fstTopUp.Text)) Then
 

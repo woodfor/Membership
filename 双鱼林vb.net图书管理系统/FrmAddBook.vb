@@ -48,43 +48,14 @@ Partial Public Class FrmAddBook
 
     Private Sub FrmAddBook_Load(ByVal sender As Object, ByVal e As EventArgs) Handles MyBase.Load
 
-        '查询所有的图书类别
-        'Dim bookTypeDs As DataSet = BLL.bllBookType.getAllBookType()
 
-        'Me.cb_bookType.DataSource = bookTypeDs.Tables(0)
-        'Me.cb_bookType.DisplayMember = "bookTypeName"
-        'Me.cb_bookType.ValueMember = "bookTypeId"
         GroupBox_topUp.Visible = False
-        '
-        '            DataTable newDataTable = new DataTable();
-        '            newDataTable.Columns.Add("bookTypeId");
-        '            newDataTable.Columns.Add("bookTypeName");
-        '
-        '            foreach (DataRow oldDR in bookTypeDs.Tables[0].Rows)
-        '            {
-        '                DataRow newDR = newDataTable.NewRow();
-        '                newDR[0] = oldDR["bookTypeId"].ToString();
-        '                newDR[1] = oldDR["bookTypeName"].ToString();
-        '                newDataTable.Rows.InsertAt(newDR, newDataTable.Rows.Count);
-        '            }
-        '
-        '            // Add your 'Select an item' option at the top  
-        '            DataRow dr = newDataTable.NewRow();
-        '            dr[0] = "0";
-        '            dr[1] = "请选择";
-        '            newDataTable.Rows.InsertAt(dr, 0);
-        '
-        '            this.cb_bookType.DataSource = newDataTable;
-        '            this.cb_bookType.DisplayMember = "bookTypeName";
-        '            this.cb_bookType.ValueMember = "bookTypeId"; 
-        '             
 
-
-        pictureBox_bookPhoto.Image = Image.FromFile("pic/NoImage.jpg")
-        pictureBox_bookPhoto.SizeMode = PictureBoxSizeMode.StretchImage
-        Dim fs As New FileStream("pic/NoImage.jpg", FileMode.Open, FileAccess.Read)
-        Dim bw As New BinaryReader(fs)
-        book.bookPhoto = bw.ReadBytes(CInt(fs.Length))
+        'pictureBox_bookPhoto.Image = Image.FromFile("pic/NoImage.jpg")
+        'pictureBox_bookPhoto.SizeMode = PictureBoxSizeMode.StretchImage
+        'Dim fs As New FileStream("pic/NoImage.jpg", FileMode.Open, FileAccess.Read)
+        'Dim bw As New BinaryReader(fs)
+        'book.bookPhoto = bw.ReadBytes(CInt(fs.Length))
         txt_barcode.TabIndex = 0
 
 
@@ -96,6 +67,7 @@ Partial Public Class FrmAddBook
             Dim pr As JObject
             Dim userResponse As String
             Dim cardNumber As String
+            card.cardNumber = txt_barcode.Text
 
             Try
                 token.ID = getDataFromLocal.getToken()
@@ -107,7 +79,7 @@ Partial Public Class FrmAddBook
 
                     card.ID = pr("card")("card_id").ToString()
                 Else
-                    MessageBox.Show("卡片信息不正确，请重新扫描")
+                    MsgBox("卡片信息不正确，请重新扫描")
                     Return
                 End If
             Catch ex As Exception
@@ -129,23 +101,19 @@ Partial Public Class FrmAddBook
 
             '读取储值数据库
 
-
-
-
             Try
                 Dim tmpCard As New Card
                 tmpCard = DAL.dalCard.getSomeCard(db, card.ID)
                 If IsNothing(tmpCard) Then
                     Button_openTopUp.Enabled = True
-                    'Dim postStr As String = BLL.UpdateCardInfo.openDiscount(card.ID, 9)
-                    'Dim updateStr As String = BLL.UpdateCardInfo.setDiscount(card, "9折")
-                    'Text_temp.Text = httpCon.PostData("https://api.weixin.qq.com/card/update?access_token=" + token.ID, postStr)
-                    'Text_temp.Text = httpCon.PostData("https://api.weixin.qq.com/card/membercard/updateuser?access_token=" + token.ID, updateStr)
+                    txt_level.Text = "暂未设置会员等级"
                 Else
                     card_TopUp = tmpCard
                     Dim trans = DAL.dalTrans.findLastTopUp(db, card_TopUp.card_id)
                     GroupBox_topUp.Visible = True
                     Button_openTopUp.Dispose()
+                    txt_level.Text = card_TopUp.MemberType.name
+                    Text_discount.Text = card_TopUp.MemberType.discount
                     txt_balance.Text = card_TopUp.balance.ToString
                     Text_lastTopUp.Text = trans.time
                     Button_topUp.Enabled = True
@@ -166,25 +134,18 @@ Partial Public Class FrmAddBook
                         txt_card_status.Text = pr("user_card_status").ToString
                     'read users' info
                     Try
-                            Dim tempUrl As String = "https://api.weixin.qq.com/cgi-bin/user/info?access_token=" + token.ID + "&openid=" + pr("openid").ToString() + "&lang=zh_CN"
-                            userResponse = httpCon.PostData(tempUrl, "")
-                            pr = CType(JsonConvert.DeserializeObject(userResponse), Object)
-                            user.Name = pr("nickname").ToString()
-                            user.openID = pr("openid").ToString
-                            txt_userName.Text = user.Name
-                            '基本信息读取完毕
-                            card.cardNumber = txt_barcode.Text
-                            card.bonus = txt_bonus.Text
-                            card.status = txt_card_status.Text
-                            '获取折扣信息
-                            Dim postStr As String = BLL.UpdateCardInfo.getDetail(card)
-                            pr = CType(JsonConvert.DeserializeObject(httpCon.PostData("https://api.weixin.qq.com/card/get?access_token=" + token.ID, postStr)), Object)
-                        Try
-                            Text_discount.Text = pr("card")("member_card")("discount").ToString
-                        Catch ex As Exception
-                            MsgBox("未设置折扣")
-                        End Try
-                        txt_level.Text = "暂未设置会员等级"
+                        Dim tempUrl As String = "https://api.weixin.qq.com/cgi-bin/user/info?access_token=" + token.ID + "&openid=" + pr("openid").ToString() + "&lang=zh_CN"
+                        userResponse = httpCon.PostData(tempUrl, "")
+                        pr = CType(JsonConvert.DeserializeObject(userResponse), Object)
+                        user.Name = pr("nickname").ToString()
+                        user.openID = pr("openid").ToString
+                        txt_userName.Text = user.Name
+                        '基本信息读取完毕
+                        card.bonus = txt_bonus.Text
+                        card.status = txt_card_status.Text
+                        '获取折扣信息
+
+
                     Catch
                             MessageBox.Show("获取用户信息时发生网络错误")
                             Return
@@ -209,7 +170,9 @@ Partial Public Class FrmAddBook
         Catch ex As Exception
             MsgBox("本地文件异常，请重试")
         End Try
-
+        Dim postStr As String = BLL.UpdateCardInfo.openPay(card_TopUp.card_id)
+        TextBox1.Text = postStr
+        Text_temp.Text = httpCon.PostData("https://api.weixin.qq.com/card/update?access_token=" + token.ID, postStr)
         'Dim postStr As String = BLL.UpdateCardInfo.getDetail(card)
         'testbox.Text = postStr
         'Text_temp.Text = httpCon.PostData("https://api.weixin.qq.com/card/get?access_token=" + token.ID, postStr)
@@ -224,7 +187,7 @@ Partial Public Class FrmAddBook
         card_TopUp.open_id = user.openID
         card_TopUp.balance = Decimal.Parse("0.00")
         card_TopUp.store_id = 1
-        Dim frm_phone As New FrmRequestInfo(card_TopUp)
+        Dim frm_phone As New FrmRequestInfo(db, card_TopUp)
 
         '事件完成，判断返回值
         If frm_phone.ShowDialog() = DialogResult.OK Then
@@ -240,6 +203,7 @@ Partial Public Class FrmAddBook
                     txt_balance.Text = card_TopUp.balance.ToString
                     Text_lastTopUp.Text = trans.time
                     Button_topUp.Enabled = True
+                    txt_barcode_TextChanged(Nothing, Nothing)
                 End If
             Catch
                 MsgBox("数据库损坏，请联系客服")
@@ -264,6 +228,7 @@ Partial Public Class FrmAddBook
                     txt_balance.Text = card_TopUp.balance.ToString
                     Text_lastTopUp.Text = trans.time
                     Button_topUp.Enabled = True
+                    txt_barcode_TextChanged(Nothing, Nothing)
                 End If
             Catch
                 MsgBox("数据库损坏，请联系客服")

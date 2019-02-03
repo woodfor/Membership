@@ -104,8 +104,7 @@ Partial Public Class Frm找回密码
         End If
     End Sub
 
-    ''' <summary>
-    ''' 传递参数
+
     Public Sub Message(ByVal type As String)
         Me.Pagetype = type
     End Sub

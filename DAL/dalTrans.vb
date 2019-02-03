@@ -45,7 +45,7 @@ Public Class dalTrans
     End Function
     Public Shared Function GetTrans(ByVal PageIndex As Integer, ByVal PageSize As Integer, ByRef PageCount As Integer, ByRef RecordCount As Integer, ByVal strWhere As String) As System.Data.DataTable
         Try
-            Dim strSql As String = " select t.*, c.number, c.user_name, u.U_Name from Trans_TopUp t join Card c on t.card_id=c.card_id join U_UserInfo u on t.U_Id=u.U_Id"
+            Dim strSql As String = " select t.*, c.number, c.user_name, u.U_Name from Trans_TopUp t join Card c on t.card_id=c.card_id join U_UserInfo u on t.U_Id=u.U_Id "
             Dim strShow As String = "number as 卡号,user_name as 持卡人姓名, U_Name as 办理人姓名, convert(char(11),time,111) as 办理时间, trans_money as 充值金额, payer_phone as 预留电话"
 
             Return DAL.DBHelp.ExecutePagerWhenPrimaryIsString(PageIndex, PageSize, "card_id", strShow, strSql, strWhere,
